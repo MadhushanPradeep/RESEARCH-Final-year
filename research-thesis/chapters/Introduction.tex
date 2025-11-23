@@ -2,9 +2,9 @@
 
 \section{Research Overview}
 
-Agriculture remains a vital component of Sri Lanka's economy, providing livelihoods for nearly 30\% of the population and contributing significantly to the nation's food security. Among the various agricultural products, vegetables constitute an essential part of the domestic food supply chain. However, vegetable markets in Sri Lanka have historically been characterized by high price volatility, which creates substantial challenges for both farmers and consumers. Carrot, being one of the major vegetables traded in the country, experiences frequent and often unpredictable price fluctuations that can severely impact the economic stability of farming communities.
+Agriculture remains a vital component of Sri Lanka's economy. Among the various agricultural products, vegetables constitute an essential part of the domestic food supply chain. However, vegetable markets in Sri Lanka have historically been characterized by high price volatility, which creates substantial challenges for both farmers and consumers. Carrot, being one of the major vegetables traded in the country, experiences frequent and often unpredictable price fluctuations that can severely impact the economic stability of farming communities.
 
-The Dambulla Economic Centre serves as the largest wholesale vegetable market in Sri Lanka, acting as a central hub where produce from various growing regions across the island converges before distribution to retail markets. Daily price movements in this market reflect complex interactions between multiple factors including weather patterns, fuel costs, regional supply levels, and market demand dynamics. Understanding and predicting these price movements has become increasingly important for stakeholders throughout the agricultural value chain.
+Daily price movements in the Dambulla market reflect complex interactions between multiple factors including weather patterns, fuel costs, regional supply levels, and market demand dynamics. Understanding and predicting these price movements has become increasingly important for stakeholders throughout the agricultural value chain.
 
 This research investigates the application of machine learning techniques to forecast wholesale carrot prices in the Dambulla market. The study explores how climatic conditions, particularly precipitation patterns from major growing regions, along with economic factors such as fuel prices and supply indicators, influence daily price variations. Through the development and comparison of multiple forecasting models, this work aims to identify the most effective approach for short-term price prediction in the context of Sri Lankan vegetable markets.
 
@@ -28,7 +28,7 @@ The second component of the framework is a Retrieval-Augmented Generation (RAG) 
 
 \section{Motivation}
 
-Several factors motivated this research. First, there exists a clear practical need for improved price forecasting tools in Sri Lankan agriculture. Farmers, traders, and policymakers all stand to benefit from better price predictions, yet few accessible forecasting systems currently exist for the domestic vegetable market. This research aims to bridge that gap by developing methods specifically tailored to local market conditions.
+Several factors motivated this research. First, there exists a clear practical need for improved price forecasting tools in Sri Lankan agriculture. Farmers, traders, and policymakers all stand to benefit from better price predictions. This research aims to bridge that gap by developing methods specifically tailored to local market conditions.
 
 Second, from a technical perspective, agricultural price forecasting presents interesting challenges that push the boundaries of time series modeling. The need to incorporate diverse data sources, handle irregular patterns, and account for both short-term volatility and longer-term trends makes this a rich problem domain for exploring advanced machine learning techniques. The comparison between sequential models like LSTM and non-sequential approaches like Random Forest offers valuable insights into the nature of temporal dependencies in agricultural price data.
 
@@ -79,13 +79,3 @@ The temporal scope encompasses data from January 2020 through July 2025, providi
 The research investigates multiple modeling approaches but does not attempt to cover every possible machine learning technique. The selection of ARIMA, LSTM, and Random Forest provides a representative sample spanning traditional statistical methods, deep learning approaches, and ensemble learning techniques. The comparison between these methods aims to identify which characteristics are most important for this particular forecasting problem.
 
 While the research develops an AI agent to make predictions accessible, the focus remains on the forecasting methodology itself. The agent serves primarily as a delivery mechanism for predictions rather than as the central technical contribution. Future work could expand on this component, but for the purposes of this research, the emphasis is on establishing effective forecasting models.
-
-\section{Structure of the Thesis}
-
-The remainder of this thesis is organized as follows. Chapter 2 reviews relevant literature on agricultural price forecasting, covering traditional statistical approaches, machine learning techniques, and deep learning methods. It identifies gaps in existing research and positions this work within the broader context of agricultural time series forecasting.
-
-Chapter 3 presents the methodology in detail, describing the data collection process, preprocessing steps, feature engineering approaches, model architectures, and evaluation frameworks. This chapter explains the technical implementation of each forecasting model and the design of the AI agent.
-
-Chapter 4 reports the results of the empirical work, including exploratory data analysis findings, model performance comparisons, ablation study outcomes, and statistical validation results. This chapter presents both quantitative metrics and qualitative insights about what factors most strongly influence carrot prices.
-
-Chapter 5 concludes the thesis by summarizing key findings, discussing the implications for agricultural forecasting in Sri Lanka, acknowledging limitations of the current work, and suggesting directions for future research.
