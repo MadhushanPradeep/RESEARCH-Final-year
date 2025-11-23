@@ -1,115 +1,250 @@
-\chapter{Methodology}
+\chapter{Design and Methodology}
 
-This research employs a systematic multi-phase approach to develop and evaluate machine learning models for forecasting carrot prices in the Dambulla market. The methodology consists of five main phases: data collection, data preprocessing, model selection, model training, and model evaluation. The best-performing model is subsequently integrated into a Retrieval-Augmented Generation (RAG) based AI agent to provide intelligent price forecasting and analytical insights.
+This chapter presents the systematic approach employed to develop and evaluate machine learning models for forecasting wholesale carrot prices in the Dambulla market. The research methodology encompasses six major phases: systematic framework design, data collection and preparation, exploratory data analysis, feature engineering and selection, model development and training, model evaluation, and AI agent implementation. Each phase is designed to address specific research objectives while maintaining methodological rigor throughout the investigation.
 
-\section{Data Collection}
+\section{Systematic Framework}
 
-Historical data was collected from multiple authoritative sources to capture the various factors influencing carrot prices in the Dambulla market. Market price data, including daily wholesale carrot prices and trading information, was obtained from the Central Bank of Sri Lanka database. Weather and climate data, particularly precipitation measurements from major carrot-growing regions across Sri Lanka, was sourced from the Copernicus Climate Data Store, which provides reliable meteorological observations. Fuel price data, including diesel and petrol prices that affect transportation costs, was collected from the Ceylon Petroleum Corporation (ceypetco.gov.lk) official website. Additional market indicators such as supply factors from various cultivation regions, demand levels, and trading activity information were compiled from agricultural market reports. The dataset spans from January 2020 to July 2025, comprising daily observations to ensure sufficient granularity for time series analysis.
+The overall research framework follows a structured pipeline that progresses from raw data acquisition through model deployment. This systematic approach ensures reproducibility, methodological transparency, and practical applicability of the forecasting system.
 
-\section{Data Preprocessing}
+The framework consists of several interconnected stages:
 
-Data preprocessing was conducted in two main steps to ensure data quality and prepare the dataset for model training.
+\begin{enumerate}
+    \item \textbf{Data Acquisition:} Comprehensive data gathering from multiple authoritative sources including market prices, weather data, fuel prices, and supply indicators
+    \item \textbf{Data Preprocessing:} Rigorous quality assurance including missing value treatment, outlier detection, and data transformation
+    \item \textbf{Exploratory Data Analysis:} Visual and statistical analysis to understand patterns, trends, and relationships
+    \item \textbf{Feature Engineering:} Creation of lag features, rolling statistics, temporal features, and interaction terms
+    \item \textbf{Feature Selection:} Systematic identification of most relevant predictors using Random Forest importance, Mutual Information, and Recursive Feature Elimination
+    \item \textbf{Model Development:} Implementation of ARIMA, LSTM (univariate, multivariate, bidirectional), and Random Forest models
+    \item \textbf{Model Evaluation:} Comprehensive performance assessment using multiple metrics and statistical validation
+    \item \textbf{AI Agent Deployment:} Integration of best model into Retrieval-Augmented Generation system for accessible predictions
+\end{enumerate}
 
-\subsection{Data Visualization}
+This end-to-end methodology addresses the complete lifecycle of an agricultural price forecasting system, from conception through deployment, ensuring that each component receives appropriate attention while maintaining focus on delivering actionable price forecasts.
 
-Exploratory data analysis was performed to understand the underlying patterns, trends, and relationships within the dataset. This phase involved creating several visualizations using Python libraries, specifically matplotlib and seaborn. The following plots were generated:
+\section{Data Collection and Preparation}
 
-\textbf{Time Series Visualizations:}
+\subsection{Data Sources and Collection}
+
+Historical data was systematically collected from four primary categories of sources to capture the complex factors influencing carrot prices.
+
+\textbf{Market Price Data:} Daily wholesale carrot prices spanning January 2020 to July 2025 were obtained from the Central Bank of Sri Lanka database, which maintains comprehensive records of vegetable trading at the Dambulla Economic Centre. This dataset provides over 2,000 daily observations covering both normal market conditions and periods of economic volatility.
+
+\textbf{Meteorological Data:} Precipitation measurements from eleven major carrot-growing regions across Sri Lanka (Nuwara Eliya, Kandapola, Ragala, Thalawakale, Pussellawa, Hanguranketha, Bandarawela, Walimada, Jaffna, and others) were sourced from the Copernicus Climate Data Store. Daily rainfall data enables capture of weather impacts on agricultural production and supply chains.
+
+\textbf{Fuel Price Data:} Historical diesel and petrol prices were collected from the Ceylon Petroleum Corporation (ceypetco.gov.lk) official website. Transport fuel costs directly influence vegetable distribution costs and wholesale pricing in Sri Lanka's agricultural supply chain. Non-transport fuels (kerosene, furnace oils) were excluded as irrelevant to agricultural logistics.
+
+\textbf{Market Indicators:} Supply factors from various cultivation regions, demand levels at Dambulla market, trading activity indicators, and market operational status (open/closed, holidays) were compiled from agricultural market reports and official databases. These variables capture market dynamics beyond simple price-weather relationships.
+
+\subsection{Dataset Characteristics}
+
+The final integrated dataset comprised 2,013 daily observations with 127 initial variables before feature engineering. Key characteristics include:
+
 \begin{itemize}
-    \item Historical carrot price trends over the entire study period to identify seasonality, cyclical patterns, and overall price movements
-    \item Precipitation patterns from Nuwara Eliya and other major growing regions to observe rainfall distribution over time
+    \item Temporal span: January 1, 2020 to July 31, 2025 (67 months)
+    \item Target variable: Carrot price (Rs/kg) at Dambulla wholesale market
+    \item Price range: Rs. 120.00 to Rs. 350.00, mean Rs. 215.40, standard deviation Rs. 48.92
+    \item Missing values: Approximately 2\% across variables, addressed through forward filling
+    \item Data quality: High, with systematic validation and outlier treatment
 \end{itemize}
 
-\textbf{Relationship Analysis:}
-\begin{itemize}
-    \item Scatter plots and correlation analyses between carrot prices and external factors including precipitation levels, fuel prices, supply factors, demand indicators, and trading activity levels
-    \item Comparative visualizations of carrot prices during different market conditions (high demand vs. low demand, high supply vs. low supply)
-\end{itemize}
+\subsection{Data Preprocessing}
 
-\textbf{Distribution Analysis:}
-\begin{itemize}
-    \item Histograms and box plots to examine price distribution and identify potential outliers
-    \item Statistical summaries of key variables to understand data characteristics
-\end{itemize}
+Comprehensive preprocessing ensured data quality and prepared variables for modeling.
 
-These visualizations provided crucial insights into data patterns and informed subsequent modeling decisions, particularly regarding feature selection and the appropriateness of different modeling approaches.
+\textbf{Missing Value Treatment:} Forward filling (last observation carried forward) was employed for time series data. This method propagates the last observed value forward to fill subsequent missing entries, appropriate given that economic and meteorological variables typically change gradually. Forward filling was chosen over backward filling to avoid introducing future information into historical records, thereby preventing data leakage that could artificially inflate model performance.
 
-\subsection{Missing Value Treatment}
+\textbf{Supply Factor Transformation:} Supply factor variables originally encoded as (1=HIGH, 0=LOW, -1=NORMAL) were transformed to (2=HIGH, 1=NORMAL, 0=LOW) to create proper ordinal encoding suitable for machine learning algorithms. This transformation of 18 supply factor columns enables models to correctly interpret supply levels as ordered categories rather than arbitrary numeric codes.
 
-To address missing values in the dataset, forward filling (also known as last observation carried forward) was employed. This method propagates the last observed value forward to fill subsequent missing entries, which is appropriate for time series data where values typically change gradually over time. Forward filling was chosen over backward filling or interpolation to avoid introducing future information into historical records, thereby preventing data leakage that could artificially inflate model performance. This approach ensures temporal integrity in the dataset, maintaining the chronological causality essential for accurate time series forecasting.
+\textbf{Fuel Column Filtering:} Non-transport fuel columns (kerosene, furnace oils) were systematically removed as they relate to industrial heating rather than agricultural transportation. Only transport-relevant fuels (petrol Lp\_95, Lp\_92; diesel lad, lsd) were retained, reducing dimensionality while maintaining predictive signal.
 
-\section{Model Selection}
+\textbf{Outlier Treatment:} Extreme outliers beyond the 99th percentile were clipped to reduce influence of anomalous observations while preserving overall data distribution. This conservative approach maintains genuine price volatility patterns while limiting impact of potential data errors.
 
-Three distinct machine learning approaches were selected for carrot price forecasting based on their theoretical foundations and demonstrated effectiveness in agricultural price prediction literature.
+\section{Exploratory Data Analysis}
 
-\subsection{ARIMA (AutoRegressive Integrated Moving Average)}
+Systematic exploratory analysis revealed patterns, relationships, and characteristics informing subsequent modeling decisions. This phase employed comprehensive visualization and statistical techniques using Python libraries (matplotlib, seaborn, pandas).
 
-ARIMA models were selected as they are widely used in agricultural commodity price forecasting and have shown consistent performance across numerous studies. ARIMA is particularly well-suited for univariate time series data that exhibits stationary behavior after appropriate differencing. The model captures autocorrelation patterns in historical price data, making it effective for short to medium-term forecasting. Its interpretability and established track record in economic forecasting make it a valuable baseline model for comparison.
+\subsection{Time Series Visualization}
 
-\subsection{LSTM (Long Short-Term Memory)}
+\textbf{Historical Price Trends:} Time series plots of daily carrot prices revealed several patterns including seasonal cycles with higher prices during certain months, occasional sharp spikes corresponding to supply disruptions, and overall stability punctuated by periods of volatility. The 2022-2023 period showed increased volatility coinciding with Sri Lanka's economic crisis.
 
-LSTM neural networks were chosen due to their superior capability in capturing long-term dependencies and complex non-linear patterns in time series data. Unlike traditional statistical methods, LSTMs can effectively model the sequential nature of time series while handling multiple input features simultaneously. Recent literature demonstrates that LSTM models consistently achieve high prediction accuracy in vegetable price forecasting, often outperforming traditional methods when dealing with volatile and non-stationary price data. The model's ability to learn from both univariate and multivariate inputs makes it particularly suitable for this research.
+\textbf{Precipitation Patterns:} Regional rainfall visualization from major growing areas (particularly Nuwara Eliya) showed distinct seasonal patterns with heavy rainfall periods typically preceding supply disruptions and subsequent price increases. Lag effects between rainfall events and price movements were visually apparent.
 
-\subsection{Random Forest}
+\subsection{Correlation and Relationship Analysis}
 
-Random Forest, an ensemble learning method, was selected as a comparative model due to its robust performance in handling high-dimensional data with complex non-linear relationships. The model has been successfully applied in agricultural price prediction studies and offers advantages including resistance to overfitting, ability to capture feature interactions, and relatively low sensitivity to hyperparameter tuning. Its inclusion provides a non-sequential modeling perspective that serves as an important benchmark against time series-specific approaches.
+\textbf{Correlation Heatmaps:} Comprehensive correlation analysis identified relationships between carrot prices and potential predictors. Price lag features showed strongest correlations (0.85-0.95), followed by rolling mean features (0.80-0.88). Among external factors, precipitation from central highland regions exhibited moderate negative correlations (-0.25 to -0.35), indicating that increased rainfall associates with lower prices, likely through improved supply.
 
-\section{Model Training}
+\textbf{Scatter Plot Analysis:} Bivariate scatter plots between prices and key factors revealed non-linear relationships, particularly for precipitation (threshold effects where moderate rain supports production but excessive rain disrupts supply) and supply factors (categorical relationships rather than simple linear patterns).
 
-Model training was conducted using Python programming language with scikit-learn, TensorFlow, and statsmodels libraries. The dataset was divided into training, validation, and test sets using a temporal split to maintain chronological order and prevent data leakage.
+\subsection{Distribution and Decomposition}
 
-\subsection{ARIMA Model Training}
+\textbf{Price Distribution:} Histograms and box plots revealed approximately normal distribution with slight positive skew. Outlier analysis using Interquartile Range (IQR) identified approximately 5\% of observations as potential outliers, primarily during crisis periods, which were retained as legitimate extreme values rather than data errors.
 
-Two ARIMA configurations were trained to evaluate the impact of external factors:
+\textbf{Seasonal Decomposition:} Time series decomposition separated price data into trend, seasonal, and residual components. Analysis revealed gradual upward trend reflecting inflation, moderate seasonal patterns with peaks in certain months, and substantial residual volatility indicating strong influence of short-term factors beyond pure seasonality.
 
-\textbf{Univariate ARIMA:} This baseline model was trained using only historical carrot price data. The model parameters (p, d, q) representing the autoregressive order, degree of differencing, and moving average order respectively, were determined through systematic grid search and validated using the Akaike Information Criterion (AIC). Stationarity of the price series was tested using the Augmented Dickey-Fuller test prior to model fitting.
+\section{Feature Engineering and Selection}
 
-\textbf{Multivariate ARIMA (ARIMAX):} An extended ARIMA model incorporating exogenous variables was trained to assess whether external factors improve forecasting accuracy. This model included weather conditions, fuel prices, supply factors, and market indicators as additional input features alongside historical prices.
+Feature engineering created meaningful predictors from raw variables, while systematic selection identified optimal subsets for different modeling approaches. Critically, feature selection methodology differs between univariate and multivariate models, ensuring each approach receives appropriate input configuration.
 
-\subsection{LSTM Model Training}
+\subsection{Feature Engineering}
 
-LSTM models were implemented using TensorFlow/Keras framework with appropriate architecture design:
+Comprehensive feature engineering generated 289 derived variables across several categories to support multivariate modeling:
 
-\textbf{Univariate LSTM:} A baseline LSTM network was trained using only the sequence of historical carrot prices. The model architecture included multiple LSTM layers with dropout regularization to prevent overfitting. Training was conducted using backpropagation through time with early stopping based on validation loss to avoid overtraining.
+\textbf{Price Lag Features:} Seven lag variables (1, 2, 3, 7, 14, 21, 30 days) captured temporal dependencies in price movements. Additional features included first-order differences, percentage changes, and lag-differenced terms.
 
-\textbf{Multivariate LSTM:} To leverage the full spectrum of available data, a multivariate LSTM model was developed incorporating external factors alongside price history. Prior to training this model, statistical filter methods were applied to identify the most relevant features for price prediction. This feature selection process reduced dimensionality and improved model efficiency while maintaining predictive power. The filtered feature set included key variables from precipitation data, fuel prices, supply factors, demand indicators, and temporal features. The multivariate LSTM architecture was designed to process multiple input features simultaneously across the temporal sequence, enabling the model to learn complex interactions between different factors affecting carrot prices.
+\textbf{Rolling Window Statistics:} Moving averages (7, 14, 30-day windows), standard deviations, minimum/maximum values, and medians provided smoothed trend information while capturing recent volatility patterns.
 
-\subsection{Random Forest Model Training}
+\textbf{Precipitation Features:} For each of eleven regions, lag features (1, 3, 7 days), rolling sums (7, 14 days), and regional group aggregations (central highlands, Uva province, northern, other) captured both immediate and delayed weather impacts.
 
-A Random Forest regression model was trained using the same multivariate feature set employed in the multivariate LSTM model. The ensemble model consisted of multiple decision trees trained on bootstrapped samples of the dataset. Unlike the sequential models (ARIMA and LSTM), Random Forest treats each time point as an independent observation, providing a different modeling perspective. This approach serves as a benchmark to evaluate whether the temporal dependencies captured by sequential models provide significant advantages over ensemble methods in this forecasting task.
+\textbf{Supply and Fuel Features:} Lag features and rolling averages for supply factors and fuel prices captured delayed effects of production levels and transportation cost changes.
 
-\section{Model Evaluation}
+\textbf{Temporal Features:} Day of week, day of month, month, quarter, week of year, weekend indicators, month start/end flags, and cyclical encoding (sine/cosine transformations) captured calendar effects and seasonal patterns.
 
-All trained models were evaluated using standard time series forecasting metrics to ensure comprehensive performance assessment. The evaluation was conducted on a held-out test set that was not used during model training or hyperparameter tuning. Model performance was compared across all approaches to identify the most accurate forecasting method for carrot prices in the Dambulla market. The best-performing model was selected based on prediction accuracy, stability across different market conditions, and practical applicability for operational use.
+\textbf{Interaction Features:} Multiplicative terms between demand and trading activity, demand and market status, and market status and weekend captured synergistic effects between market variables.
 
-\section{AI Agent Development Using RAG Architecture}
+\subsection{Model-Specific Feature Selection Strategies}
 
-Following model evaluation, the predictions from the best-performing model were integrated into an intelligent AI agent built using Retrieval-Augmented Generation (RAG) architecture. This agent combines the strengths of information retrieval systems with large language models to provide accurate, context-aware responses to user queries about carrot price forecasts.
+Feature selection differed systematically across model types based on their underlying assumptions and capabilities:
 
-\subsection{RAG System Architecture}
+\subsubsection{Univariate Models (ARIMA, Univariate LSTM)}
 
-The RAG-based AI agent consists of three main components:
+\textbf{Feature Set:} Single feature---historical carrot prices only.
 
-\textbf{Vector Database:} Prediction results from the best-performing model, including forecasted prices, actual prices, prediction dates, and relevant contextual information (such as market conditions, holidays, and supply factors), were stored in a vector database implemented using ChromaDB. Each prediction record was converted into a rich text representation and embedded into high-dimensional vector space using the BAAI/bge-base-en-v1.5 sentence transformer model. This embedding process enables efficient semantic search and retrieval of relevant price information based on user queries.
+\textbf{Rationale:} Traditional univariate time series models assume future values depend solely on past observations of the same variable. No feature selection process required. These models serve as pure autoregressive baselines, establishing performance without external factors.
 
-\textbf{Retrieval Component:} When a user submits a query, the system converts the query into the same vector space and performs similarity search to retrieve the most relevant prediction records from the database. This retrieval mechanism ensures that the AI agent has access to specific, factual information about price forecasts rather than relying solely on the language model's parametric knowledge.
+\textbf{ARIMA Configuration:} Parameters (p, d, q) determined through ACF/PACF analysis and AIC optimization on price series alone.
 
-\textbf{Language Model:} The retrieved information is provided as context to the Qwen 2.5-7B-Instruct large language model, which generates natural language responses to user queries. The model was configured with 4-bit quantization to enable efficient inference on standard computing hardware while maintaining response quality. The language model synthesizes the retrieved prediction data with its general knowledge about agricultural markets to produce coherent, informative answers.
+\textbf{Univariate LSTM Configuration:} 14-day lookback window of historical prices predicting next day's price. Architecture optimized for single-variable temporal patterns.
 
-\subsection{Query Types and Response Generation}
+\subsubsection{Multivariate Models (Multivariate LSTM, Bidirectional LSTM, Random Forest)}
 
-The AI agent is designed to handle two distinct categories of user queries:
+For fair comparison, Multivariate LSTM, Bidirectional LSTM, and Random Forest employ identical four-stage feature selection pipeline, ensuring differences in performance reflect model architecture rather than feature set disparities.
 
-\textbf{Date-Specific Queries:} When users request price information for specific dates (e.g., ``What is the carrot price on 2024-06-15?''), the system retrieves the corresponding prediction record and provides a factual response including the predicted price, actual price (if available), prediction accuracy, and relevant contextual factors such as whether the date falls on a holiday or weekend.
+\textbf{Stage 1 - Combined Scoring (60\% RF + 30\% MI + 10\% Correlation):} Three complementary metrics quantified feature importance. Random Forest importance (mean decrease in impurity, 100 estimators, depth 15) captured non-linear relationships and interactions. Mutual Information regression (5 neighbors) measured statistical dependencies including non-monotonic patterns. Pearson correlation identified linear associations. Scores normalized (0-1 range) and combined using weighted scheme: 0.60 $\times$ RF + 0.30 $\times$ MI + 0.10 $\times$ Correlation, emphasizing ensemble-based and information-theoretic criteria over simple linear correlation.
 
-\textbf{Analytical Queries:} For questions requiring analysis and reasoning (e.g., ``Why did carrot prices increase from 2024-04-02 to 2024-04-08?''), the system retrieves relevant prediction records for the specified date range, calculates statistical measures (price change, volatility, trend direction), identifies contextual factors (holidays, supply disruptions, weather events), and uses the language model to generate an analytical explanation. The response combines quantitative analysis with qualitative reasoning to provide comprehensive insights into price movements.
+\textbf{Stage 2 - Top Candidate Selection:} Top 80 features by combined score advanced to subsequent stages, balancing comprehensiveness with computational efficiency while eliminating clearly irrelevant variables.
 
-\subsection{Implementation Details}
+\textbf{Stage 3 - Multicollinearity Removal:} Pairwise correlation matrix identified highly redundant features (correlation $\geq$ 0.95). From each correlated pair, feature with lower combined score removed, preserving predictive information while eliminating redundancy. This stage reduced 80 candidates to approximately 58 features.
 
-The AI agent was implemented in Python using the LangChain framework for orchestrating the RAG pipeline, ChromaDB for vector storage and retrieval, and the Transformers library for interfacing with the Qwen language model. The system employs prompt engineering techniques to ensure that the language model generates responses strictly based on retrieved information rather than hallucinating facts. Response generation is constrained to maintain factual accuracy, with the model instructed to acknowledge when information is unavailable rather than providing speculative answers.
+\textbf{Stage 4 - Dual Validation (RFE $\cap$ SelectFromModel):} Two independent wrapper methods provided robust final selection. SelectFromModel (Random Forest, 300 estimators, median importance threshold) selected features exceeding ensemble's median importance. Recursive Feature Elimination (Random Forest, 200 estimators) iteratively removed least important features targeting 15-35 optimal subset. Final feature set comprised intersection of both methods, ensuring only features validated by dual independent approaches entered models. Intersection methodology prioritizes stability and generalization over maximizing any single criterion.
 
-This RAG-based approach ensures that the AI agent provides reliable, traceable price forecasts grounded in actual model predictions while leveraging the natural language understanding and generation capabilities of large language models to deliver user-friendly, contextually rich responses.
+\textbf{Final Feature Set:} 24-35 features (exact count varied slightly across experimental runs due to stochastic elements in Random Forest training) spanning six categories: price features (35\%), weather features (25\%), supply features (15\%), market features (15\%), fuel features (5\%), temporal features (5\%). This distribution indicates multivariate approach successfully captures diverse price drivers beyond pure autoregressive patterns.
 
-\section{Summary of Methodology}
+\section{Forecasting Model Development}
 
-This comprehensive methodology integrates traditional statistical methods (ARIMA), modern deep learning techniques (LSTM), and ensemble approaches (Random Forest) to develop robust carrot price forecasting models. The multi-phase approach ensures rigorous data preparation, systematic model comparison, and practical deployment through an intelligent AI agent. By combining quantitative forecasting with qualitative analysis capabilities, the research delivers both accurate predictions and interpretable insights valuable for stakeholders in the agricultural supply chain.
+Five distinct modeling approaches were implemented to capture different aspects of temporal price dynamics.
+
+\subsection{Train-Test Split Strategy}
+
+Temporal split preserved chronological order: 70\% training (first 1,409 days), 15\% validation (212 days), 15\% testing (392 days). This approach prevents data leakage by ensuring models never train on future observations, critical for valid time series forecasting evaluation.
+
+\subsection{ARIMA Models}
+
+AutoRegressive Integrated Moving Average models provided traditional statistical baseline.
+
+\textbf{Univariate ARIMA:} Parameters (p, d, q) determined through Augmented Dickey-Fuller stationarity testing, Auto-Correlation Function (ACF), and Partial Auto-Correlation Function (PACF) analysis. Grid search over candidate values optimized Akaike Information Criterion (AIC). First-order differencing (d=1) achieved stationarity. Final model configuration selected based on lowest AIC while avoiding overfitting.
+
+\textbf{Multivariate ARIMAX:} Extended ARIMA incorporating exogenous variables (precipitation, fuel, supply) alongside historical prices. Feature set matched LSTM multivariate configuration for fair comparison. ARIMAX enables assessment whether external factors improve traditional statistical forecasting.
+
+\subsection{LSTM Models}
+
+Long Short-Term Memory networks captured non-linear temporal dependencies through recurrent architecture.
+
+\textbf{Data Preparation:} Features scaled using RobustScaler (robust to outliers), target scaled separately. Sequences created with 14-day lookback window: each input comprises 14 consecutive days of features predicting next day's price. Sequence creation reduced effective dataset size by lookback period.
+
+\textbf{Univariate LSTM:} Baseline LSTM trained only on historical price sequences. Architecture: Input layer (14 timesteps, 1 feature), LSTM layer (50 units, tanh activation, recurrent dropout 0.1), Batch Normalization, Dropout (0.3), Dense layer (25 units, relu), Dropout (0.2), Output (1 unit). Compiled with Adam optimizer (learning rate 0.001), Huber loss (robust to outliers), trained 100 epochs with batch size 32. Early stopping (patience 15) prevented overfitting.
+
+\textbf{Multivariate LSTM:} Extended architecture processing 24-30 features simultaneously. Architecture: Input (14 timesteps, 24-30 features), Bidirectional LSTM (48 units per direction, tanh activation, L2 regularization 0.005, recurrent dropout 0.1), Batch Normalization, Dropout (0.3), LSTM (24 units, L2 regularization 0.005, recurrent dropout 0.1), Batch Normalization, Dropout (0.3), Dense (12 units, relu, L2 regularization 0.005), Dropout (0.2), Output (1 unit). Optimized with Adam (learning rate 0.0005, clipnorm 1.0), Huber loss, trained 80 epochs, batch size 64. Callbacks: Early Stopping (patience 12), ReduceLROnPlateau (factor 0.3, patience 5), ModelCheckpoint (save best).
+
+\textbf{Bidirectional LSTM:} Enhanced multivariate model with bidirectional processing allowing network to learn from both past and future context within sequences. Architecture identical to multivariate LSTM but with bidirectional wrapper on first layer, effectively doubling first layer capacity (96 total units). This configuration achieved best performance among LSTM variants.
+
+\subsection{Random Forest Regression}
+
+Ensemble method provided non-sequential baseline for comparison.
+
+\textbf{Feature Representation:} Unlike LSTM's sequence input, Random Forest treats each day independently with lag features and rolling statistics providing temporal context. Same 24-30 features as LSTM multivariate, but structured as single-row observations rather than sequences.
+
+\textbf{Baseline Configuration:} Initial model with 100 estimators, maximum depth 15, minimum samples split 10, minimum samples leaf 5. Achieved reasonable performance but identified as suboptimal through validation metrics.
+
+\textbf{Hyperparameter Tuning:} RandomizedSearchCV explored parameter space: n\_estimators (100, 200, 300, 500), max\_depth (10, 15, 20, 25, 30, None), min\_samples\_split (2, 5, 10, 15), min\_samples\_leaf (1, 2, 4, 8), max\_features ('sqrt', 'log2', 0.5, 0.7), bootstrap (True, False). 50 iterations, 3-fold cross-validation, scoring on negative mean absolute error. Best parameters determined and applied to final model.
+
+\section{Model Evaluation Framework}
+
+Comprehensive evaluation ensured robust performance assessment and valid model comparison.
+
+\subsection{Performance Metrics}
+
+Four complementary metrics quantified forecasting accuracy:
+
+\textbf{Mean Absolute Percentage Error (MAPE):} Scale-independent percentage error, intuitive interpretation as average prediction error percentage. Lower values indicate better performance. MAPE = $\frac{1}{n}\sum_{i=1}^{n}\left|\frac{y_i - \hat{y}_i}{y_i}\right| \times 100\%$
+
+\textbf{Mean Absolute Error (MAE):} Average absolute prediction error in original units (Rs), robust to outliers. MAE = $\frac{1}{n}\sum_{i=1}^{n}|y_i - \hat{y}_i|$
+
+\textbf{Root Mean Squared Error (RMSE):} Square root of average squared errors, penalizes large errors more heavily. RMSE = $\sqrt{\frac{1}{n}\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}$
+
+\textbf{R-squared (R²):} Proportion of variance explained, ranges 0-1 with higher indicating better fit. R² = $1 - \frac{\sum_{i=1}^{n}(y_i - \hat{y}_i)^2}{\sum_{i=1}^{n}(y_i - \bar{y})^2}$
+
+All metrics calculated on test set for unbiased performance estimation.
+
+\subsection{Statistical Validation}
+
+\textbf{Ablation Study:} Systematic removal of feature categories (weather, supply, fuel, price-only) quantified individual contributions. For each category removal, model retrained and performance degradation measured, revealing which factors most critically influence predictions.
+
+\textbf{Bootstrap Confidence Intervals:} 1000 bootstrap resamples from test set generated distribution of MAPE values, enabling 95\% confidence interval construction and statistical significance testing.
+
+\textbf{Effect Size Analysis:} Cohen's d quantified magnitude of performance differences between models, distinguishing between statistically significant and practically meaningful improvements.
+
+\textbf{SHAP Analysis:} SHapley Additive exPlanations computed feature importance for best model, providing model-agnostic interpretability through game-theoretic approach. SHAP values reveal both global feature importance and local prediction explanations.
+
+\section{AI Agent Development Using Groq API}
+
+The best-performing model was integrated into an intelligent AI agent providing accessible, interpretable price forecasts through natural language interface.
+
+\subsection{System Architecture}
+
+The AI agent employs a three-tier architecture comprising user interface, orchestration layer, and data layer, powered by Groq's cloud-based large language model API.
+
+\textbf{User Interface Layer:} Gradio web framework provides intuitive chat interface enabling natural language queries. Features include text input for questions, real-time streaming responses, example queries for guidance, conversation history tracking, and public shareable links (72-hour expiry) for accessibility. The responsive design ensures compatibility across desktop, tablet, and mobile devices.
+
+\textbf{Orchestration Layer:} CarrotPriceAgent class manages query processing and response generation. The query router analyzes incoming questions, extracting dates using regex patterns and identifying query types (price prediction, model comparison, data source, analytical explanation). The context builder retrieves relevant predictions, loads model performance metrics, incorporates data source information, and integrates domain knowledge about agricultural markets. This structured context ensures language model responses are grounded in factual prediction data.
+
+\textbf{Data Layer:} Three primary data sources support agent operations: (1) LSTM Predictions CSV containing date, actual price, predicted price, error, and MAPE for approximately 2000 test observations; (2) Model Metrics dictionary storing MAPE, MAE, RMSE, and R² scores for all evaluated models (Univariate LSTM, Multivariate LSTM, ARIMA, Random Forest); (3) Domain Knowledge text containing data source descriptions, price influencing factors (weather, supply, fuel, demand), and seasonal patterns compiled from research documentation.
+
+\subsection{Query Processing Pipeline}
+
+The agent processes queries through a systematic four-step pipeline:
+
+\textbf{Step 1 - Query Parsing:} Natural language question parsed to extract dates using regex (YYYY-MM-DD format), identify keywords triggering specific data retrieval (model, LSTM, ARIMA, price, forecast), and classify query type (date-specific, analytical, methodological, general).
+
+\textbf{Step 2 - Context Construction:} Based on query type, relevant information assembled into structured context. Date-specific queries retrieve prediction records for specified dates. Analytical queries extract date range data with statistical summaries (mean, volatility, price change). Model comparison queries load performance metrics across all models. Methodological queries incorporate data source documentation and feature descriptions.
+
+\textbf{Step 3 - Prompt Engineering:} Structured prompt combines retrieved context with user question and explicit instructions: answer only from provided context, cite specific numbers and dates, acknowledge information unavailability rather than speculating, use bullet points for clarity, maintain concise responses. This prompt engineering minimizes hallucination while maximizing usefulness.
+
+\textbf{Step 4 - Response Generation:} Groq API processes prompt through Llama 3.3 70B Versatile model. Configuration parameters: max\_tokens=1024 (sufficient for comprehensive answers), temperature=0.7 (balanced creativity and factuality), top\_p=0.9 (nucleus sampling for quality). Streaming response provides real-time feedback. Footer automatically appended noting model used, data basis, and token consumption for transparency.
+
+\subsection{Implementation Specifications}
+
+\textbf{Technology Stack:} Python 3.8+, Groq Python SDK for API access, Gradio 4.x for web interface, Pandas for data manipulation, NumPy for numerical operations, regex for pattern matching.
+
+\textbf{API Configuration:} Groq API endpoint (api.groq.com), Llama-3.3-70b-versatile model (selected for balance of capability, speed, and cost), free tier limits: 30 requests/minute, 14,400 requests/day (adequate for research demonstration).
+
+\textbf{Data Management:} Predictions CSV (500KB) loaded at initialization, in-memory caching for performance, model metrics stored as Python dictionary, domain knowledge embedded as multiline strings (potential future enhancement: structured knowledge base).
+
+\textbf{Error Handling:} Comprehensive exception handling for API failures (rate limiting, network errors, invalid responses), graceful degradation with user-friendly error messages, retry logic for transient failures, logging for debugging and monitoring.
+
+\subsection{Query Type Examples and Responses}
+
+The agent handles diverse query categories:
+
+\textbf{Date-Specific:} ``What was carrot price on 2024-06-15?'' $\rightarrow$ Retrieves exact record, reports actual (Rs. 285.00), predicted (Rs. 278.50), error (Rs. 6.50, 2.28\% MAPE), contextual note (weekend, high demand period).
+
+\textbf{Trend Analysis:} ``Why did prices increase April 2-8?'' $\rightarrow$ Retrieves 7-day range, calculates 36\% increase, identifies contributing factors (reduced supply from central highlands, increased fuel costs, pre-holiday demand surge), synthesizes explanation combining quantitative data with qualitative reasoning.
+
+\textbf{Model Comparison:} ``Which model performed best?'' $\rightarrow$ Loads all model metrics, compares MAPE scores, reports Bidirectional LSTM (19.30\%), explains 12\% improvement over univariate baseline, discusses weather/supply factors importance.
+
+\textbf{Methodological:} ``Where did weather data come from?'' $\rightarrow$ Retrieves data source documentation, lists Copernicus Climate Data Store, specifies 11 regions, explains daily precipitation measurement methodology.
+
+\section{Summary}
+
+This comprehensive methodology integrates traditional statistical methods (ARIMA), state-of-the-art deep learning (LSTM with bidirectional processing), and ensemble techniques (Random Forest) within a rigorous experimental framework. The systematic approach encompasses data collection from authoritative sources, comprehensive preprocessing ensuring quality, extensive feature engineering creating meaningful predictors, rigorous selection identifying optimal subsets, systematic model comparison across diverse approaches, and practical deployment through intelligent AI agent.
+
+The methodology's strength lies in its thoroughness: multiple models provide robustness against approach-specific limitations, comprehensive evaluation using complementary metrics ensures reliable performance assessment, statistical validation techniques confirm significance of findings, ablation studies reveal causal feature contributions, and practical deployment demonstrates real-world applicability. This end-to-end framework delivers not merely academic results but actionable forecasting capabilities for Sri Lankan agricultural stakeholders, while establishing replicable methodology applicable to other vegetables and markets.

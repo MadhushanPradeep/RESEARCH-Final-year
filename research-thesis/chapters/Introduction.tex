@@ -1,44 +1,91 @@
-\chapter{Introduction}  %Title of the First Chapter
+\chapter{Introduction}
 
-%\ifpdf
-%\graphicspath{{Chapter1/Figs/Raster/}{Chapter1/Figs/PDF/}{Chapter1/Figs/}}
-%\else
-%\graphicspath{{Chapter1/Figs/Vector/}{Chapter1/Figs/}}
-%\fi
+\section{Research Overview}
 
+Agriculture remains a vital component of Sri Lanka's economy, providing livelihoods for nearly 30\% of the population and contributing significantly to the nation's food security. Among the various agricultural products, vegetables constitute an essential part of the domestic food supply chain. However, vegetable markets in Sri Lanka have historically been characterized by high price volatility, which creates substantial challenges for both farmers and consumers. Carrot, being one of the major vegetables traded in the country, experiences frequent and often unpredictable price fluctuations that can severely impact the economic stability of farming communities.
 
-%********************************** %First Section  **************************************
-\section{Introduction} %Section - 1.1 
+The Dambulla Economic Centre serves as the largest wholesale vegetable market in Sri Lanka, acting as a central hub where produce from various growing regions across the island converges before distribution to retail markets. Daily price movements in this market reflect complex interactions between multiple factors including weather patterns, fuel costs, regional supply levels, and market demand dynamics. Understanding and predicting these price movements has become increasingly important for stakeholders throughout the agricultural value chain.
 
- 
+This research investigates the application of machine learning techniques to forecast wholesale carrot prices in the Dambulla market. The study explores how climatic conditions, particularly precipitation patterns from major growing regions, along with economic factors such as fuel prices and supply indicators, influence daily price variations. Through the development and comparison of multiple forecasting models, this work aims to identify the most effective approach for short-term price prediction in the context of Sri Lankan vegetable markets.
 
- 
+\section{Problem Statement}
 
-All the pages in the Project Report/Thesis must be computer printed only on one side of the page using
-Times New Roman (size 12) font with 1.5-line spacing.
-However, the following components of the project report/thesis should have single-line spacing: declaration, abstract, acknowledgement, table of contents, list of tables, list of figures, list of abbreviations, table titles, figure captions and references. 
-Each reference must be separated by a single-line spacing. Margins on each page must be maintained as
-follows: left hand, 40 mm; right hand, 15 mm; top and bottom, 25 mm.  
+Vegetable price volatility presents serious problems for the agricultural sector in Sri Lanka. Farmers often struggle to make informed decisions about planting schedules, harvest timing, and market entry due to the uncertainty surrounding future prices. When prices drop unexpectedly, farmers may face losses that threaten their financial stability. Conversely, sudden price spikes can lead to affordability issues for consumers while also triggering market interventions that complicate the natural price discovery process.
 
-All the pages in the Project Report/Thesis must be computer printed only on one side of the page using
-Times New Roman (size 12) font with 1.5-line spacing.
-However, the following components of the project report/thesis should have single-line spacing: declaration, abstract, acknowledgement, table of contents, list of tables, list of figures, list of abbreviations, table titles, figure captions and references. 
-Each reference must be separated by a single-line spacing. Margins on each page must be maintained as
-follows: left hand, 40 mm; right hand, 15 mm; top and bottom, 25 mm.  
+Traditional approaches to understanding vegetable prices have relied primarily on historical averages and seasonal patterns. However, these methods fail to capture the complex, non-linear relationships between prices and the various factors that influence them. The lack of reliable forecasting tools means that decision-making across the supply chain remains largely reactive rather than proactive. This situation calls for more sophisticated analytical approaches that can better model the temporal dependencies and multi-dimensional influences inherent in agricultural price data.
 
-All the pages in the Project Report/Thesis must be computer printed only on one side of the page using
-Times New Roman (size 12) font with 1.5-line spacing.
-However, the following components of the project report/thesis should have single-line spacing: declaration, abstract, acknowledgement, table of contents, list of tables, list of figures, list of abbreviations, table titles, figure captions and references. 
-Each reference must be separated by a single-line spacing. Margins on each page must be maintained as
-follows: left hand, 40 mm; right hand, 15 mm; top and bottom, 25 mm.  
+The challenge is further complicated by the fact that different factors may have varying degrees of influence on prices at different times. For instance, heavy rainfall in major growing regions like Nuwara Eliya might have delayed effects on market prices as supply disruptions gradually propagate through the distribution network. Similarly, changes in fuel prices might impact transportation costs, which in turn affect wholesale pricing. Capturing these temporal lags and interactions requires modeling techniques that can learn from sequential data and account for multiple input variables simultaneously.
 
-All the pages in the Project Report/Thesis must be computer printed only on one side of the page using
-Times New Roman (size 12) font with 1.5-line spacing.
-However, the following components of the project report/thesis should have single-line spacing: declaration, abstract, acknowledgement, table of contents, list of tables, list of figures, list of abbreviations, table titles, figure captions and references. 
-Each reference must be separated by a single-line spacing. Margins on each page must be maintained as
-follows: left hand, 40 mm; right hand, 15 mm; top and bottom, 25 mm.
+\section{Proposed Solution}
 
+This research proposes a comprehensive machine learning framework for carrot price forecasting that addresses the limitations of traditional approaches. The framework consists of two main components: a forecasting engine and an intelligent query system.
 
-\citep{Streftaris2004} 
- 
-\section{Outline of Thesis}
+The forecasting component employs three distinct modeling approaches to predict daily carrot prices. First, ARIMA models provide a baseline using classical time series analysis techniques. Second, Long Short-Term Memory (LSTM) neural networks are developed in both univariate and multivariate configurations to capture complex temporal patterns. The multivariate LSTM incorporates external factors including precipitation data from eleven growing regions, fuel price indicators, regional supply factors, and market status variables. Third, Random Forest regression serves as an ensemble learning alternative that approaches the problem from a non-sequential perspective.
+
+A rigorous feature selection process underpins the multivariate models. This process combines Random Forest feature importance, Mutual Information scores, and Recursive Feature Elimination to identify the most relevant predictors. The selected features then undergo further validation through an ablation study that systematically assesses the contribution of different feature categories to overall prediction accuracy.
+
+The second component of the framework is a Retrieval-Augmented Generation (RAG) based AI agent that makes the forecasting system accessible and interpretable. This agent stores prediction results in a vector database and uses a large language model to provide natural language responses to user queries. The system can handle both specific date inquiries and analytical questions about price trends, offering stakeholders an intuitive interface for accessing forecasting insights.
+
+\section{Motivation}
+
+Several factors motivated this research. First, there exists a clear practical need for improved price forecasting tools in Sri Lankan agriculture. Farmers, traders, and policymakers all stand to benefit from better price predictions, yet few accessible forecasting systems currently exist for the domestic vegetable market. This research aims to bridge that gap by developing methods specifically tailored to local market conditions.
+
+Second, from a technical perspective, agricultural price forecasting presents interesting challenges that push the boundaries of time series modeling. The need to incorporate diverse data sources, handle irregular patterns, and account for both short-term volatility and longer-term trends makes this a rich problem domain for exploring advanced machine learning techniques. The comparison between sequential models like LSTM and non-sequential approaches like Random Forest offers valuable insights into the nature of temporal dependencies in agricultural price data.
+
+Third, the growing availability of data from various sources creates new opportunities for multivariate forecasting that were not previously feasible. Weather records, fuel price data, and market information can now be integrated more easily, but questions remain about how best to leverage these multiple data streams. This research investigates practical approaches to feature engineering and selection in the context of agricultural forecasting.
+
+Finally, there is broader interest in making machine learning models more interpretable and accessible to end users. The development of the RAG-based AI agent represents an attempt to move beyond simply generating predictions toward creating a system that can explain those predictions and support decision-making in meaningful ways.
+
+\section{Research Objectives}
+
+The primary objectives of this research are:
+
+\begin{enumerate}
+    \item To collect and preprocess historical carrot price data along with relevant meteorological, economic, and market variables from multiple authoritative sources spanning January 2020 to July 2025.
+    
+    \item To develop and implement univariate forecasting models using historical price data alone, establishing baseline performance through ARIMA and LSTM approaches.
+    
+    \item To create multivariate forecasting models that incorporate external factors including precipitation patterns, fuel prices, supply indicators, and temporal features, with particular emphasis on rigorous feature selection methods.
+    
+    \item To conduct comprehensive model comparison across ARIMA, univariate LSTM, multivariate LSTM, and Random Forest approaches using multiple evaluation metrics including MAPE, MAE, RMSE, and R² scores.
+    
+    \item To perform ablation studies that isolate the contribution of different feature categories (weather, supply, fuel, temporal) to forecasting accuracy, providing insights into which factors most strongly influence carrot prices.
+    
+    \item To validate model performance through statistical techniques including bootstrap confidence intervals and effect size analysis, ensuring that observed differences between models are statistically significant.
+    
+    \item To develop an AI agent based on Retrieval-Augmented Generation architecture that provides an accessible interface for querying price predictions and obtaining analytical insights about price trends and influencing factors.
+    
+    \item To evaluate the complete forecasting framework in terms of both prediction accuracy and practical usability for stakeholders in the agricultural supply chain.
+\end{enumerate}
+
+\section{Background}
+
+Sri Lanka's agricultural sector has long been central to the nation's economy and food security. The country's diverse topography and climate zones enable the cultivation of a wide variety of crops, with vegetable farming concentrated primarily in the central highlands. The Nuwara Eliya district, often referred to as the vegetable basket of Sri Lanka, supplies a substantial portion of the country's temperate vegetables including carrots, leeks, and cabbage.
+
+The Dambulla Economic Centre, established in the Matale district, functions as the primary wholesale distribution point for vegetables in Sri Lanka. Daily, thousands of tons of produce arrive from various growing regions, are auctioned in the early morning hours, and are then transported to retail markets across the island. The prices established in Dambulla influence retail pricing throughout the country, making it a crucial barometer for the vegetable market as a whole.
+
+Carrot cultivation in Sri Lanka occurs year-round, though production volumes vary seasonally based on weather conditions in different growing regions. The main growing areas include Nuwara Eliya, Welimada, Bandarawela, and several other locations in the central highlands. These regions experience different rainfall patterns and microclimates, which means that supply from different areas peaks at different times, theoretically providing year-round availability.
+
+However, this system is vulnerable to various disruptions. Excessive rainfall can damage crops and delay harvests, leading to supply shortages. Transportation challenges, whether due to fuel price increases or infrastructure problems, can affect the flow of produce to market. Market dynamics themselves can create volatility, as traders adjust their behavior based on expected future prices, sometimes amplifying rather than dampening price swings.
+
+In recent years, there has been growing recognition of the need for better market information systems in Sri Lankan agriculture. Various government and non-government organizations have made efforts to collect and disseminate market price data, but tools for forecasting future prices have remained limited. This research builds on existing data collection initiatives while introducing more sophisticated analytical capabilities.
+
+\section{Scope of the Research}
+
+This research focuses specifically on wholesale carrot prices in the Dambulla market. While the methodologies developed here could potentially be applied to other vegetables or other markets, the empirical work concentrates on this single commodity in this single location. This focused scope allows for in-depth analysis while maintaining manageable complexity in terms of data collection and model development.
+
+The temporal scope encompasses data from January 2020 through July 2025, providing over five years of daily price observations along with corresponding values for all predictor variables. This period includes both normal market conditions and more volatile periods, including the economic challenges faced by Sri Lanka in recent years, which helps ensure that the models are exposed to a range of market scenarios during training and evaluation.
+
+The research investigates multiple modeling approaches but does not attempt to cover every possible machine learning technique. The selection of ARIMA, LSTM, and Random Forest provides a representative sample spanning traditional statistical methods, deep learning approaches, and ensemble learning techniques. The comparison between these methods aims to identify which characteristics are most important for this particular forecasting problem.
+
+While the research develops an AI agent to make predictions accessible, the focus remains on the forecasting methodology itself. The agent serves primarily as a delivery mechanism for predictions rather than as the central technical contribution. Future work could expand on this component, but for the purposes of this research, the emphasis is on establishing effective forecasting models.
+
+\section{Structure of the Thesis}
+
+The remainder of this thesis is organized as follows. Chapter 2 reviews relevant literature on agricultural price forecasting, covering traditional statistical approaches, machine learning techniques, and deep learning methods. It identifies gaps in existing research and positions this work within the broader context of agricultural time series forecasting.
+
+Chapter 3 presents the methodology in detail, describing the data collection process, preprocessing steps, feature engineering approaches, model architectures, and evaluation frameworks. This chapter explains the technical implementation of each forecasting model and the design of the AI agent.
+
+Chapter 4 reports the results of the empirical work, including exploratory data analysis findings, model performance comparisons, ablation study outcomes, and statistical validation results. This chapter presents both quantitative metrics and qualitative insights about what factors most strongly influence carrot prices.
+
+Chapter 5 concludes the thesis by summarizing key findings, discussing the implications for agricultural forecasting in Sri Lanka, acknowledging limitations of the current work, and suggesting directions for future research.
