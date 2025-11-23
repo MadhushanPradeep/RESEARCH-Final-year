@@ -10,7 +10,7 @@ This research developed and evaluated a comprehensive carrot price forecasting s
 
 The research systematically integrated 289 initial features across six categories—historical prices, weather patterns from 11 growing regions, supply factors, demand indicators, fuel costs, and temporal variables—applying a rigorous 4-stage feature selection pipeline to identify the most predictive subset while avoiding overfitting. Model evaluation employed consistent train-validation-test splits and comprehensive metrics including MAPE, MAE, RMSE, and R² to ensure robust performance assessment.
 
-The Bidirectional LSTM model emerged as the best performer with 21.22\% test MAPE and R² of 0.8111, substantially outperforming traditional ARIMA/ARIMAX approaches (MAPE > 50\% and 88.80\% respectively) and achieving competitive accuracy with interpretable Random Forest models while providing superior prediction reliability. The deployment-ready system integrates this forecasting capability with a Retrieval-Augmented Generation (RAG) AI agent powered by Groq API, enabling natural language interaction for non-technical stakeholders.
+The Bidirectional LSTM model emerged as the best performer with 21.22\% test MAPE and R² of 0.8111, substantially outperforming traditional ARIMA/ARIMAX approaches (MAPE \textgreater{} 50\% and 88.80\% respectively) and achieving competitive accuracy with interpretable Random Forest models while providing superior prediction reliability. The deployment-ready system integrates this forecasting capability with a Retrieval-Augmented Generation (RAG) AI agent powered by Groq API, enabling natural language interaction for non-technical stakeholders.
 
 \section{Key Findings}
 \label{sec:key_findings}
@@ -32,7 +32,7 @@ The standard multivariate LSTM with 35 features underperformed (25.88\% MAPE) co
 
 The bidirectional architecture's ability to process sequences in both temporal directions provided measurable advantage, particularly for identifying price turning points where lagged weather effects interact with recent market trends. The 4.66 percentage point improvement over standard multivariate LSTM (21.22\% vs 25.88\% MAPE) quantifies this architectural enhancement's value.
 
-\subsection{Feature Importance Hierarchy: Price > Weather > Market Dynamics}
+\subsection{Feature Importance Hierarchy: Price \textgreater\ Weather \textgreater\ Market Dynamics}
 \label{subsec:feature_hierarchy}
 
 Systematic feature importance analysis and ablation studies revealed a clear predictive hierarchy: historical price features contributed 48.7\% of total importance, weather patterns 19.2\%, and market demand 14.5\%. Removing price features increased MAPE by 8.3 percentage points, while weather removal added 3.1 points and market factors 2.4 points. This quantifies the relative contribution of each factor category to forecasting accuracy.
@@ -45,7 +45,7 @@ Although Random Forest Tuned achieved slightly lower MAPE than Bidirectional LST
 \subsection{Weather-Price Relationships Quantified}
 \label{subsec:weather_quantified}
 
-The research established specific quantitative relationships: Central Highland precipitation explains 12\% of price variance with negative correlation (higher rainfall → lower prices through increased supply), while fuel prices show positive correlation accounting for 6\% of variance (higher transportation costs → higher market prices). These findings provide actionable insights for agricultural policy and market intervention strategies.
+The research established specific quantitative relationships: Central Highland precipitation explains 12\% of price variance with negative correlation (higher rainfall $\rightarrow$ lower prices through increased supply), while fuel prices show positive correlation accounting for 6\% of variance (higher transportation costs $\rightarrow$ higher market prices). These findings provide actionable insights for agricultural policy and market intervention strategies.
 
 \subsection{Deployment Feasibility Demonstrated}
 \label{subsec:deployment_feasible}
@@ -71,7 +71,7 @@ This research makes several distinct contributions to agricultural price forecas
 
 \textbf{1. Optimized Bidirectional LSTM Architecture:} The research demonstrates that bidirectional processing with moderate feature selection (19 features), enhanced regularization (Dropout + BatchNormalization + L2), and careful hyperparameter tuning outperforms both univariate and high-dimensional multivariate approaches for agricultural price forecasting. This architectural blueprint provides practical guidance for similar applications.
 
-\textbf{2. RAG-Enhanced Agricultural AI Agent:} The integration of forecasting models with Retrieval-Augmented Generation using large language models (Groq API, Llama 3.3 70B) represents a novel deployment paradigm for agricultural intelligence systems. The 3-tier architecture (Query Router → Intent Classification → Model/RAG Response) enables flexible stakeholder interaction beyond traditional dashboard interfaces.
+\textbf{2. RAG-Enhanced Agricultural AI Agent:} The integration of forecasting models with Retrieval-Augmented Generation using large language models (Groq API, Llama 3.3 70B) represents a novel deployment paradigm for agricultural intelligence systems. The 3-tier architecture (Query Router $\rightarrow$ Intent Classification $\rightarrow$ Model/RAG Response) enables flexible stakeholder interaction beyond traditional dashboard interfaces.
 
 \textbf{3. Multi-Source Data Integration Pipeline:} The systematic framework for integrating heterogeneous data sources—market prices (Central Bank), precipitation from 11 regions (Copernicus Climate), fuel costs (Ceylon Petroleum), supply indicators (Agricultural Department)—with temporal alignment and missing data handling provides a reusable template for agricultural data infrastructure.
 
@@ -80,7 +80,7 @@ This research makes several distinct contributions to agricultural price forecas
 
 \textbf{1. Quantified Weather-Price Relationships for Sri Lankan Carrots:} The research establishes specific empirical relationships between growing region precipitation patterns and Dambulla market prices, including lagged effects and regional heterogeneity (Central Highland vs Uva Province vs Northern regions). These findings inform crop insurance design and market intervention timing.
 
-\textbf{2. Benchmark Performance Metrics:} The comprehensive evaluation across seven models with consistent metrics provides benchmark performance standards for Sri Lankan vegetable price forecasting: 21\% MAPE represents achievable accuracy for daily carrot price predictions, substantially better than traditional methods (>50\% MAPE) while acknowledging inherent market volatility limits.
+\textbf{2. Benchmark Performance Metrics:} The comprehensive evaluation across seven models with consistent metrics provides benchmark performance standards for Sri Lankan vegetable price forecasting: 21\% MAPE represents achievable accuracy for daily carrot price predictions, substantially better than traditional methods (\textgreater{}50\% MAPE) while acknowledging inherent market volatility limits.
 
 \textbf{3. Feature Engineering Best Practices:} The research identifies optimal lag structures (1, 7, 14 days), rolling window sizes (7, 14 days), and regional precipitation groupings for vegetable price forecasting, providing evidence-based guidance for practitioners building similar systems for other crops or markets.
 
@@ -170,7 +170,7 @@ Building upon the foundation established by this research, several promising dir
 
 \textbf{2. Counterfactual Analysis:} Develop "what-if" scenario capabilities allowing users to query: "How would prices change if Central Highland rainfall increases by 50mm next week?" This requires training conditional models or implementing gradient-based perturbation analysis, providing actionable insights for climate adaptation planning.
 
-\textbf{3. Causal Discovery:} Move beyond correlational feature importance to causal inference using techniques like Granger causality, Structural Equation Modeling, or causal Bayesian networks. Identifying true causal pathways (e.g., rainfall → yield → supply → prices vs spurious correlations) improves policy recommendations and model robustness.
+\textbf{3. Causal Discovery:} Move beyond correlational feature importance to causal inference using techniques like Granger causality, Structural Equation Modeling, or causal Bayesian networks. Identifying true causal pathways (e.g., rainfall $\rightarrow$ yield $\rightarrow$ supply $\rightarrow$ prices vs spurious correlations) improves policy recommendations and model robustness.
 
 \subsection{Data Enrichment}
 \label{subsec:data_enrichment}

@@ -38,25 +38,11 @@ Finally, there is broader interest in making machine learning models more interp
 
 \section{Research Objectives}
 
-The primary objectives of this research are:
+The primary objectives of this research encompass systematic development and evaluation of agricultural price forecasting models through interconnected phases. The first objective involves collecting and preprocessing historical carrot price data along with relevant meteorological, economic, and market variables from multiple authoritative sources spanning January 2020 to July 2025, ensuring data quality and completeness for robust model training. Building upon this foundation, the second objective focuses on developing and implementing univariate forecasting models using historical price data alone, establishing baseline performance through both traditional ARIMA approaches and modern LSTM neural networks to quantify the predictive power achievable without external variables.
 
-\begin{enumerate}
-    \item To collect and preprocess historical carrot price data along with relevant meteorological, economic, and market variables from multiple authoritative sources spanning January 2020 to July 2025.
-    
-    \item To develop and implement univariate forecasting models using historical price data alone, establishing baseline performance through ARIMA and LSTM approaches.
-    
-    \item To create multivariate forecasting models that incorporate external factors including precipitation patterns, fuel prices, supply indicators, and temporal features, with particular emphasis on rigorous feature selection methods.
-    
-    \item To conduct comprehensive model comparison across ARIMA, univariate LSTM, multivariate LSTM, and Random Forest approaches using multiple evaluation metrics including MAPE, MAE, RMSE, and R² scores.
-    
-    \item To perform ablation studies that isolate the contribution of different feature categories (weather, supply, fuel, temporal) to forecasting accuracy, providing insights into which factors most strongly influence carrot prices.
-    
-    \item To validate model performance through statistical techniques including bootstrap confidence intervals and effect size analysis, ensuring that observed differences between models are statistically significant.
-    
-    \item To develop an AI agent based on Retrieval-Augmented Generation architecture that provides an accessible interface for querying price predictions and obtaining analytical insights about price trends and influencing factors.
-    
-    \item To evaluate the complete forecasting framework in terms of both prediction accuracy and practical usability for stakeholders in the agricultural supply chain.
-\end{enumerate}
+The third objective extends the modeling framework by creating multivariate forecasting models that incorporate external factors including precipitation patterns from major growing regions, fuel price indicators affecting transportation costs, supply indicators reflecting production levels, and temporal features capturing calendar effects, with particular emphasis on rigorous feature selection methods to identify truly relevant predictors among hundreds of candidate variables. Following model development, the fourth objective conducts comprehensive model comparison across ARIMA, univariate LSTM, multivariate LSTM variants, and Random Forest approaches using multiple evaluation metrics including MAPE for percentage error assessment, MAE for absolute error measurement, RMSE for penalizing large errors, and R² scores for explained variance quantification, ensuring thorough performance characterization beyond single metrics.
+
+The fifth objective performs systematic ablation studies that methodically isolate the contribution of different feature categories including weather patterns, supply factors, fuel costs, and temporal variables to forecasting accuracy, providing empirical insights into which external factors most strongly influence carrot prices and validating the value of multivariate modeling. The sixth objective validates model performance through advanced statistical techniques including bootstrap confidence intervals for uncertainty quantification and effect size analysis using Cohen's d to assess practical significance of performance differences, ensuring that observed improvements between models represent genuine advances rather than random variation. The seventh objective develops an AI agent based on Retrieval-Augmented Generation architecture integrating the best-performing forecasting model with natural language processing capabilities, providing an accessible interface through which farmers, traders, and policymakers can query price predictions and obtain analytical insights about price trends and influencing factors without requiring technical expertise. Finally, the eighth objective evaluates the complete forecasting framework considering both prediction accuracy metrics and practical usability for stakeholders across the agricultural supply chain, assessing whether the system delivers actionable value in real-world decision-making contexts beyond purely academic performance benchmarks.
 
 \section{Background}
 

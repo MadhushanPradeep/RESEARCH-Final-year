@@ -6,18 +6,11 @@ This chapter presents the systematic approach employed to develop and evaluate m
 
 The overall research framework follows a structured pipeline that progresses from raw data acquisition through model deployment. This systematic approach ensures reproducibility, methodological transparency, and practical applicability of the forecasting system.
 
-The framework consists of several interconnected stages:
+The framework consists of several interconnected stages progressing systematically from raw data to deployed predictions. The process initiates with comprehensive data acquisition gathering information from multiple authoritative sources including market prices from the Central Bank of Sri Lanka, weather data from Copernicus covering eleven growing regions, fuel prices from Ceylon Petroleum Corporation, and supply-demand indicators from agricultural market reports. This raw data undergoes rigorous preprocessing involving quality assurance procedures, missing value treatment using forward-filling to maintain temporal integrity, outlier detection and handling to preserve genuine volatility while limiting data errors, and necessary data transformations to prepare variables for modeling.
 
-\begin{enumerate}
-    \item \textbf{Data Acquisition:} Comprehensive data gathering from multiple authoritative sources including market prices, weather data, fuel prices, and supply indicators
-    \item \textbf{Data Preprocessing:} Rigorous quality assurance including missing value treatment, outlier detection, and data transformation
-    \item \textbf{Exploratory Data Analysis:} Visual and statistical analysis to understand patterns, trends, and relationships
-    \item \textbf{Feature Engineering:} Creation of lag features, rolling statistics, temporal features, and interaction terms
-    \item \textbf{Feature Selection:} Systematic identification of most relevant predictors using Random Forest importance, Mutual Information, and Recursive Feature Elimination
-    \item \textbf{Model Development:} Implementation of ARIMA, LSTM (univariate, multivariate, bidirectional), and Random Forest models
-    \item \textbf{Model Evaluation:} Comprehensive performance assessment using multiple metrics and statistical validation
-    \item \textbf{AI Agent Deployment:} Integration of best model into Retrieval-Augmented Generation system for accessible predictions
-\end{enumerate}
+Following data preparation, exploratory data analysis employs visual and statistical techniques to understand temporal patterns in price movements, seasonal cycles, relationships between prices and external factors, and distributional characteristics informing modeling decisions. Feature engineering then creates meaningful predictors from raw variables, generating lag features to capture temporal dependencies, rolling statistics providing smoothed trend information, temporal features encoding calendar effects, and interaction terms representing synergistic relationships between variables. The engineered features undergo systematic selection using combined methods including Random Forest importance for non-linear relationship detection, Mutual Information for statistical dependency measurement, and Recursive Feature Elimination for iterative refinement, ultimately identifying optimal predictor subsets for multivariate models while univariate approaches utilize only historical prices.
+
+Model development implements multiple forecasting approaches including traditional ARIMA for statistical baseline establishment, LSTM neural networks in univariate, standard multivariate, and bidirectional configurations for deep learning temporal pattern recognition, and Random Forest for ensemble learning perspective. Each developed model undergoes comprehensive evaluation using multiple performance metrics including MAPE, MAE, RMSE, and R² alongside statistical validation through bootstrap confidence intervals, cross-validation for generalization assessment, and ablation studies quantifying feature category contributions. The final stage integrates the best-performing model into a Retrieval-Augmented Generation system powered by Groq API, providing natural language query capabilities through Gradio web interface for accessible predictions supporting stakeholder decision-making.
 
 This end-to-end methodology addresses the complete lifecycle of an agricultural price forecasting system, from conception through deployment, ensuring that each component receives appropriate attention while maintaining focus on delivering actionable price forecasts.
 
@@ -37,15 +30,7 @@ Historical data was systematically collected from four primary categories of sou
 
 \subsection{Dataset Characteristics}
 
-The final integrated dataset comprised 2,013 daily observations with 127 initial variables before feature engineering. Key characteristics include:
-
-\begin{itemize}
-    \item Temporal span: January 1, 2020 to July 31, 2025 (67 months)
-    \item Target variable: Carrot price (Rs/kg) at Dambulla wholesale market
-    \item Price variability: Significant fluctuations observed throughout the period, with prices ranging from a few hundred rupees to over Rs. 2,000 per kilogram during peak volatility periods
-    \item Missing values: Approximately 2\% across variables, addressed through forward filling
-    \item Data quality: High, with systematic validation and outlier treatment
-\end{itemize}
+The final integrated dataset comprised 2,013 daily observations with 127 initial variables before feature engineering expanded the feature space. The temporal coverage spanned 67 months from January 1, 2020 through July 31, 2025, capturing both stable market conditions and volatile periods including the 2022-2023 economic crisis affecting Sri Lanka. The target variable consisted of carrot prices measured in rupees per kilogram at Dambulla wholesale market, exhibiting significant fluctuations throughout the study period with prices ranging from minimum values near Rs. 50 during supply gluts to peaks exceeding Rs. 450 during scarcity periods, occasional spikes reaching even higher during extreme market stress. Missing values affected approximately 2\% of observations across variables, addressed through forward-filling methodology that propagates last observed values forward while avoiding introduction of future information that would create data leakage. Data quality remained high overall following systematic validation procedures and outlier treatment protocols, with the comprehensive temporal coverage providing sufficient observations for deep learning model training while including varied market conditions enhancing model generalization capability.
 
 \subsection{Data Preprocessing}
 
