@@ -1,0 +1,27 @@
+\contentsline {chapter}{ABSTRACT}{iii}{}%
+\contentsline {chapter}{Declaration}{iv}{}%
+\contentsline {chapter}{Acknowledgments}{v}{}%
+\contentsline {chapter}{TABLE OF CONTENTS}{v}{}%
+\contentsline {chapter}{\numberline {1}Introduction}{1}{}%
+\contentsline {section}{\numberline {1.1}Introduction}{1}{}%
+\contentsline {section}{\numberline {1.2}Outline of Thesis}{2}{}%
+\contentsline {chapter}{\numberline {2}Methodology}{3}{}%
+\contentsline {section}{\numberline {2.1}Data Collection}{3}{}%
+\contentsline {section}{\numberline {2.2}Data Preprocessing}{4}{}%
+\contentsline {subsection}{\numberline {2.2.1}Data Visualization}{4}{}%
+\contentsline {subsection}{\numberline {2.2.2}Missing Value Treatment}{5}{}%
+\contentsline {section}{\numberline {2.3}Model Selection}{5}{}%
+\contentsline {subsection}{\numberline {2.3.1}ARIMA (AutoRegressive Integrated Moving Average)}{5}{}%
+\contentsline {subsection}{\numberline {2.3.2}LSTM (Long Short-Term Memory)}{6}{}%
+\contentsline {subsection}{\numberline {2.3.3}Random Forest}{6}{}%
+\contentsline {section}{\numberline {2.4}Model Training}{6}{}%
+\contentsline {subsection}{\numberline {2.4.1}ARIMA Model Training}{6}{}%
+\contentsline {subsection}{\numberline {2.4.2}LSTM Model Training}{7}{}%
+\contentsline {subsection}{\numberline {2.4.3}Random Forest Model Training}{8}{}%
+\contentsline {section}{\numberline {2.5}Model Evaluation}{8}{}%
+\contentsline {section}{\numberline {2.6}AI Agent Development Using RAG Architecture}{8}{}%
+\contentsline {subsection}{\numberline {2.6.1}RAG System Architecture}{9}{}%
+\contentsline {subsection}{\numberline {2.6.2}Query Types and Response Generation}{9}{}%
+\contentsline {subsection}{\numberline {2.6.3}Implementation Details}{10}{}%
+\contentsline {section}{\numberline {2.7}Summary of Methodology}{10}{}%
+\contentsfinish 
