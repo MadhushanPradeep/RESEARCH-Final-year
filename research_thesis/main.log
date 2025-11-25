@@ -1,9 +1,10 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.20)  25 NOV 2025 06:05
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.20)  25 NOV 2025 06:23
 entering extended mode
  restricted \write18 enabled.
+ file:line:error style messages enabled.
  %&-line parsing enabled.
-**main.tex
-(./main.tex
+**/media/madhushan/D/FOURTH-YEAR/RESEARCH/github_codes/research_thesis/main.tex
+(/media/madhushan/D/FOURTH-YEAR/RESEARCH/github_codes/research_thesis/main.tex
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
 (./uopThesis.cls
@@ -25,21 +26,16 @@ File: bk12.clo 2023/05/17 v1.4n Standard LaTeX file (size option)
 \abovecaptionskip=\skip48
 \belowcaptionskip=\skip49
 \bibindent=\dimen140
-)
-(/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/setspace/setspace.sty
 Package: setspace 2022/12/04 v6.7b set line spacing
-)
-(/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/geometry/geometry.sty
 Package: geometry 2020/01/02 v5.9 Page Geometry
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/keyval.sty
 Package: keyval 2022/05/29 v1.15 key=value parser (DPC)
 \KV@toks@=\toks17
-)
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
+) (/usr/share/texlive/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
-
-(/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/iftex/iftex.sty
 Package: iftex 2022/02/03 v1.0f TeX engine tests
 ))
 \Gm@cnth=\count196
@@ -54,8 +50,7 @@ Package: iftex 2022/02/03 v1.0f TeX engine tests
 \Gm@layouthoffset=\dimen147
 \Gm@layoutvoffset=\dimen148
 \Gm@dimlist=\toks18
-)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titlesec.sty
 Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \ttl@box=\box51
 \beforetitleunit=\skip50
@@ -66,12 +61,10 @@ Package: titlesec 2023/10/27 v2.16 Sectioning titles
 \titlewidth=\dimen151
 \titlewidthlast=\dimen152
 \titlewidthfirst=\dimen153
-)
-(/usr/share/texlive/texmf-dist/tex/latex/titlesec/titletoc.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/titlesec/titletoc.sty
 Package: titletoc 2023/10/27 v2.16 TOC entries
 \ttl@leftsep=\dimen154
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/tocloft/tocloft.sty
 Package: tocloft 2017/08/31 v2.3i parameterised ToC, etc., typesetting
 Package tocloft Info: The document has chapter divisions on input line 51.
 \cftparskip=\skip52
@@ -110,8 +103,7 @@ Package tocloft Info: The document has chapter divisions on input line 51.
 \cftbeforetabskip=\skip83
 \cfttabindent=\skip84
 \cfttabnumwidth=\skip85
-)
-(/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/tocbibind/tocbibind.sty
 Package: tocbibind 2010/10/13 v1.5k extra ToC listings
 Package tocbibind Info: The document has chapter divisions on input line 50.
 
@@ -129,32 +121,26 @@ Package geometry Warning: Over-specification in `v'-direction.
 
 ) (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/graphics.sty
 Package: graphics 2022/03/10 v1.4e Standard LaTeX Graphics (DPC,SPQR)
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/trig.sty
 Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
+) (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/graphics.cfg
 File: graphics.cfg 2016/06/04 v1.11 sample graphics configuration
 )
 Package graphics Info: Driver file: pdftex.def on input line 107.
-
-(/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-def/pdftex.def
 File: pdftex.def 2022/09/22 v1.2b Graphics/color driver for pdftex
 ))
 \Gin@req@height=\dimen155
 \Gin@req@width=\dimen156
-)
-(/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/natbib/natbib.sty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibhang=\skip86
 \bibsep=\skip87
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count267
-)
-(/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
+) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 \l__color_backend_stack_int=\count268
 \l__pdf_internal_box=\box52
@@ -163,9 +149,7 @@ File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
 LaTeX Warning: Unused global option(s):
     [a4].
 
-(./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.aux)
-(./chapters/Methodology.aux) (./chapters/Results.aux)
-(./chapters/Conclusion.aux))
+(./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.aux) (./chapters/Methodology.aux) (./chapters/Results.aux) (./chapters/Conclusion.aux))
 \openout1 = `main.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
@@ -232,44 +216,31 @@ LaTeX Font Info:    ... okay on input line 28.
 \everyMPtoPDFconversion=\toks21
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
-
-(/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
 Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
 Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
 Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
+)) (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
 Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
-
-(/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
+ (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
 Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-)
-(/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
+) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
 Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-))
-(/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO
-)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
+Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
 Package pdftexcmds Info: \pdf@primitive is available.
 Package pdftexcmds Info: \pdf@ifprimitive is available.
 Package pdftexcmds Info: \pdfdraftmode found.
 )
-Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 4
-85.
+Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
 Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPE
-G,.JBIG2,.JB2,.eps]
+(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
 (grfext)             \AppendGraphicsExtensions on input line 504.
-
-(/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
-File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
-e
-))
-(./abstract.tex [1
+ (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
+File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
+)) (./abstract.tex [1
 
 
 {/var/lib/texmf/fonts/map/pdftex/updmap/pdftex.map}]
@@ -279,31 +250,29 @@ LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <8> on input line 5.
 LaTeX Font Info:    External font `cmex10' loaded for size
 (Font)              <6> on input line 5.
-)
-(./declaration.tex [2
+) (./declaration.tex [2
 
 
 ]) (./acknowledgements.tex [3
 
 
-]) (./main.toc [4
+]) [4
 
 
-] [5]
-[6]
+] (./main.toc [5
+
+] [6] [7{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}]
 Overfull \hbox (7.02765pt too wide) in paragraph at lines 115--115
- [][] []\OT1/cmr/m/n/12 Architecture and Reg-u-lar-iza-tion Mat-ter More Than F
-ea-ture Quan- 
+ [][] []\OT1/cmr/m/n/12 Architecture and Reg-u-lar-iza-tion Mat-ter More Than Fea-ture Quan- 
  []
 
-LaTeX Font Info:    Trying to load font information for OML+cmr on input line 1
-17.
+LaTeX Font Info:    Trying to load font information for OML+cmr on input line 117.
 (/usr/share/texlive/texmf-dist/tex/latex/base/omlcmr.fd
 File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 117.
- [7{/usr/share/texmf/fonts/enc/dvips/cm-super/cm-super-ts1.enc}])
+)
 \tf@toc=\write3
 \openout3 = `main.toc'.
 
@@ -317,8 +286,7 @@ LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 \tf@lof=\write5
 \openout5 = `main.lof'.
 
-
-[10
+ [10
 
 ]
 \openout2 = `chapters/Introduction.aux'.
@@ -346,21 +314,18 @@ Overfull \hbox (0.97803pt too wide) in paragraph at lines 5--5
 
 ] [9]
 Overfull \hbox (4.09944pt too wide) in paragraph at lines 23--24
-[]\OT1/cmr/m/n/12 Choong et al. (2024) de-vel-oped a Ge-netic Algorithm-Based N
-eu-ral Net-work (GANN)
+[]\OT1/cmr/m/n/12 Choong et al. (2024) de-vel-oped a Ge-netic Algorithm-Based Neu-ral Net-work (GANN)
  []
 
 
 Overfull \hbox (2.31387pt too wide) in paragraph at lines 23--24
-\OT1/cmr/m/n/12 ap-proach within an Agri-cul-tural Knowl-edge Man-age-ment Sys-
-tem (AKMS) for Malaysia.
+\OT1/cmr/m/n/12 ap-proach within an Agri-cul-tural Knowl-edge Man-age-ment Sys-tem (AKMS) for Malaysia.
  []
 
 [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]) [22]
 \openout2 = `chapters/Methodology.aux'.
 
-
-(./chapters/Methodology.tex
+ (./chapters/Methodology.tex
 Chapter 3.
 [23
 
@@ -369,38 +334,32 @@ Chapter 3.
 
 ] [24] [25] [26] [27] [28] [29] [30]
 Overfull \hbox (1.44435pt too wide) in paragraph at lines 127--128
-\OT1/cmr/m/n/12 AutoRegressive In-te-grated Mov-ing Av-er-age mod-els pro-vided
- tra-di-tional sta-tis-ti-cal base-
+\OT1/cmr/m/n/12 AutoRegressive In-te-grated Mov-ing Av-er-age mod-els pro-vided tra-di-tional sta-tis-ti-cal base-
  []
 
 
 Overfull \hbox (2.78728pt too wide) in paragraph at lines 129--130
-[]\OT1/cmr/bx/n/12 Univariate ARIMA: \OT1/cmr/m/n/12 Pa-ram-e-ters (p, d, q) de
--ter-mined through Aug-mented Dickey-
+[]\OT1/cmr/bx/n/12 Univariate ARIMA: \OT1/cmr/m/n/12 Pa-ram-e-ters (p, d, q) de-ter-mined through Aug-mented Dickey-
  []
 
 
 Overfull \hbox (18.90392pt too wide) in paragraph at lines 129--130
-\OT1/cmr/m/n/12 Fuller sta-tion-ar-ity test-ing, Auto-Correlation Func-tion (AC
-F), and Par-tial Auto-Correlation
+\OT1/cmr/m/n/12 Fuller sta-tion-ar-ity test-ing, Auto-Correlation Func-tion (ACF), and Par-tial Auto-Correlation
  []
 
 [31]
 Overfull \hbox (2.50128pt too wide) in paragraph at lines 135--136
-\OT1/cmr/m/n/12 Long Short-Term Mem-ory net-works cap-tured non-linear tem-po-r
-al de-pen-den-cies through
+\OT1/cmr/m/n/12 Long Short-Term Mem-ory net-works cap-tured non-linear tem-po-ral de-pen-den-cies through
  []
 
 [32]
 Overfull \hbox (43.82413pt too wide) in paragraph at lines 153--154
-[]\OT1/cmr/bx/n/12 Hyperparameter Tun-ing: \OT1/cmr/m/n/12 Ran-dom-ized-SearchC
-V ex-plored pa-ram-e-ter space: n[]estimators
+[]\OT1/cmr/bx/n/12 Hyperparameter Tun-ing: \OT1/cmr/m/n/12 Ran-dom-ized-SearchCV ex-plored pa-ram-e-ter space: n[]estimators
  []
 
 [33] [34] [35]
 Overfull \hbox (1.19293pt too wide) in paragraph at lines 215--216
-[]\OT1/cmr/bx/n/12 Data Man-age-ment: \OT1/cmr/m/n/12 Pre-dic-tions CSV (500KB)
- loaded at ini-tial-iza-tion, in-memory
+[]\OT1/cmr/bx/n/12 Data Man-age-ment: \OT1/cmr/m/n/12 Pre-dic-tions CSV (500KB) loaded at ini-tial-iza-tion, in-memory
  []
 
 [36] [37]) [38]
@@ -416,14 +375,12 @@ Package pdftex.def Info: figures/price_timeseries.png  used on input line 18.
 <figures/price_rainfall_central.png, id=170, 856.3995pt x 495.7722pt>
 File: figures/price_rainfall_central.png Graphic file (type png)
 <use figures/price_rainfall_central.png>
-Package pdftex.def Info: figures/price_rainfall_central.png  used on input line
- 30.
+Package pdftex.def Info: figures/price_rainfall_central.png  used on input line 30.
 (pdftex.def)             Requested size: 374.86775pt x 217.01328pt.
 <figures/price_rainfall_uva.png, id=171, 856.3995pt x 495.7722pt>
 File: figures/price_rainfall_uva.png Graphic file (type png)
 <use figures/price_rainfall_uva.png>
 Package pdftex.def Info: figures/price_rainfall_uva.png  used on input line 39.
-
 (pdftex.def)             Requested size: 374.86775pt x 217.01328pt.
 [39
 
@@ -434,11 +391,9 @@ Package pdftex.def Info: figures/price_rainfall_uva.png  used on input line 39.
 <figures/price_rainfall_northern.png, id=182, 857.1222pt x 495.7722pt>
 File: figures/price_rainfall_northern.png Graphic file (type png)
 <use figures/price_rainfall_northern.png>
-Package pdftex.def Info: figures/price_rainfall_northern.png  used on input lin
-e 46.
+Package pdftex.def Info: figures/price_rainfall_northern.png  used on input line 46.
 (pdftex.def)             Requested size: 374.86775pt x 216.83171pt.
- [41 <./figures/price_rainfall_uva.png> <./figures/price_rainfall_northern.png>
-]
+ [41 <./figures/price_rainfall_uva.png> <./figures/price_rainfall_northern.png>]
 <figures/price_diesel_lad.png, id=188, 857.1222pt x 495.7722pt>
 File: figures/price_diesel_lad.png Graphic file (type png)
 <use figures/price_diesel_lad.png>
@@ -454,53 +409,44 @@ File: figures/seasonal_decomp.png Graphic file (type png)
 <use figures/seasonal_decomp.png>
 Package pdftex.def Info: figures/seasonal_decomp.png  used on input line 81.
 (pdftex.def)             Requested size: 396.91325pt x 283.1794pt.
- [42 <./figures/price_diesel_lad.png> <./figures/price_petrol_lp95.png>]
-[43 <./figures/seasonal_decomp.png>] [44]
+ [42 <./figures/price_diesel_lad.png> <./figures/price_petrol_lp95.png>] [43 <./figures/seasonal_decomp.png>] [44]
 <figures/feature_selection_stages.png, id=203, 1058.0328pt x 495.7722pt>
 File: figures/feature_selection_stages.png Graphic file (type png)
 <use figures/feature_selection_stages.png>
-Package pdftex.def Info: figures/feature_selection_stages.png  used on input li
-ne 120.
+Package pdftex.def Info: figures/feature_selection_stages.png  used on input line 120.
 (pdftex.def)             Requested size: 374.86775pt x 175.65616pt.
  [45 <./figures/feature_selection_stages.png>]
 <figures/correlation_heatmap.png, id=209, 1076.823pt x 953.2413pt>
 File: figures/correlation_heatmap.png Graphic file (type png)
 <use figures/correlation_heatmap.png>
-Package pdftex.def Info: figures/correlation_heatmap.png  used on input line 15
-7.
+Package pdftex.def Info: figures/correlation_heatmap.png  used on input line 157.
 (pdftex.def)             Requested size: 418.96548pt x 370.87535pt.
  [46] [47 <./figures/correlation_heatmap.png>]
 <figures/arima_diagnostics.png, id=217, 1146.9249pt x 857.1222pt>
 File: figures/arima_diagnostics.png Graphic file (type png)
 <use figures/arima_diagnostics.png>
 Package pdftex.def Info: figures/arima_diagnostics.png  used on input line 200.
-
 (pdftex.def)             Requested size: 418.96548pt x 313.10204pt.
  [48] [49 <./figures/arima_diagnostics.png>] [50] [51]
 <figures/bidirectional_lstm_training.png, id=232, 1146.9249pt x 424.2249pt>
 File: figures/bidirectional_lstm_training.png Graphic file (type png)
 <use figures/bidirectional_lstm_training.png>
-Package pdftex.def Info: figures/bidirectional_lstm_training.png  used on input
- line 240.
+Package pdftex.def Info: figures/bidirectional_lstm_training.png  used on input line 240.
 (pdftex.def)             Requested size: 418.96548pt x 154.96701pt.
- [52 <./figures/bidirectional_lstm_training.png>]
-[53]
+ [52 <./figures/bidirectional_lstm_training.png>] [53]
 <figures/feature_importance_rf.png, id=240, 856.3995pt x 712.5822pt>
 File: figures/feature_importance_rf.png Graphic file (type png)
 <use figures/feature_importance_rf.png>
-Package pdftex.def Info: figures/feature_importance_rf.png  used on input line 
-272.
+Package pdftex.def Info: figures/feature_importance_rf.png  used on input line 272.
 (pdftex.def)             Requested size: 396.91325pt x 330.25998pt.
 
 Overfull \hbox (46.69801pt too wide) in paragraph at lines 277--278
-[]\OT1/cmr/m/n/12 Price-related fea-tures dom-i-nated im-por-tance rank-ings, w
-ith price[]lag[]1, price[]rolling[]mean[]7,
+[]\OT1/cmr/m/n/12 Price-related fea-tures dom-i-nated im-por-tance rank-ings, with price[]lag[]1, price[]rolling[]mean[]7,
  []
 
 
 Overfull \hbox (4.2332pt too wide) in paragraph at lines 302--303
-[]\OT1/cmr/m/n/12 Historical price fea-tures dom-i-nated with 48.7% to-tal im-p
-or-tance, fol-lowed by weather
+[]\OT1/cmr/m/n/12 Historical price fea-tures dom-i-nated with 48.7% to-tal im-por-tance, fol-lowed by weather
  []
 
 [54 <./figures/feature_importance_rf.png>]
@@ -511,8 +457,7 @@ Package pdftex.def Info: figures/ablation_study.png  used on input line 311.
 (pdftex.def)             Requested size: 396.91325pt x 263.16246pt.
 
 Overfull \hbox (3.32349pt too wide) in paragraph at lines 316--317
-\OT1/cmr/m/n/12 fea-ture cat-e-gories, with price fea-tures demon-strat-ing dom
--i-nant pre-dic-tive power through
+\OT1/cmr/m/n/12 fea-ture cat-e-gories, with price fea-tures demon-strat-ing dom-i-nant pre-dic-tive power through
  []
 
 [55 <./figures/ablation_study.png>]
@@ -524,42 +469,33 @@ Package pdftex.def Info: figures/shap_summary.png  used on input line 332.
 <figures/shap_dependence_price.png, id=251, 805.0878pt x 568.0422pt>
 File: figures/shap_dependence_price.png Graphic file (type png)
 <use figures/shap_dependence_price.png>
-Package pdftex.def Info: figures/shap_dependence_price.png  used on input line 
-344.
+Package pdftex.def Info: figures/shap_dependence_price.png  used on input line 344.
 (pdftex.def)             Requested size: 396.91325pt x 280.05063pt.
  [56] [57 <./figures/shap_summary.png>]
 <figures/shap_dependence_weather.png, id=260, 805.0878pt x 568.0422pt>
 File: figures/shap_dependence_weather.png Graphic file (type png)
 <use figures/shap_dependence_weather.png>
-Package pdftex.def Info: figures/shap_dependence_weather.png  used on input lin
-e 353.
+Package pdftex.def Info: figures/shap_dependence_weather.png  used on input line 353.
 (pdftex.def)             Requested size: 396.91325pt x 280.05063pt.
 <figures/predictions_bidirectional.png, id=261, 1146.9249pt x 568.7649pt>
 File: figures/predictions_bidirectional.png Graphic file (type png)
 <use figures/predictions_bidirectional.png>
-Package pdftex.def Info: figures/predictions_bidirectional.png  used on input l
-ine 365.
+Package pdftex.def Info: figures/predictions_bidirectional.png  used on input line 365.
 (pdftex.def)             Requested size: 418.96548pt x 207.7667pt.
-
-[58 <./figures/shap_dependence_price.png>] [59 <./figures/shap_dependence_weath
-er.png> <./figures/predictions_bidirectional.png>] [60]
+ [58 <./figures/shap_dependence_price.png>] [59 <./figures/shap_dependence_weather.png> <./figures/predictions_bidirectional.png>] [60]
 <figures/agent_architecture.png, id=274, 1002.3849pt x 713.3049pt>
 File: figures/agent_architecture.png Graphic file (type png)
 <use figures/agent_architecture.png>
-Package pdftex.def Info: figures/agent_architecture.png  used on input line 421
-.
+Package pdftex.def Info: figures/agent_architecture.png  used on input line 421.
 (pdftex.def)             Requested size: 396.91325pt x 282.4435pt.
 <figures/gradio_interface.png, id=275, 1002.3849pt x 713.3049pt>
 File: figures/gradio_interface.png Graphic file (type png)
 <use figures/gradio_interface.png>
 Package pdftex.def Info: figures/gradio_interface.png  used on input line 433.
 (pdftex.def)             Requested size: 418.96548pt x 298.13843pt.
- [61] [62 <./figures/agent_architecture.png>] [63 <./figures/gradio_interface.p
-ng>] [64] [65] [66]
-[67] [68] [69]
+ [61] [62 <./figures/agent_architecture.png>] [63 <./figures/gradio_interface.png>] [64] [65] [66] [67] [68] [69]
 Overfull \hbox (2.27905pt too wide) in paragraph at lines 547--548
-\OT1/cmr/m/n/12 This re-search makes sev-eral novel con-tri-bu-tions to agri-cu
-l-tural price fore-cast-ing method-
+\OT1/cmr/m/n/12 This re-search makes sev-eral novel con-tri-bu-tions to agri-cul-tural price fore-cast-ing method-
  []
 
 [70]) [71]
@@ -569,8 +505,7 @@ l-tural price fore-cast-ing method-
 Chapter 5.
 
 Overfull \hbox (28.25934pt too wide) in paragraph at lines 11--12
-[]\OT1/cmr/m/n/12 The re-search sys-tem-at-i-cally in-te-grated 289 ini-tial fe
-a-tures across six cat-e-gories|historical
+[]\OT1/cmr/m/n/12 The re-search sys-tem-at-i-cally in-te-grated 289 ini-tial fea-tures across six cat-e-gories|historical
  []
 
 [72
@@ -580,14 +515,12 @@ a-tures across six cat-e-gories|historical
 
 ]
 Overfull \hbox (2.26514pt too wide) in paragraph at lines 25--25
-|[]\OT1/cmr/bx/n/14.4 Architecture and Reg-u-lar-iza-tion Mat-ter More Than Fea
--
+|[]\OT1/cmr/bx/n/14.4 Architecture and Reg-u-lar-iza-tion Mat-ter More Than Fea-
  []
 
 
 Overfull \hbox (28.90181pt too wide) in paragraph at lines 30--30
-|[]\OT1/cmr/bx/n/14.4 Bidirectional Pro-cess-ing En-hances Tem-po-ral Pat-tern 
-Recog-
+|[]\OT1/cmr/bx/n/14.4 Bidirectional Pro-cess-ing En-hances Tem-po-ral Pat-tern Recog-
  []
 
 [73]
@@ -595,26 +528,22 @@ LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <14.4> not available
 (Font)              Font shape `OML/cmm/b/it' tried instead on input line 35.
 
 Overfull \hbox (3.02504pt too wide) in paragraph at lines 35--35
-|[]\OT1/cmr/bx/n/14.4 Feature Im-por-tance Hi-er-ar-chy: Price \OML/cmm/b/it/14
-.4 > \OT1/cmr/bx/n/14.4 Weather \OML/cmm/b/it/14.4 > \OT1/cmr/bx/n/14.4 Mar-
+|[]\OT1/cmr/bx/n/14.4 Feature Im-por-tance Hi-er-ar-chy: Price \OML/cmm/b/it/14.4 > \OT1/cmr/bx/n/14.4 Weather \OML/cmm/b/it/14.4 > \OT1/cmr/bx/n/14.4 Mar-
  []
 
 
 Overfull \hbox (11.24512pt too wide) in paragraph at lines 40--40
-|[]\OT1/cmr/bx/n/14.4 Multi-Factor Ap-proach Jus-ti-fied De-spite Uni-vari-ate 
-Com-
+|[]\OT1/cmr/bx/n/14.4 Multi-Factor Ap-proach Jus-ti-fied De-spite Uni-vari-ate Com-
  []
 
 [74] [75] [76] [77] [78]
 Overfull \hbox (1.76114pt too wide) in paragraph at lines 126--127
-\OT1/cmr/bx/n/12 1. Static Train-Test Split: \OT1/cmr/m/n/12 The re-search em-p
-loyed a sin-gle tem-po-ral train-validation-
+\OT1/cmr/bx/n/12 1. Static Train-Test Split: \OT1/cmr/m/n/12 The re-search em-ployed a sin-gle tem-po-ral train-validation-
  []
 
 [79] [80] [81] [82] [83]
 Overfull \hbox (4.17209pt too wide) in paragraph at lines 206--207
-\OT1/cmr/m/n/12 value chain|farmgate prices, trans-porta-tion costs, re-tail ma
-r-gins, con-sumer willingness-
+\OT1/cmr/m/n/12 value chain|farmgate prices, trans-porta-tion costs, re-tail mar-gins, con-sumer willingness-
  []
 
 [84] [85]) [86] (./main.bbl [87
@@ -622,39 +551,22 @@ r-gins, con-sumer willingness-
 
 
 
-]) [88] (./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.
-aux) (./chapters/Methodology.aux)
-(./chapters/Results.aux) (./chapters/Conclusion.aux))
+]) [88] (./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.aux) (./chapters/Methodology.aux) (./chapters/Results.aux) (./chapters/Conclusion.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4084 strings out of 474222
- 71322 string characters out of 5748733
+ 4085 strings out of 474222
+ 71527 string characters out of 5748733
  1937975 words of memory out of 5000000
  26245 multiletter control sequences out of 15000+600000
  565723 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,8n,79p,1855b,260s stack positions out of 10000i,1000n,20000p,200000b,200000s
-</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></us
-r/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/sh
-are/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/te
-xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/
-texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-d
-ist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fon
-ts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/ty
-pe1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/pub
-lic/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
-cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10
-.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></
-usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/sh
-are/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type
-1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sf
-rm1200.pfb>
-Output written on main.pdf (98 pages, 2589780 bytes).
+ 72i,8n,79p,1924b,260s stack positions out of 10000i,1000n,20000p,200000b,200000s
+</usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
+Output written on main.pdf (98 pages, 2589644 bytes).
 PDF statistics:
  446 PDF objects out of 1000 (max. 8388607)
  271 compressed objects within 3 object streams

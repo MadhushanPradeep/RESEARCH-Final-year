@@ -1,7 +1,7 @@
 \contentsline {chapter}{ABSTRACT}{ii}{}%
 \contentsline {chapter}{Declaration}{iii}{}%
 \contentsline {chapter}{Acknowledgments}{iv}{}%
-\contentsline {chapter}{TABLE OF CONTENTS}{iv}{}%
+\contentsline {chapter}{TABLE OF CONTENTS}{v}{}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{}%
 \contentsline {section}{\numberline {1.1}Research Overview}{1}{}%
 \contentsline {section}{\numberline {1.2}Problem Statement}{2}{}%
