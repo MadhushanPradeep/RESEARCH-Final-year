@@ -2,9 +2,9 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {table}{\numberline {4.1}{\ignorespaces Feature category distribution in final Bidirectional LSTM model}}{46}{}%
-\contentsline {table}{\numberline {4.2}{\ignorespaces Comprehensive model performance comparison on test set}}{46}{}%
-\contentsline {table}{\numberline {4.3}{\ignorespaces Feature importance distribution by category}}{55}{}%
-\contentsline {table}{\numberline {4.4}{\ignorespaces 5-fold time series cross-validation results}}{60}{}%
+\contentsline {table}{\numberline {4.1}{\ignorespaces Feature category distribution in final Bidirectional LSTM model}}{50}{}%
+\contentsline {table}{\numberline {4.2}{\ignorespaces Comprehensive model performance comparison on test set}}{50}{}%
+\contentsline {table}{\numberline {4.3}{\ignorespaces Feature importance distribution by category}}{59}{}%
+\contentsline {table}{\numberline {4.4}{\ignorespaces 5-fold time series cross-validation results}}{64}{}%
 \addvspace {10\p@ }
 \contentsfinish 

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.20)  25 NOV 2025 07:01
+This is pdfTeX, Version 3.141592653-2.6-1.40.25 (TeX Live 2023/Debian) (preloaded format=pdflatex 2025.8.20)  26 NOV 2025 01:42
 entering extended mode
  restricted \write18 enabled.
  file:line:error style messages enabled.
@@ -140,10 +140,217 @@ Package: natbib 2010/09/13 8.31b (PWD, AO)
 \bibsep=\skip87
 LaTeX Info: Redefining \cite on input line 694.
 \c@NAT@ctr=\count267
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/frontendlayer/tikz.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgf.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfrcs.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-common.tex
+\pgfutil@everybye=\toks20
+\pgfutil@tempdima=\dimen157
+\pgfutil@tempdimb=\dimen158
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfutil-latex.def
+\pgfutil@abb=\box52
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfrcs.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/pgf.revision.tex)
+Package: pgfrcs 2023-01-15 v3.1.10 (3.1.10)
+))
+Package: pgf 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/latex/pgf/basiclayer/pgfcore.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/systemlayer/pgfsys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys.code.tex
+Package: pgfsys 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex
+\pgfkeys@pathtoks=\toks21
+\pgfkeys@temptoks=\toks22
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeyslibraryfiltered.code.tex
+\pgfkeys@tmptoks=\toks23
+))
+\pgf@x=\dimen159
+\pgf@y=\dimen160
+\pgf@xa=\dimen161
+\pgf@ya=\dimen162
+\pgf@xb=\dimen163
+\pgf@yb=\dimen164
+\pgf@xc=\dimen165
+\pgf@yc=\dimen166
+\pgf@xd=\dimen167
+\pgf@yd=\dimen168
+\w@pgf@writea=\write3
+\r@pgf@reada=\read2
+\c@pgf@counta=\count268
+\c@pgf@countb=\count269
+\c@pgf@countc=\count270
+\c@pgf@countd=\count271
+\t@pgf@toka=\toks24
+\t@pgf@tokb=\toks25
+\t@pgf@tokc=\toks26
+\pgf@sys@id@count=\count272
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgf.cfg
+File: pgf.cfg 2023-01-15 v3.1.10 (3.1.10)
+)
+Driver file for pgf: pgfsys-pdftex.def
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-pdftex.def
+File: pgfsys-pdftex.def 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsys-common-pdf.def
+File: pgfsys-common-pdf.def 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsyssoftpath.code.tex
+File: pgfsyssoftpath.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfsyssoftpath@smallbuffer@items=\count273
+\pgfsyssoftpath@bigbuffer@items=\count274
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/systemlayer/pgfsysprotocol.code.tex
+File: pgfsysprotocol.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2023/11/15 v3.01 LaTeX color extensions (UK)
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics-cfg/color.cfg
+File: color.cfg 2016/01/02 v1.6 sample color configuration
+)
+Package xcolor Info: Driver file: pdftex.def on input line 274.
+ (/usr/share/texlive/texmf-dist/tex/latex/graphics/mathcolor.ltx)
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1350.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1354.
+Package xcolor Info: Model `RGB' extended on input line 1366.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1368.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1369.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1370.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1372.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1373.
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcore.code.tex
+Package: pgfcore 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathutil.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathparser.code.tex
+\pgfmath@dimen=\dimen169
+\pgfmath@count=\count275
+\pgfmath@box=\box53
+\pgfmath@toks=\toks27
+\pgfmath@stack@operand=\toks28
+\pgfmath@stack@operation=\toks29
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.basic.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.trigonometric.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.random.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.comparison.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.base.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.round.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.misc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfunctions.integerarithmetics.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathcalc.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmathfloat.code.tex
+\c@pgfmathroundto@lastzeros=\count276
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfint.code.tex) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepoints.code.tex
+File: pgfcorepoints.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@picminx=\dimen170
+\pgf@picmaxx=\dimen171
+\pgf@picminy=\dimen172
+\pgf@picmaxy=\dimen173
+\pgf@pathminx=\dimen174
+\pgf@pathmaxx=\dimen175
+\pgf@pathminy=\dimen176
+\pgf@pathmaxy=\dimen177
+\pgf@xx=\dimen178
+\pgf@xy=\dimen179
+\pgf@yx=\dimen180
+\pgf@yy=\dimen181
+\pgf@zx=\dimen182
+\pgf@zy=\dimen183
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathconstruct.code.tex
+File: pgfcorepathconstruct.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@path@lastx=\dimen184
+\pgf@path@lasty=\dimen185
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathusage.code.tex
+File: pgfcorepathusage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@shorten@end@additional=\dimen186
+\pgf@shorten@start@additional=\dimen187
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorescopes.code.tex
+File: pgfcorescopes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfpic=\box54
+\pgf@hbox=\box55
+\pgf@layerbox@main=\box56
+\pgf@picture@serial@count=\count277
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoregraphicstate.code.tex
+File: pgfcoregraphicstate.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgflinewidth=\dimen188
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransformations.code.tex
+File: pgfcoretransformations.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@pt@x=\dimen189
+\pgf@pt@y=\dimen190
+\pgf@pt@temp=\dimen191
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorequick.code.tex
+File: pgfcorequick.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreobjects.code.tex
+File: pgfcoreobjects.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepathprocessing.code.tex
+File: pgfcorepathprocessing.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorearrows.code.tex
+File: pgfcorearrows.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowsep=\dimen192
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreshade.code.tex
+File: pgfcoreshade.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@max=\dimen193
+\pgf@sys@shading@range@num=\count278
+\pgf@shadingcount=\count279
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreimage.code.tex
+File: pgfcoreimage.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoreexternal.code.tex
+File: pgfcoreexternal.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfexternal@startupbox=\box57
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorelayers.code.tex
+File: pgfcorelayers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcoretransparency.code.tex
+File: pgfcoretransparency.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorepatterns.code.tex
+File: pgfcorepatterns.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/basiclayer/pgfcorerdf.code.tex
+File: pgfcorerdf.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleshapes.code.tex
+File: pgfmoduleshapes.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfnodeparttextbox=\box58
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmoduleplot.code.tex
+File: pgfmoduleplot.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-0-65.sty
+Package: pgfcomp-version-0-65 2023-01-15 v3.1.10 (3.1.10)
+\pgf@nodesepstart=\dimen194
+\pgf@nodesepend=\dimen195
+) (/usr/share/texlive/texmf-dist/tex/latex/pgf/compatibility/pgfcomp-version-1-18.sty
+Package: pgfcomp-version-1-18 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgffor.sty (/usr/share/texlive/texmf-dist/tex/latex/pgf/utilities/pgfkeys.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgfkeys.code.tex)) (/usr/share/texlive/texmf-dist/tex/latex/pgf/math/pgfmath.sty (/usr/share/texlive/texmf-dist/tex/generic/pgf/math/pgfmath.code.tex)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/utilities/pgffor.code.tex
+Package: pgffor 2023-01-15 v3.1.10 (3.1.10)
+\pgffor@iter=\dimen196
+\pgffor@skip=\dimen197
+\pgffor@stack=\toks30
+\pgffor@toks=\toks31
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/tikz.code.tex
+Package: tikz 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryplothandlers.code.tex
+File: pgflibraryplothandlers.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgf@plot@mark@count=\count280
+\pgfplotmarksize=\dimen198
+)
+\tikz@lastx=\dimen199
+\tikz@lasty=\dimen256
+\tikz@lastxsaved=\dimen257
+\tikz@lastysaved=\dimen258
+\tikz@lastmovetox=\dimen259
+\tikz@lastmovetoy=\dimen260
+\tikzleveldistance=\dimen261
+\tikzsiblingdistance=\dimen262
+\tikz@figbox=\box59
+\tikz@figbox@bg=\box60
+\tikz@tempbox=\box61
+\tikz@tempbox@bg=\box62
+\tikztreelevel=\count281
+\tikznumberofchildren=\count282
+\tikznumberofcurrentchild=\count283
+\tikz@fig@count=\count284
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/modules/pgfmodulematrix.code.tex
+File: pgfmodulematrix.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfmatrixcurrentrow=\count285
+\pgfmatrixcurrentcolumn=\count286
+\pgf@matrix@numberofcolumns=\count287
+)
+\tikz@expandcount=\count288
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarytopaths.code.tex
+File: tikzlibrarytopaths.code.tex 2023-01-15 v3.1.10 (3.1.10)
+))) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibraryshapes.geometric.code.tex
+File: tikzlibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+ (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/shapes/pgflibraryshapes.geometric.code.tex
+File: pgflibraryshapes.geometric.code.tex 2023-01-15 v3.1.10 (3.1.10)
+)) (/usr/share/texlive/texmf-dist/tex/generic/pgf/libraries/pgflibraryarrows.meta.code.tex
+File: pgflibraryarrows.meta.code.tex 2023-01-15 v3.1.10 (3.1.10)
+\pgfarrowinset=\dimen263
+\pgfarrowlength=\dimen264
+\pgfarrowwidth=\dimen265
+\pgfarrowlinewidth=\dimen266
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarypositioning.code.tex
+File: tikzlibrarypositioning.code.tex 2023-01-15 v3.1.10 (3.1.10)
+) (/usr/share/texlive/texmf-dist/tex/generic/pgf/frontendlayer/tikz/libraries/tikzlibrarycalc.code.tex
+File: tikzlibrarycalc.code.tex 2023-01-15 v3.1.10 (3.1.10)
 ) (/usr/share/texlive/texmf-dist/tex/latex/l3backend/l3backend-pdftex.def
 File: l3backend-pdftex.def 2024-01-04 L3 backend support: PDF output (pdfTeX)
-\l__color_backend_stack_int=\count268
-\l__pdf_internal_box=\box52
+\l__color_backend_stack_int=\count289
+\l__pdf_internal_box=\box63
 )
 
 LaTeX Warning: Unused global option(s):
@@ -152,20 +359,20 @@ LaTeX Warning: Unused global option(s):
 (./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.aux) (./chapters/Methodology.aux) (./chapters/Results.aux) (./chapters/Conclusion.aux))
 \openout1 = `main.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 28.
-LaTeX Font Info:    ... okay on input line 28.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 30.
+LaTeX Font Info:    ... okay on input line 30.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -203,41 +410,20 @@ LaTeX Font Info:    ... okay on input line 28.
 
 (/usr/share/texlive/texmf-dist/tex/context/base/mkii/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count269
-\scratchdimen=\dimen157
-\scratchbox=\box53
-\nofMPsegments=\count270
-\nofMParguments=\count271
-\everyMPshowfont=\toks20
-\MPscratchCnt=\count272
-\MPscratchDim=\dimen158
-\MPnumerator=\count273
-\makeMPintoPDFobject=\count274
-\everyMPtoPDFconversion=\toks21
+\scratchcounter=\count290
+\scratchdimen=\dimen267
+\scratchbox=\box64
+\nofMPsegments=\count291
+\nofMParguments=\count292
+\everyMPshowfont=\toks32
+\MPscratchCnt=\count293
+\MPscratchDim=\dimen268
+\MPnumerator=\count294
+\makeMPintoPDFobject=\count295
+\everyMPtoPDFconversion=\toks33
 ) (/usr/share/texlive/texmf-dist/tex/latex/epstopdf-pkg/epstopdf-base.sty
 Package: epstopdf-base 2020-01-24 v2.11 Base part for package epstopdf
- (/usr/share/texlive/texmf-dist/tex/generic/infwarerr/infwarerr.sty
-Package: infwarerr 2019/12/03 v1.5 Providing info/warning/error messages (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/grfext/grfext.sty
-Package: grfext 2019/12/03 v1.3 Manage graphics extensions (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/kvdefinekeys/kvdefinekeys.sty
-Package: kvdefinekeys 2019-12-19 v1.6 Define keys (HO)
-)) (/usr/share/texlive/texmf-dist/tex/latex/kvoptions/kvoptions.sty
-Package: kvoptions 2022-06-15 v3.15 Key value format for package options (HO)
- (/usr/share/texlive/texmf-dist/tex/generic/ltxcmds/ltxcmds.sty
-Package: ltxcmds 2023-12-04 v1.26 LaTeX kernel commands for general use (HO)
-) (/usr/share/texlive/texmf-dist/tex/latex/kvsetkeys/kvsetkeys.sty
-Package: kvsetkeys 2022-10-05 v1.19 Key value parser (HO)
-)) (/usr/share/texlive/texmf-dist/tex/generic/pdftexcmds/pdftexcmds.sty
-Package: pdftexcmds 2020-06-27 v0.33 Utility functions of pdfTeX for LuaTeX (HO)
-Package pdftexcmds Info: \pdf@primitive is available.
-Package pdftexcmds Info: \pdf@ifprimitive is available.
-Package pdftexcmds Info: \pdfdraftmode found.
-)
 Package epstopdf-base Info: Redefining graphics rule for `.eps' on input line 485.
-Package grfext Info: Graphics extension search list:
-(grfext)             [.pdf,.png,.jpg,.mps,.jpeg,.jbig2,.jb2,.PDF,.PNG,.JPG,.JPEG,.JBIG2,.JB2,.eps]
-(grfext)             \AppendGraphicsExtensions on input line 504.
  (/usr/share/texlive/texmf-dist/tex/latex/latexconfig/epstopdf-sys.cfg
 File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Live
 )) (./abstract.tex [1
@@ -273,18 +459,18 @@ File: omlcmr.fd 2023/04/13 v2.5m Standard LaTeX font definitions
 LaTeX Font Info:    Font shape `OML/cmr/m/n' in size <12> not available
 (Font)              Font shape `OML/cmm/m/it' tried instead on input line 117.
 )
-\tf@toc=\write3
-\openout3 = `main.toc'.
+\tf@toc=\write4
+\openout4 = `main.toc'.
 
  [8] (./main.lot)
-\tf@lot=\write4
-\openout4 = `main.lot'.
+\tf@lot=\write5
+\openout5 = `main.lot'.
 
  [9
 
 ] (./main.lof)
-\tf@lof=\write5
-\openout5 = `main.lof'.
+\tf@lof=\write6
+\openout6 = `main.lof'.
 
  [10
 
@@ -332,109 +518,109 @@ Chapter 3.
 
 
 
-] [24] [25] [26] [27] [28] [29] [30]
-Overfull \hbox (1.44435pt too wide) in paragraph at lines 127--128
+] (./figures/methodology_flowchart.tex) [24] [25] [26] [27] [28] [29] [30] [31] [32] [33]
+Overfull \hbox (1.44435pt too wide) in paragraph at lines 150--151
 \OT1/cmr/m/n/12 AutoRegressive In-te-grated Mov-ing Av-er-age mod-els pro-vided tra-di-tional sta-tis-ti-cal base-
  []
 
 
-Overfull \hbox (2.78728pt too wide) in paragraph at lines 129--130
+Overfull \hbox (2.78728pt too wide) in paragraph at lines 152--153
 []\OT1/cmr/bx/n/12 Univariate ARIMA: \OT1/cmr/m/n/12 Pa-ram-e-ters (p, d, q) de-ter-mined through Aug-mented Dickey-
  []
 
 
-Overfull \hbox (18.90392pt too wide) in paragraph at lines 129--130
+Overfull \hbox (18.90392pt too wide) in paragraph at lines 152--153
 \OT1/cmr/m/n/12 Fuller sta-tion-ar-ity test-ing, Auto-Correlation Func-tion (ACF), and Par-tial Auto-Correlation
  []
 
-[31]
-Overfull \hbox (2.50128pt too wide) in paragraph at lines 135--136
+
+Overfull \hbox (2.50128pt too wide) in paragraph at lines 158--159
 \OT1/cmr/m/n/12 Long Short-Term Mem-ory net-works cap-tured non-linear tem-po-ral de-pen-den-cies through
  []
 
-[32]
-Overfull \hbox (43.82413pt too wide) in paragraph at lines 153--154
-[]\OT1/cmr/bx/n/12 Hyperparameter Tun-ing: \OT1/cmr/m/n/12 Ran-dom-ized-SearchCV ex-plored pa-ram-e-ter space: n[]estimators
+[34] [35] [36] [37] [38] [39]
+Overfull \hbox (1.3014pt too wide) in paragraph at lines 228--229
+[]\OT1/cmr/m/n/12 Response gen-er-a-tion oc-curs through the Groq API pro-cess-ing the en-gi-neered prompt
  []
 
-[33] [34] [35]
-Overfull \hbox (1.19293pt too wide) in paragraph at lines 215--216
-[]\OT1/cmr/bx/n/12 Data Man-age-ment: \OT1/cmr/m/n/12 Pre-dic-tions CSV (500KB) loaded at ini-tial-iza-tion, in-memory
+[40] [41])
+Overfull \hbox (0.7124pt too wide) in paragraph at lines 242--73
+[]\OT1/cmr/m/n/12 The method-ol-ogy's strength lies in its thor-ough-ness and adapt-abil-ity: model-specific
  []
 
-[36] [37]) [38]
+[42]
 \openout2 = `chapters/Results.aux'.
 
  (./chapters/Results.tex
 Chapter 4.
-<figures/price_timeseries.png, id=168, 732.8178pt x 395.3169pt>
+<figures/price_timeseries.png, id=185, 732.8178pt x 395.3169pt>
 File: figures/price_timeseries.png Graphic file (type png)
 <use figures/price_timeseries.png>
 Package pdftex.def Info: figures/price_timeseries.png  used on input line 18.
 (pdftex.def)             Requested size: 374.86775pt x 202.21817pt.
-<figures/price_rainfall_central.png, id=170, 856.3995pt x 495.7722pt>
+<figures/price_rainfall_central.png, id=187, 856.3995pt x 495.7722pt>
 File: figures/price_rainfall_central.png Graphic file (type png)
 <use figures/price_rainfall_central.png>
 Package pdftex.def Info: figures/price_rainfall_central.png  used on input line 30.
 (pdftex.def)             Requested size: 374.86775pt x 217.01328pt.
-<figures/price_rainfall_uva.png, id=171, 856.3995pt x 495.7722pt>
+<figures/price_rainfall_uva.png, id=188, 856.3995pt x 495.7722pt>
 File: figures/price_rainfall_uva.png Graphic file (type png)
 <use figures/price_rainfall_uva.png>
 Package pdftex.def Info: figures/price_rainfall_uva.png  used on input line 39.
 (pdftex.def)             Requested size: 374.86775pt x 217.01328pt.
-[39
+[43
 
 
 
 
-] [40 <./figures/price_timeseries.png> <./figures/price_rainfall_central.png>]
-<figures/price_rainfall_northern.png, id=182, 857.1222pt x 495.7722pt>
+] [44 <./figures/price_timeseries.png> <./figures/price_rainfall_central.png>]
+<figures/price_rainfall_northern.png, id=197, 857.1222pt x 495.7722pt>
 File: figures/price_rainfall_northern.png Graphic file (type png)
 <use figures/price_rainfall_northern.png>
 Package pdftex.def Info: figures/price_rainfall_northern.png  used on input line 46.
 (pdftex.def)             Requested size: 374.86775pt x 216.83171pt.
- [41 <./figures/price_rainfall_uva.png> <./figures/price_rainfall_northern.png>]
-<figures/price_diesel_lad.png, id=188, 857.1222pt x 495.7722pt>
+ [45 <./figures/price_rainfall_uva.png> <./figures/price_rainfall_northern.png>]
+<figures/price_diesel_lad.png, id=204, 857.1222pt x 495.7722pt>
 File: figures/price_diesel_lad.png Graphic file (type png)
 <use figures/price_diesel_lad.png>
 Package pdftex.def Info: figures/price_diesel_lad.png  used on input line 60.
 (pdftex.def)             Requested size: 374.86775pt x 216.83171pt.
-<figures/price_petrol_lp95.png, id=189, 857.1222pt x 495.7722pt>
+<figures/price_petrol_lp95.png, id=205, 857.1222pt x 495.7722pt>
 File: figures/price_petrol_lp95.png Graphic file (type png)
 <use figures/price_petrol_lp95.png>
 Package pdftex.def Info: figures/price_petrol_lp95.png  used on input line 67.
 (pdftex.def)             Requested size: 374.86775pt x 216.83171pt.
-<figures/seasonal_decomp.png, id=190, 998.7714pt x 712.5822pt>
+<figures/seasonal_decomp.png, id=206, 998.7714pt x 712.5822pt>
 File: figures/seasonal_decomp.png Graphic file (type png)
 <use figures/seasonal_decomp.png>
 Package pdftex.def Info: figures/seasonal_decomp.png  used on input line 81.
 (pdftex.def)             Requested size: 396.91325pt x 283.1794pt.
- [42 <./figures/price_diesel_lad.png> <./figures/price_petrol_lp95.png>] [43 <./figures/seasonal_decomp.png>] [44]
-<figures/feature_selection_stages.png, id=203, 1058.0328pt x 495.7722pt>
+ [46 <./figures/price_diesel_lad.png> <./figures/price_petrol_lp95.png>] [47 <./figures/seasonal_decomp.png>] [48]
+<figures/feature_selection_stages.png, id=219, 1058.0328pt x 495.7722pt>
 File: figures/feature_selection_stages.png Graphic file (type png)
 <use figures/feature_selection_stages.png>
 Package pdftex.def Info: figures/feature_selection_stages.png  used on input line 120.
 (pdftex.def)             Requested size: 374.86775pt x 175.65616pt.
- [45 <./figures/feature_selection_stages.png>]
-<figures/correlation_heatmap.png, id=209, 1076.823pt x 953.2413pt>
+ [49 <./figures/feature_selection_stages.png>]
+<figures/correlation_heatmap.png, id=224, 1076.823pt x 953.2413pt>
 File: figures/correlation_heatmap.png Graphic file (type png)
 <use figures/correlation_heatmap.png>
 Package pdftex.def Info: figures/correlation_heatmap.png  used on input line 157.
 (pdftex.def)             Requested size: 418.96548pt x 370.87535pt.
- [46] [47 <./figures/correlation_heatmap.png>]
-<figures/arima_diagnostics.png, id=217, 1146.9249pt x 857.1222pt>
+ [50] [51 <./figures/correlation_heatmap.png>]
+<figures/arima_diagnostics.png, id=233, 1146.9249pt x 857.1222pt>
 File: figures/arima_diagnostics.png Graphic file (type png)
 <use figures/arima_diagnostics.png>
 Package pdftex.def Info: figures/arima_diagnostics.png  used on input line 200.
 (pdftex.def)             Requested size: 418.96548pt x 313.10204pt.
- [48] [49 <./figures/arima_diagnostics.png>] [50] [51]
-<figures/bidirectional_lstm_training.png, id=232, 1146.9249pt x 424.2249pt>
+ [52] [53 <./figures/arima_diagnostics.png>] [54] [55]
+<figures/bidirectional_lstm_training.png, id=247, 1146.9249pt x 424.2249pt>
 File: figures/bidirectional_lstm_training.png Graphic file (type png)
 <use figures/bidirectional_lstm_training.png>
 Package pdftex.def Info: figures/bidirectional_lstm_training.png  used on input line 240.
 (pdftex.def)             Requested size: 418.96548pt x 154.96701pt.
- [52 <./figures/bidirectional_lstm_training.png>] [53]
-<figures/feature_importance_rf.png, id=240, 856.3995pt x 712.5822pt>
+ [56 <./figures/bidirectional_lstm_training.png>] [57]
+<figures/feature_importance_rf.png, id=256, 856.3995pt x 712.5822pt>
 File: figures/feature_importance_rf.png Graphic file (type png)
 <use figures/feature_importance_rf.png>
 Package pdftex.def Info: figures/feature_importance_rf.png  used on input line 272.
@@ -449,8 +635,8 @@ Overfull \hbox (4.2332pt too wide) in paragraph at lines 302--303
 []\OT1/cmr/m/n/12 Historical price fea-tures dom-i-nated with 48.7% to-tal im-por-tance, fol-lowed by weather
  []
 
-[54 <./figures/feature_importance_rf.png>]
-<figures/ablation_study.png, id=245, 857.8449pt x 568.7649pt>
+[58 <./figures/feature_importance_rf.png>]
+<figures/ablation_study.png, id=261, 857.8449pt x 568.7649pt>
 File: figures/ablation_study.png Graphic file (type png)
 <use figures/ablation_study.png>
 Package pdftex.def Info: figures/ablation_study.png  used on input line 311.
@@ -460,45 +646,45 @@ Overfull \hbox (3.32349pt too wide) in paragraph at lines 316--317
 \OT1/cmr/m/n/12 fea-ture cat-e-gories, with price fea-tures demon-strat-ing dom-i-nant pre-dic-tive power through
  []
 
-[55 <./figures/ablation_study.png>]
-<figures/shap_summary.png, id=250, 824.6007pt x 713.3049pt>
+[59 <./figures/ablation_study.png>]
+<figures/shap_summary.png, id=266, 824.6007pt x 713.3049pt>
 File: figures/shap_summary.png Graphic file (type png)
 <use figures/shap_summary.png>
 Package pdftex.def Info: figures/shap_summary.png  used on input line 332.
 (pdftex.def)             Requested size: 396.91325pt x 343.34027pt.
-<figures/shap_dependence_price.png, id=251, 805.0878pt x 568.0422pt>
+<figures/shap_dependence_price.png, id=267, 805.0878pt x 568.0422pt>
 File: figures/shap_dependence_price.png Graphic file (type png)
 <use figures/shap_dependence_price.png>
 Package pdftex.def Info: figures/shap_dependence_price.png  used on input line 344.
 (pdftex.def)             Requested size: 396.91325pt x 280.05063pt.
- [56] [57 <./figures/shap_summary.png>]
-<figures/shap_dependence_weather.png, id=260, 805.0878pt x 568.0422pt>
+ [60] [61 <./figures/shap_summary.png>]
+<figures/shap_dependence_weather.png, id=275, 805.0878pt x 568.0422pt>
 File: figures/shap_dependence_weather.png Graphic file (type png)
 <use figures/shap_dependence_weather.png>
 Package pdftex.def Info: figures/shap_dependence_weather.png  used on input line 353.
 (pdftex.def)             Requested size: 396.91325pt x 280.05063pt.
-<figures/predictions_bidirectional.png, id=261, 1146.9249pt x 568.7649pt>
+<figures/predictions_bidirectional.png, id=276, 1146.9249pt x 568.7649pt>
 File: figures/predictions_bidirectional.png Graphic file (type png)
 <use figures/predictions_bidirectional.png>
 Package pdftex.def Info: figures/predictions_bidirectional.png  used on input line 365.
 (pdftex.def)             Requested size: 418.96548pt x 207.7667pt.
- [58 <./figures/shap_dependence_price.png>] [59 <./figures/shap_dependence_weather.png> <./figures/predictions_bidirectional.png>] [60]
-<figures/agent_architecture.png, id=274, 1002.3849pt x 713.3049pt>
+ [62 <./figures/shap_dependence_price.png>] [63 <./figures/shap_dependence_weather.png> <./figures/predictions_bidirectional.png>] [64]
+<figures/agent_architecture.png, id=290, 1002.3849pt x 713.3049pt>
 File: figures/agent_architecture.png Graphic file (type png)
 <use figures/agent_architecture.png>
 Package pdftex.def Info: figures/agent_architecture.png  used on input line 421.
 (pdftex.def)             Requested size: 396.91325pt x 282.4435pt.
-<figures/gradio_interface.png, id=275, 1002.3849pt x 713.3049pt>
+<figures/gradio_interface.png, id=291, 1002.3849pt x 713.3049pt>
 File: figures/gradio_interface.png Graphic file (type png)
 <use figures/gradio_interface.png>
 Package pdftex.def Info: figures/gradio_interface.png  used on input line 433.
 (pdftex.def)             Requested size: 418.96548pt x 298.13843pt.
- [61] [62 <./figures/agent_architecture.png>] [63 <./figures/gradio_interface.png>] [64] [65] [66] [67] [68] [69]
+ [65] [66 <./figures/agent_architecture.png>] [67 <./figures/gradio_interface.png>] [68] [69] [70] [71] [72] [73]
 Overfull \hbox (2.27905pt too wide) in paragraph at lines 547--548
 \OT1/cmr/m/n/12 This re-search makes sev-eral novel con-tri-bu-tions to agri-cul-tural price fore-cast-ing method-
  []
 
-[70]) [71]
+[74]) [75]
 \openout2 = `chapters/Conclusion.aux'.
 
  (./chapters/Conclusion.tex
@@ -508,7 +694,7 @@ Overfull \hbox (28.25934pt too wide) in paragraph at lines 11--12
 []\OT1/cmr/m/n/12 The re-search sys-tem-at-i-cally in-te-grated 289 ini-tial fea-tures across six cat-e-gories|historical
  []
 
-[72
+[76
 
 
 
@@ -523,7 +709,7 @@ Overfull \hbox (28.90181pt too wide) in paragraph at lines 30--30
 |[]\OT1/cmr/bx/n/14.4 Bidirectional Pro-cess-ing En-hances Tem-po-ral Pat-tern Recog-
  []
 
-[73]
+[77]
 LaTeX Font Info:    Font shape `OML/cmr/bx/n' in size <14.4> not available
 (Font)              Font shape `OML/cmm/b/it' tried instead on input line 35.
 
@@ -536,40 +722,40 @@ Overfull \hbox (11.24512pt too wide) in paragraph at lines 40--40
 |[]\OT1/cmr/bx/n/14.4 Multi-Factor Ap-proach Jus-ti-fied De-spite Uni-vari-ate Com-
  []
 
-[74] [75] [76] [77] [78]
+[78] [79] [80] [81] [82]
 Overfull \hbox (1.76114pt too wide) in paragraph at lines 126--127
 \OT1/cmr/bx/n/12 1. Static Train-Test Split: \OT1/cmr/m/n/12 The re-search em-ployed a sin-gle tem-po-ral train-validation-
  []
 
-[79] [80] [81] [82] [83]
+[83] [84] [85] [86] [87]
 Overfull \hbox (4.17209pt too wide) in paragraph at lines 206--207
 \OT1/cmr/m/n/12 value chain|farmgate prices, trans-porta-tion costs, re-tail mar-gins, con-sumer willingness-
  []
 
-[84] [85]) [86] (./main.bbl [87
+[88] [89]) [90] (./main.bbl [91
 
 
 
 
-]) [88] (./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.aux) (./chapters/Methodology.aux) (./chapters/Results.aux) (./chapters/Conclusion.aux))
+]) [92] (./main.aux (./chapters/Introduction.aux) (./chapters/LiteratureReview.aux) (./chapters/Methodology.aux) (./chapters/Results.aux) (./chapters/Conclusion.aux))
  ***********
 LaTeX2e <2023-11-01> patch level 1
 L3 programming layer <2024-01-22>
  ***********
  ) 
 Here is how much of TeX's memory you used:
- 4085 strings out of 474222
- 71527 string characters out of 5748733
- 1937975 words of memory out of 5000000
- 26245 multiletter control sequences out of 15000+600000
+ 15228 strings out of 474222
+ 315881 string characters out of 5748733
+ 1942975 words of memory out of 5000000
+ 37183 multiletter control sequences out of 15000+600000
  565723 words of font info for 60 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 72i,8n,79p,1924b,260s stack positions out of 10000i,1000n,20000p,200000b,200000s
+ 84i,10n,93p,1924b,893s stack positions out of 10000i,1000n,20000p,200000b,200000s
 </usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxsl10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmmib10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr6.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsl12.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1200.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfbx1440.pfb></usr/share/texmf/fonts/type1/public/cm-super/sfrm1200.pfb>
-Output written on main.pdf (98 pages, 2589841 bytes).
+Output written on main.pdf (102 pages, 2612186 bytes).
 PDF statistics:
- 446 PDF objects out of 1000 (max. 8388607)
- 271 compressed objects within 3 object streams
+ 461 PDF objects out of 1000 (max. 8388607)
+ 282 compressed objects within 3 object streams
  0 named destinations out of 1000 (max. 500000)
- 96 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 108 words of extra memory for PDF output out of 10000 (max. 10000000)
 

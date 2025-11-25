@@ -33,109 +33,109 @@
 \contentsline {section}{\numberline {2.9}Summary and Position of Current Research}{21}{}%
 \contentsline {chapter}{\numberline {3}Design and Methodology}{23}{}%
 \contentsline {section}{\numberline {3.1}Systematic Framework}{23}{}%
-\contentsline {section}{\numberline {3.2}Data Collection and Preparation}{25}{}%
-\contentsline {subsection}{\numberline {3.2.1}Data Sources and Collection}{25}{}%
-\contentsline {subsection}{\numberline {3.2.2}Dataset Characteristics}{25}{}%
-\contentsline {subsection}{\numberline {3.2.3}Data Preprocessing}{26}{}%
-\contentsline {section}{\numberline {3.3}Exploratory Data Analysis}{27}{}%
-\contentsline {subsection}{\numberline {3.3.1}Time Series Visualization}{27}{}%
-\contentsline {subsection}{\numberline {3.3.2}Correlation and Relationship Analysis}{27}{}%
-\contentsline {subsection}{\numberline {3.3.3}Distribution and Decomposition}{28}{}%
-\contentsline {section}{\numberline {3.4}Feature Engineering and Selection}{28}{}%
-\contentsline {subsection}{\numberline {3.4.1}Feature Engineering}{28}{}%
-\contentsline {subsection}{\numberline {3.4.2}Model-Specific Feature Selection Strategies}{29}{}%
-\contentsline {subsubsection}{Univariate Models (ARIMA, Univariate LSTM)}{29}{}%
-\contentsline {subsubsection}{Multivariate Models (Multivariate LSTM, Bidirectional LSTM, Random Forest)}{30}{}%
-\contentsline {section}{\numberline {3.5}Forecasting Model Development}{31}{}%
-\contentsline {subsection}{\numberline {3.5.1}Train-Test Split Strategy}{31}{}%
-\contentsline {subsection}{\numberline {3.5.2}ARIMA Models}{31}{}%
-\contentsline {subsection}{\numberline {3.5.3}LSTM Models}{32}{}%
-\contentsline {subsection}{\numberline {3.5.4}Random Forest Regression}{33}{}%
-\contentsline {section}{\numberline {3.6}Model Evaluation Framework}{33}{}%
-\contentsline {subsection}{\numberline {3.6.1}Performance Metrics}{33}{}%
-\contentsline {subsection}{\numberline {3.6.2}Statistical Validation}{34}{}%
-\contentsline {section}{\numberline {3.7}AI Agent Development Using Groq API}{34}{}%
-\contentsline {subsection}{\numberline {3.7.1}System Architecture}{35}{}%
-\contentsline {subsection}{\numberline {3.7.2}Query Processing Pipeline}{35}{}%
-\contentsline {subsection}{\numberline {3.7.3}Implementation Specifications}{36}{}%
-\contentsline {subsection}{\numberline {3.7.4}Query Type Examples and Responses}{37}{}%
-\contentsline {section}{\numberline {3.8}Summary}{37}{}%
-\contentsline {chapter}{\numberline {4}Results and Discussion}{39}{}%
-\contentsline {section}{\numberline {4.1}Exploratory Data Analysis}{39}{}%
-\contentsline {subsection}{\numberline {4.1.1}Temporal Price Patterns}{39}{}%
-\contentsline {subsection}{\numberline {4.1.2}Price-Rainfall Relationships}{39}{}%
-\contentsline {subsection}{\numberline {4.1.3}Price-Fuel Cost Relationships}{42}{}%
-\contentsline {subsection}{\numberline {4.1.4}Seasonal Decomposition}{43}{}%
-\contentsline {subsection}{\numberline {4.1.5}Stationarity Analysis}{43}{}%
-\contentsline {section}{\numberline {4.2}Data Characteristics Summary}{44}{}%
-\contentsline {section}{\numberline {4.3}Feature Selection Results}{45}{}%
-\contentsline {subsection}{\numberline {4.3.1}Feature Selection Pipeline}{45}{}%
-\contentsline {subsection}{\numberline {4.3.2}Final Feature Distribution}{46}{}%
-\contentsline {subsection}{\numberline {4.3.3}Feature Correlation Matrix}{46}{}%
-\contentsline {section}{\numberline {4.4}Model Performance Comparison}{46}{}%
-\contentsline {section}{\numberline {4.5}Univariate ARIMA Results}{48}{}%
-\contentsline {subsection}{\numberline {4.5.1}Model Diagnostics}{49}{}%
-\contentsline {subsection}{\numberline {4.5.2}Multivariate ARIMAX Performance}{49}{}%
-\contentsline {section}{\numberline {4.6}LSTM Model Results}{50}{}%
-\contentsline {subsection}{\numberline {4.6.1}Univariate LSTM Architecture}{50}{}%
-\contentsline {subsection}{\numberline {4.6.2}Multivariate LSTM Architecture}{50}{}%
-\contentsline {subsection}{\numberline {4.6.3}Bidirectional LSTM - Best Model}{51}{}%
-\contentsline {section}{\numberline {4.7}Random Forest Results}{53}{}%
-\contentsline {subsection}{\numberline {4.7.1}Baseline Random Forest}{53}{}%
-\contentsline {subsection}{\numberline {4.7.2}Hyperparameter-Tuned Random Forest}{53}{}%
-\contentsline {section}{\numberline {4.8}Feature Importance Analysis}{54}{}%
-\contentsline {subsection}{\numberline {4.8.1}Random Forest Feature Importance}{54}{}%
-\contentsline {subsection}{\numberline {4.8.2}Feature Category Importance Distribution}{54}{}%
-\contentsline {section}{\numberline {4.9}Ablation Study Results}{55}{}%
-\contentsline {section}{\numberline {4.10}SHAP Analysis for Model Interpretability}{56}{}%
-\contentsline {subsection}{\numberline {4.10.1}SHAP Summary Plot}{56}{}%
-\contentsline {subsection}{\numberline {4.10.2}SHAP Dependence Plots}{58}{}%
-\contentsline {section}{\numberline {4.11}Prediction Visualization}{58}{}%
-\contentsline {section}{\numberline {4.12}Statistical Validation}{60}{}%
-\contentsline {subsection}{\numberline {4.12.1}Bootstrap Confidence Intervals}{60}{}%
-\contentsline {subsection}{\numberline {4.12.2}Cross-Validation Results}{60}{}%
-\contentsline {subsection}{\numberline {4.12.3}Effect Size Analysis}{61}{}%
-\contentsline {section}{\numberline {4.13}AI Agent Demonstration}{61}{}%
-\contentsline {subsection}{\numberline {4.13.1}Agent Architecture}{61}{}%
-\contentsline {subsection}{\numberline {4.13.2}Gradio Interface}{62}{}%
-\contentsline {subsection}{\numberline {4.13.3}Example Query Responses}{62}{}%
-\contentsline {section}{\numberline {4.14}Discussion}{63}{}%
-\contentsline {subsection}{\numberline {4.14.1}Why Bidirectional LSTM Outperforms Other Models}{63}{}%
-\contentsline {subsection}{\numberline {4.14.2}MAPE vs R² Trade-offs}{64}{}%
-\contentsline {subsection}{\numberline {4.14.3}Univariate vs Multivariate LSTM Paradox}{65}{}%
-\contentsline {subsection}{\numberline {4.14.4}Traditional vs Deep Learning Methods}{66}{}%
-\contentsline {subsection}{\numberline {4.14.5}Limitations and Considerations}{67}{}%
-\contentsline {subsection}{\numberline {4.14.6}Practical Implications for Stakeholders}{68}{}%
-\contentsline {subsection}{\numberline {4.14.7}Deployment Recommendations}{69}{}%
-\contentsline {subsection}{\numberline {4.14.8}Research Contributions}{70}{}%
-\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{72}{}%
-\contentsline {section}{\numberline {5.1}Research Summary}{72}{}%
-\contentsline {section}{\numberline {5.2}Key Findings}{73}{}%
-\contentsline {subsection}{\numberline {5.2.1}Superior Performance of Deep Learning Approaches}{73}{}%
-\contentsline {subsection}{\numberline {5.2.2}Architecture and Regularization Matter More Than Feature Quantity}{73}{}%
-\contentsline {subsection}{\numberline {5.2.3}Bidirectional Processing Enhances Temporal Pattern Recognition}{73}{}%
-\contentsline {subsection}{\numberline {5.2.4}Feature Importance Hierarchy: Price \textgreater \ Weather \textgreater \ Market Dynamics}{74}{}%
-\contentsline {subsection}{\numberline {5.2.5}Multi-Factor Approach Justified Despite Univariate Competitiveness}{74}{}%
-\contentsline {subsection}{\numberline {5.2.6}Weather-Price Relationships Quantified}{74}{}%
-\contentsline {subsection}{\numberline {5.2.7}Deployment Feasibility Demonstrated}{75}{}%
-\contentsline {section}{\numberline {5.3}Research Contributions}{75}{}%
-\contentsline {subsection}{\numberline {5.3.1}Methodological Contributions}{75}{}%
-\contentsline {subsection}{\numberline {5.3.2}Technical Contributions}{76}{}%
-\contentsline {subsection}{\numberline {5.3.3}Empirical Contributions}{76}{}%
-\contentsline {subsection}{\numberline {5.3.4}Practical Contributions}{77}{}%
-\contentsline {section}{\numberline {5.4}Research Limitations}{77}{}%
-\contentsline {subsection}{\numberline {5.4.1}Data-Related Limitations}{78}{}%
-\contentsline {subsection}{\numberline {5.4.2}Model-Related Limitations}{78}{}%
-\contentsline {subsection}{\numberline {5.4.3}Methodological Limitations}{79}{}%
-\contentsline {subsection}{\numberline {5.4.4}Deployment-Related Limitations}{80}{}%
-\contentsline {section}{\numberline {5.5}Future Work}{80}{}%
-\contentsline {subsection}{\numberline {5.5.1}Extension to Multiple Crops and Markets}{80}{}%
-\contentsline {subsection}{\numberline {5.5.2}Advanced Modeling Techniques}{81}{}%
-\contentsline {subsection}{\numberline {5.5.3}Enhanced Interpretability and Explainability}{82}{}%
-\contentsline {subsection}{\numberline {5.5.4}Data Enrichment}{82}{}%
-\contentsline {subsection}{\numberline {5.5.5}System Enhancement and Deployment}{83}{}%
-\contentsline {subsection}{\numberline {5.5.6}Policy and Economic Analysis}{84}{}%
-\contentsline {subsection}{\numberline {5.5.7}Methodological Advances}{84}{}%
-\contentsline {section}{\numberline {5.6}Closing Remarks}{85}{}%
-\contentsline {chapter}{REFERENCES}{87}{}%
+\contentsline {section}{\numberline {3.2}Data Collection and Preparation}{26}{}%
+\contentsline {subsection}{\numberline {3.2.1}Data Sources and Collection}{26}{}%
+\contentsline {subsection}{\numberline {3.2.2}Dataset Characteristics}{26}{}%
+\contentsline {subsection}{\numberline {3.2.3}Data Preprocessing}{27}{}%
+\contentsline {section}{\numberline {3.3}Exploratory Data Analysis}{28}{}%
+\contentsline {subsection}{\numberline {3.3.1}Time Series Visualization}{28}{}%
+\contentsline {subsection}{\numberline {3.3.2}Correlation and Relationship Analysis}{29}{}%
+\contentsline {subsection}{\numberline {3.3.3}Distribution and Decomposition}{29}{}%
+\contentsline {section}{\numberline {3.4}Feature Engineering and Selection}{30}{}%
+\contentsline {subsection}{\numberline {3.4.1}Feature Engineering}{30}{}%
+\contentsline {subsection}{\numberline {3.4.2}Model-Specific Feature Selection Strategies}{31}{}%
+\contentsline {subsubsection}{Univariate Models (ARIMA, Univariate LSTM)}{31}{}%
+\contentsline {subsubsection}{Random Forest Feature Selection Pipeline}{32}{}%
+\contentsline {subsubsection}{LSTM Feature Selection Pipeline}{33}{}%
+\contentsline {section}{\numberline {3.5}Forecasting Model Development}{33}{}%
+\contentsline {subsection}{\numberline {3.5.1}Train-Test Split Strategy}{33}{}%
+\contentsline {subsection}{\numberline {3.5.2}ARIMA Models}{34}{}%
+\contentsline {subsection}{\numberline {3.5.3}LSTM Models}{34}{}%
+\contentsline {subsection}{\numberline {3.5.4}Random Forest Regression}{35}{}%
+\contentsline {section}{\numberline {3.6}Model Evaluation Framework}{36}{}%
+\contentsline {subsection}{\numberline {3.6.1}Performance Metrics}{36}{}%
+\contentsline {subsection}{\numberline {3.6.2}Statistical Validation}{37}{}%
+\contentsline {section}{\numberline {3.7}AI Agent Development Using Groq API}{37}{}%
+\contentsline {subsection}{\numberline {3.7.1}System Architecture}{38}{}%
+\contentsline {subsection}{\numberline {3.7.2}Query Processing Pipeline}{39}{}%
+\contentsline {subsection}{\numberline {3.7.3}Query Capabilities and Response Types}{41}{}%
+\contentsline {section}{\numberline {3.8}Summary}{42}{}%
+\contentsline {chapter}{\numberline {4}Results and Discussion}{43}{}%
+\contentsline {section}{\numberline {4.1}Exploratory Data Analysis}{43}{}%
+\contentsline {subsection}{\numberline {4.1.1}Temporal Price Patterns}{43}{}%
+\contentsline {subsection}{\numberline {4.1.2}Price-Rainfall Relationships}{43}{}%
+\contentsline {subsection}{\numberline {4.1.3}Price-Fuel Cost Relationships}{46}{}%
+\contentsline {subsection}{\numberline {4.1.4}Seasonal Decomposition}{47}{}%
+\contentsline {subsection}{\numberline {4.1.5}Stationarity Analysis}{47}{}%
+\contentsline {section}{\numberline {4.2}Data Characteristics Summary}{48}{}%
+\contentsline {section}{\numberline {4.3}Feature Selection Results}{49}{}%
+\contentsline {subsection}{\numberline {4.3.1}Feature Selection Pipeline}{49}{}%
+\contentsline {subsection}{\numberline {4.3.2}Final Feature Distribution}{50}{}%
+\contentsline {subsection}{\numberline {4.3.3}Feature Correlation Matrix}{50}{}%
+\contentsline {section}{\numberline {4.4}Model Performance Comparison}{50}{}%
+\contentsline {section}{\numberline {4.5}Univariate ARIMA Results}{52}{}%
+\contentsline {subsection}{\numberline {4.5.1}Model Diagnostics}{53}{}%
+\contentsline {subsection}{\numberline {4.5.2}Multivariate ARIMAX Performance}{53}{}%
+\contentsline {section}{\numberline {4.6}LSTM Model Results}{54}{}%
+\contentsline {subsection}{\numberline {4.6.1}Univariate LSTM Architecture}{54}{}%
+\contentsline {subsection}{\numberline {4.6.2}Multivariate LSTM Architecture}{54}{}%
+\contentsline {subsection}{\numberline {4.6.3}Bidirectional LSTM - Best Model}{55}{}%
+\contentsline {section}{\numberline {4.7}Random Forest Results}{57}{}%
+\contentsline {subsection}{\numberline {4.7.1}Baseline Random Forest}{57}{}%
+\contentsline {subsection}{\numberline {4.7.2}Hyperparameter-Tuned Random Forest}{57}{}%
+\contentsline {section}{\numberline {4.8}Feature Importance Analysis}{58}{}%
+\contentsline {subsection}{\numberline {4.8.1}Random Forest Feature Importance}{58}{}%
+\contentsline {subsection}{\numberline {4.8.2}Feature Category Importance Distribution}{58}{}%
+\contentsline {section}{\numberline {4.9}Ablation Study Results}{59}{}%
+\contentsline {section}{\numberline {4.10}SHAP Analysis for Model Interpretability}{60}{}%
+\contentsline {subsection}{\numberline {4.10.1}SHAP Summary Plot}{60}{}%
+\contentsline {subsection}{\numberline {4.10.2}SHAP Dependence Plots}{62}{}%
+\contentsline {section}{\numberline {4.11}Prediction Visualization}{62}{}%
+\contentsline {section}{\numberline {4.12}Statistical Validation}{64}{}%
+\contentsline {subsection}{\numberline {4.12.1}Bootstrap Confidence Intervals}{64}{}%
+\contentsline {subsection}{\numberline {4.12.2}Cross-Validation Results}{64}{}%
+\contentsline {subsection}{\numberline {4.12.3}Effect Size Analysis}{65}{}%
+\contentsline {section}{\numberline {4.13}AI Agent Demonstration}{65}{}%
+\contentsline {subsection}{\numberline {4.13.1}Agent Architecture}{65}{}%
+\contentsline {subsection}{\numberline {4.13.2}Gradio Interface}{66}{}%
+\contentsline {subsection}{\numberline {4.13.3}Example Query Responses}{66}{}%
+\contentsline {section}{\numberline {4.14}Discussion}{67}{}%
+\contentsline {subsection}{\numberline {4.14.1}Why Bidirectional LSTM Outperforms Other Models}{67}{}%
+\contentsline {subsection}{\numberline {4.14.2}MAPE vs R² Trade-offs}{68}{}%
+\contentsline {subsection}{\numberline {4.14.3}Univariate vs Multivariate LSTM Paradox}{69}{}%
+\contentsline {subsection}{\numberline {4.14.4}Traditional vs Deep Learning Methods}{70}{}%
+\contentsline {subsection}{\numberline {4.14.5}Limitations and Considerations}{71}{}%
+\contentsline {subsection}{\numberline {4.14.6}Practical Implications for Stakeholders}{72}{}%
+\contentsline {subsection}{\numberline {4.14.7}Deployment Recommendations}{73}{}%
+\contentsline {subsection}{\numberline {4.14.8}Research Contributions}{74}{}%
+\contentsline {chapter}{\numberline {5}Conclusion and Future Work}{76}{}%
+\contentsline {section}{\numberline {5.1}Research Summary}{76}{}%
+\contentsline {section}{\numberline {5.2}Key Findings}{77}{}%
+\contentsline {subsection}{\numberline {5.2.1}Superior Performance of Deep Learning Approaches}{77}{}%
+\contentsline {subsection}{\numberline {5.2.2}Architecture and Regularization Matter More Than Feature Quantity}{77}{}%
+\contentsline {subsection}{\numberline {5.2.3}Bidirectional Processing Enhances Temporal Pattern Recognition}{77}{}%
+\contentsline {subsection}{\numberline {5.2.4}Feature Importance Hierarchy: Price \textgreater \ Weather \textgreater \ Market Dynamics}{78}{}%
+\contentsline {subsection}{\numberline {5.2.5}Multi-Factor Approach Justified Despite Univariate Competitiveness}{78}{}%
+\contentsline {subsection}{\numberline {5.2.6}Weather-Price Relationships Quantified}{78}{}%
+\contentsline {subsection}{\numberline {5.2.7}Deployment Feasibility Demonstrated}{79}{}%
+\contentsline {section}{\numberline {5.3}Research Contributions}{79}{}%
+\contentsline {subsection}{\numberline {5.3.1}Methodological Contributions}{79}{}%
+\contentsline {subsection}{\numberline {5.3.2}Technical Contributions}{80}{}%
+\contentsline {subsection}{\numberline {5.3.3}Empirical Contributions}{80}{}%
+\contentsline {subsection}{\numberline {5.3.4}Practical Contributions}{81}{}%
+\contentsline {section}{\numberline {5.4}Research Limitations}{81}{}%
+\contentsline {subsection}{\numberline {5.4.1}Data-Related Limitations}{82}{}%
+\contentsline {subsection}{\numberline {5.4.2}Model-Related Limitations}{82}{}%
+\contentsline {subsection}{\numberline {5.4.3}Methodological Limitations}{83}{}%
+\contentsline {subsection}{\numberline {5.4.4}Deployment-Related Limitations}{84}{}%
+\contentsline {section}{\numberline {5.5}Future Work}{84}{}%
+\contentsline {subsection}{\numberline {5.5.1}Extension to Multiple Crops and Markets}{84}{}%
+\contentsline {subsection}{\numberline {5.5.2}Advanced Modeling Techniques}{85}{}%
+\contentsline {subsection}{\numberline {5.5.3}Enhanced Interpretability and Explainability}{86}{}%
+\contentsline {subsection}{\numberline {5.5.4}Data Enrichment}{86}{}%
+\contentsline {subsection}{\numberline {5.5.5}System Enhancement and Deployment}{87}{}%
+\contentsline {subsection}{\numberline {5.5.6}Policy and Economic Analysis}{88}{}%
+\contentsline {subsection}{\numberline {5.5.7}Methodological Advances}{88}{}%
+\contentsline {section}{\numberline {5.6}Closing Remarks}{89}{}%
+\contentsline {chapter}{REFERENCES}{91}{}%
 \contentsfinish 

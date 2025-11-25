@@ -1,68 +1,65 @@
 % Methodology Flow Diagram
 \begin{tikzpicture}[
-    node distance=1.5cm,
-    every node/.style={font=\small},
-    startstop/.style={rectangle, rounded corners, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=red!20, text width=3cm},
-    process/.style={rectangle, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=blue!20, text width=3cm},
-    decision/.style={diamond, minimum width=2.5cm, minimum height=1cm, text centered, draw=black, fill=green!20, text width=2.5cm, aspect=2},
-    data/.style={trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=3cm, minimum height=1cm, text centered, draw=black, fill=yellow!20, text width=3cm},
+    scale=0.65,
+    transform shape,
+    node distance=1cm,
+    every node/.style={font=\tiny},
+    startstop/.style={rectangle, rounded corners, minimum width=2.2cm, minimum height=0.7cm, text centered, draw=black, fill=red!20, text width=2.2cm},
+    process/.style={rectangle, minimum width=2.2cm, minimum height=0.7cm, text centered, draw=black, fill=blue!20, text width=2.2cm},
+    decision/.style={diamond, minimum width=1.8cm, minimum height=0.7cm, text centered, draw=black, fill=green!20, text width=1.8cm, aspect=2},
+    data/.style={trapezium, trapezium left angle=70, trapezium right angle=110, minimum width=2.2cm, minimum height=0.7cm, text centered, draw=black, fill=yellow!20, text width=2.2cm},
     arrow/.style={thick,->,>=stealth}
 ]
 
 % Row 1: Data Collection
 \node (start) [startstop] {START};
-\node (datacollect) [data, below of=start] {Data Collection\\(2017-2025)};
-\node (sources) [process, below of=datacollect, yshift=-0.5cm] {3 Sources:\\Price, Weather,\\Supply \& Fuel};
+\node (datacollect) [data, below of=start] {Data Collection};
+\node (sources) [process, below of=datacollect, yshift=-0.5cm] {Data Sources:\\Price, Weather,\\Supply \& Fuel};
 
 % Row 2: Preprocessing
-\node (preprocess) [process, below of=sources, yshift=-0.5cm] {Data Preprocessing\\2,017 obs, 46 vars};
-\node (quality) [process, below of=preprocess] {Quality Check\\Outliers Retained\\Missing: Forward Fill};
+\node (preprocess) [process, below of=sources, yshift=-0.5cm] {Data Preprocessing};
+\node (quality) [process, below of=preprocess] {Quality Checks};
 
 % Row 3: EDA
 \node (eda) [process, below of=quality, yshift=-0.5cm] {Exploratory\\Data Analysis};
 
 % Row 4: Feature Engineering Split
-\node (featsplit) [decision, below of=eda, yshift=-1cm] {Model-Specific\\Feature\\Engineering};
+\node (featsplit) [decision, below of=eda, yshift=-1cm] {Feature\\Engineering};
 
 % Row 5a: RF Feature Engineering (Left)
-\node (rfeng) [process, left of=featsplit, xshift=-4cm, yshift=-2cm] {RF Engineering\\273 Features};
-\node (rfsel) [process, below of=rfeng] {RF Selection\\4-Stage Pipeline};
-\node (rffinal) [process, below of=rfsel] {24 Final\\Features};
+\node (rfeng) [process, left of=featsplit, xshift=-4cm, yshift=-2cm] {RF Feature\\Engineering};
+\node (rfsel) [process, below of=rfeng] {RF Feature\\Selection};
 
 % Row 5b: LSTM Feature Engineering (Right)
-\node (lstmeng) [process, right of=featsplit, xshift=4cm, yshift=-2cm] {LSTM Engineering\\163 Features};
-\node (lstmsel) [process, below of=lstmeng] {LSTM Selection\\2-Stage Pipeline};
-\node (lstmfinal) [process, below of=lstmsel] {9 Final\\Features};
+\node (lstmeng) [process, right of=featsplit, xshift=4cm, yshift=-2cm] {LSTM Feature\\Engineering};
+\node (lstmsel) [process, below of=lstmeng] {LSTM Feature\\Selection};
 
 % Row 6: Train-Test Split
-\node (split) [process, below of=featsplit, yshift=-8.5cm] {Train-Test Split\\70-15-15\%};
+\node (split) [process, below of=featsplit, yshift=-6cm] {Train-Test Split};
 
 % Row 7: Model Training (Three branches)
 \node (models) [decision, below of=split, yshift=-0.5cm] {Model\\Training};
 
 % Row 8a: ARIMA (Left)
-\node (arima) [process, left of=models, xshift=-4cm, yshift=-2cm] {ARIMA Models\\Univariate\\Multivariate};
+\node (arima) [process, left of=models, xshift=-4cm, yshift=-2cm] {ARIMA Models};
 
 % Row 8b: LSTM (Center)
-\node (lstm) [process, below of=models, yshift=-1.5cm] {LSTM Models\\Univariate\\Simple Multivariate\\Bidirectional};
+\node (lstm) [process, below of=models, yshift=-1.5cm] {LSTM Models};
 
 % Row 8c: RF (Right)
-\node (rf) [process, right of=models, xshift=4cm, yshift=-2cm] {Random Forest\\Baseline\\Tuned};
+\node (rf) [process, right of=models, xshift=4cm, yshift=-2cm] {Random Forest};
 
 % Row 9: Evaluation
-\node (eval) [process, below of=lstm, yshift=-1.5cm] {Model Evaluation\\MAPE, MAE, RMSE, R²};
+\node (eval) [process, below of=lstm, yshift=-1.5cm] {Model Evaluation};
 
 % Row 10: Best Model Selection
 \node (best) [decision, below of=eval, yshift=-0.5cm] {Best Model\\Selection};
-\node (bestlstm) [process, below of=best] {Simple LSTM\\19.93\% MAPE};
 
 % Row 11: AI Agent
-\node (agent) [process, below of=bestlstm, yshift=-0.5cm] {AI Agent\\Integration};
-\node (rag) [process, below of=agent] {RAG System\\Groq API\\Gradio UI};
+\node (agent) [process, below of=best, yshift=-0.5cm] {AI Agent\\Integration};
 
 % Row 12: Deployment
-\node (deploy) [process, below of=rag, yshift=-0.5cm] {Deployment\\Date Queries\\"Why" Questions};
-\node (end) [startstop, below of=deploy] {END};
+\node (end) [startstop, below of=agent] {END};
 
 % Arrows - Main Flow
 \draw [arrow] (start) -- (datacollect);
@@ -75,14 +72,12 @@
 % Arrows - RF Branch
 \draw [arrow] (featsplit) -| (rfeng);
 \draw [arrow] (rfeng) -- (rfsel);
-\draw [arrow] (rfsel) -- (rffinal);
-\draw [arrow] (rffinal) |- (split);
+\draw [arrow] (rfsel) |- (split);
 
 % Arrows - LSTM Branch
 \draw [arrow] (featsplit) -| (lstmeng);
 \draw [arrow] (lstmeng) -- (lstmsel);
-\draw [arrow] (lstmsel) -- (lstmfinal);
-\draw [arrow] (lstmfinal) |- (split);
+\draw [arrow] (lstmsel) |- (split);
 
 % Arrows - Model Training
 \draw [arrow] (split) -- (models);
@@ -97,10 +92,7 @@
 
 % Arrows - Final Flow
 \draw [arrow] (eval) -- (best);
-\draw [arrow] (best) -- (bestlstm);
-\draw [arrow] (bestlstm) -- (agent);
-\draw [arrow] (agent) -- (rag);
-\draw [arrow] (rag) -- (deploy);
-\draw [arrow] (deploy) -- (end);
+\draw [arrow] (best) -- (agent);
+\draw [arrow] (agent) -- (end);
 
 \end{tikzpicture}
