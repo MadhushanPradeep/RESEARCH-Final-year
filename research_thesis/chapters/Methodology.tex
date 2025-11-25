@@ -42,7 +42,7 @@ Comprehensive preprocessing ensured data quality and prepared variables for mode
 
 \textbf{Fuel Column Filtering:} Non-transport fuel columns (kerosene, furnace oils) were systematically removed as they relate to industrial heating rather than agricultural transportation. Only transport-relevant fuels (petrol Lp\_95, Lp\_92; diesel lad, lsd) were retained, reducing dimensionality while maintaining predictive signal.
 
-\textbf{Outlier Treatment:} Extreme outliers beyond the 99th percentile were clipped to reduce influence of anomalous observations while preserving overall data distribution. This conservative approach maintains genuine price volatility patterns while limiting impact of potential data errors.
+\textbf{Outlier Treatment:} Outlier analysis using the Interquartile Range (IQR) method identified 103 potential outliers (5.11\% of observations), with prices ranging up to Rs. 1,950 per kilogram. These extreme values were deliberately retained rather than removed or clipped, as they represent legitimate market volatility during supply shocks, seasonal festivals, and weather-driven scarcity events rather than measurement errors. This decision was supported by domain knowledge of Sri Lankan carrot markets, where genuine extreme price fluctuations occur during crisis periods.
 
 \section{Exploratory Data Analysis}
 
@@ -62,7 +62,7 @@ Systematic exploratory analysis revealed patterns, relationships, and characteri
 
 \subsection{Distribution and Decomposition}
 
-\textbf{Price Distribution:} Histograms and box plots revealed approximately normal distribution with slight positive skew. Outlier analysis using Interquartile Range (IQR) identified approximately 5\% of observations as potential outliers, primarily during crisis periods, which were retained as legitimate extreme values rather than data errors.
+\textbf{Price Distribution:} Histograms and box plots revealed approximately normal distribution with slight positive skew (skewness = 1.89), with prices ranging from Rs. 25 to Rs. 1,950 per kilogram. Outlier analysis using Interquartile Range (IQR) method (Q1 - 1.5$\times$IQR, Q3 + 1.5$\times$IQR) identified 103 observations (5.11\% of total 2,017 observations) as potential outliers. These extreme values were deliberately retained as they represent legitimate market volatility during supply shocks, seasonal festivals, and adverse weather conditions rather than measurement errors or data quality issues. The retention of outliers was justified by domain knowledge indicating that carrot markets in Sri Lanka experience genuine extreme price fluctuations during crisis periods. The non-normal distribution necessitated the use of scaling methods robust to outliers, such as RobustScaler for LSTM preprocessing.
 
 \textbf{Seasonal Decomposition:} Time series decomposition separated price data into trend, seasonal, and residual components. Analysis revealed gradual upward trend reflecting inflation, moderate seasonal patterns with peaks in certain months, and substantial residual volatility indicating strong influence of short-term factors beyond pure seasonality.
 
