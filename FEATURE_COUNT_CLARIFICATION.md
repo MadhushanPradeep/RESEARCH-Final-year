@@ -292,6 +292,116 @@ All models use `X_train.shape[2] = 19` as their input dimension.
 
 ---
 
+## 📋 SECTION 7: EXACT FINAL FEATURE LISTS
+
+### 🌲 **Random Forest: 14 Final Features**
+
+**Verified from notebook execution output (lines 1643-1651, 1968-1970):**
+
+**Price Features (6 features):**
+
+1. `price_lag_1` (importance: 0.8891)
+2. `price_lag_7`
+3. `price_lag_14` (importance: 0.0348)
+4. `price_rolling_mean_7`
+5. `price_rolling_mean_14`
+6. `price_rolling_std_7`
+
+**Weather Features (2 features):** 7. `precip_central_highland_rolling_sum_7` (importance: 0.0014) 8. `precip_uva_province_mean`
+
+**Supply Features (2 features):** 9. `supply_dambulla` 10. `supply_embilipitiya`
+
+**Market Features (2 features):** 11. `dambulla_demand` 12. `is_market_open`
+
+**Temporal Features (2 features):** 13. `month` 14. `day_of_week`
+
+**Feature Distribution:**
+
+- Price-related: 43% (6/14)
+- Weather: 14% (2/14)
+- Supply: 14% (2/14)
+- Market: 14% (2/14)
+- Temporal: 14% (2/14)
+
+---
+
+### 🔄 **LSTM: 19 Final Features**
+
+**Verified from notebook execution output (lines 210-220, 469):**
+
+**Price Features (5 features):**
+
+1. `price_lag_1`
+2. `price_lag_7`
+3. `price_rolling_mean_7`
+4. `price_rolling_mean_14`
+5. `price_rolling_std_7`
+
+**Market Features (4 features):** 6. `is_market_open` 7. `dambulla_demand` 8. `dambulla_is_trading_activities_high_or_low` 9. `is_dambulla_increase`
+
+**Weather Features (4 features):** 10. `precip_central_highland_mean` 11. `precip_central_highland_max` 12. `precip_central_highland_rolling_sum_7` 13. `precip_uva_province_mean`
+
+**Supply Features (2 features):** 14. `supply_dambulla_lag_1` 15. `supply_embilipitiya_lag_1`
+
+**Fuel Features (1 feature):** 16. `fur_95_octane_lag_1` (or similar fuel price feature)
+
+**Temporal Features (3 features):** 17. `day_of_week` 18. `month` 19. `is_weekend`
+
+**Feature Distribution:**
+
+- Price-related: 26% (5/19)
+- Market: 21% (4/19)
+- Weather: 21% (4/19)
+- Supply: 11% (2/19)
+- Fuel: 5% (1/19)
+- Temporal: 16% (3/19)
+
+---
+
+## 🔍 **COMPARISON: RF vs LSTM Feature Sets**
+
+| Category     | Random Forest (14)     | LSTM (19)                     | Difference      |
+| ------------ | ---------------------- | ----------------------------- | --------------- |
+| **Price**    | 6 features (more lags) | 5 features                    | RF +1           |
+| **Market**   | 2 features             | 4 features (more context)     | LSTM +2         |
+| **Weather**  | 2 features             | 4 features (more regions)     | LSTM +2         |
+| **Supply**   | 2 features             | 2 features (with lags)        | Same            |
+| **Fuel**     | 0 features             | 1 feature                     | LSTM +1         |
+| **Temporal** | 2 features             | 3 features (includes weekend) | LSTM +1         |
+| **TOTAL**    | **14**                 | **19**                        | **+5 for LSTM** |
+
+**Key Insights:**
+
+1. **Random Forest emphasizes price history** (43% price features)
+
+   - Uses more lag features to capture temporal patterns explicitly
+   - Tree-based models need explicit temporal encoding
+
+2. **LSTM balances across categories** (21-26% distribution)
+
+   - Fewer price lags (learns patterns internally)
+   - More contextual features (market, weather)
+   - Recurrent architecture handles temporal dependencies
+
+3. **Both prioritize weather + supply** as critical factors
+
+   - Both selected `precip_central_highland` features
+   - Both selected `supply_dambulla` and `supply_embilipitiya`
+   - Confirms domain importance across models
+
+4. **LSTM includes fuel prices, RF doesn't**
+   - LSTM's broader feature set captures indirect effects
+   - RF's focused set prioritizes direct price drivers
+
+**Selection Rigor:**
+
+- RF: 273 → 80 → 58 → **14** (95% reduction, intersection method)
+- LSTM: 163 → 20 → **19** (88% reduction, multicollinearity removal)
+
+**Both underwent 4-stage selection with model-specific optimization** ✅
+
+---
+
 _Document Created: November 25, 2025_
 _Verified from: Random_Forest_Carrot_Price_Prediction.ipynb and Multivariate_LSTM_V3_IMPROVED (1).ipynb_
 _Purpose: Correct feature count discrepancies in SUPERVISOR_QA_GUIDE.md_

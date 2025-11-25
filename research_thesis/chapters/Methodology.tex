@@ -30,7 +30,7 @@ Historical data was systematically collected from four primary categories of sou
 
 \subsection{Dataset Characteristics}
 
-The final integrated dataset comprised 2,013 daily observations with 127 initial variables before feature engineering expanded the feature space. The temporal coverage spanned 67 months from January 1, 2020 through July 31, 2025, capturing both stable market conditions and volatile periods including the 2022-2023 economic crisis affecting Sri Lanka. The target variable consisted of carrot prices measured in rupees per kilogram at Dambulla wholesale market, exhibiting significant fluctuations throughout the study period with prices ranging from minimum values near Rs. 50 during supply gluts to peaks exceeding Rs. 450 during scarcity periods, occasional spikes reaching even higher during extreme market stress. Missing values affected approximately 2\% of observations across variables, addressed through forward-filling methodology that propagates last observed values forward while avoiding introduction of future information that would create data leakage. Data quality remained high overall following systematic validation procedures and outlier treatment protocols, with the comprehensive temporal coverage providing sufficient observations for deep learning model training while including varied market conditions enhancing model generalization capability.
+The final integrated dataset comprised 2,017 daily observations with 46 initial variables before feature engineering expanded the feature space. The temporal coverage spanned January 1, 2020 through July 11, 2025, capturing both stable market conditions and volatile periods including the 2022-2023 economic crisis affecting Sri Lanka. The target variable consisted of carrot prices measured in rupees per kilogram at Dambulla wholesale market, exhibiting significant fluctuations throughout the study period with prices ranging from minimum values near Rs. 50 during supply gluts to peaks exceeding Rs. 450 during scarcity periods, occasional spikes reaching even higher during extreme market stress. Missing values affected approximately 2\% of observations across variables, addressed through forward-filling methodology that propagates last observed values forward while avoiding introduction of future information that would create data leakage. Data quality remained high overall following systematic validation procedures and outlier treatment protocols, with the comprehensive temporal coverage providing sufficient observations for deep learning model training while including varied market conditions enhancing model generalization capability.
 
 \subsection{Data Preprocessing}
 
@@ -72,7 +72,13 @@ Feature engineering created meaningful predictors from raw variables, while syst
 
 \subsection{Feature Engineering}
 
-Comprehensive feature engineering generated 289 derived variables across several categories to support multivariate modeling:
+Feature engineering was performed separately for Random Forest and LSTM models to accommodate their distinct architectural requirements. Random Forest, being a tree-based ensemble method, benefits from extensive feature spaces and explicit temporal encodings. In contrast, LSTM networks, with their recurrent architecture, require more focused feature sets to maintain efficient gradient propagation and avoid excessive dimensionality in sequential processing.
+
+\textbf{Random Forest Feature Engineering:} Comprehensive engineering generated 273 derived variables across several categories:
+
+\textbf{LSTM Feature Engineering:} Streamlined engineering created 163 focused features, emphasizing temporal patterns and market dynamics while maintaining computational efficiency for sequence processing.
+
+For both approaches, feature engineering encompassed the following categories:
 
 \textbf{Price Lag Features:} Seven lag variables (1, 2, 3, 7, 14, 21, 30 days) captured temporal dependencies in price movements. Additional features included first-order differences, percentage changes, and lag-differenced terms.
 
@@ -88,7 +94,7 @@ Comprehensive feature engineering generated 289 derived variables across several
 
 \subsection{Model-Specific Feature Selection Strategies}
 
-Feature selection differed systematically across model types based on their underlying assumptions and capabilities:
+Feature selection methodologies were tailored to each model type, reflecting their distinct architectural characteristics and data processing requirements.
 
 \subsubsection{Univariate Models (ARIMA, Univariate LSTM)}
 
@@ -100,19 +106,29 @@ Feature selection differed systematically across model types based on their unde
 
 \textbf{Univariate LSTM Configuration:} 14-day lookback window of historical prices predicting next day's price. Architecture optimized for single-variable temporal patterns.
 
-\subsubsection{Multivariate Models (Multivariate LSTM, Bidirectional LSTM, Random Forest)}
+\subsubsection{Random Forest Feature Selection Pipeline}
 
-For fair comparison, Multivariate LSTM, Bidirectional LSTM, and Random Forest employ identical four-stage feature selection pipeline, ensuring differences in performance reflect model architecture rather than feature set disparities.
+Random Forest employed a comprehensive four-stage selection process optimized for tree-based ensemble learning:
 
-\textbf{Stage 1 - Combined Scoring (60\% RF + 30\% MI + 10\% Correlation):} Three complementary metrics quantified feature importance. Random Forest importance (mean decrease in impurity, 100 estimators, depth 15) captured non-linear relationships and interactions. Mutual Information regression (5 neighbors) measured statistical dependencies including non-monotonic patterns. Pearson correlation identified linear associations. Scores normalized (0-1 range) and combined using weighted scheme: 0.60 $\times$ RF + 0.30 $\times$ MI + 0.10 $\times$ Correlation, emphasizing ensemble-based and information-theoretic criteria over simple linear correlation.
+\textbf{Stage 1 - Combined Scoring (60\% RF + 30\% MI + 10\% Correlation):} Three complementary metrics quantified feature importance. Random Forest importance (mean decrease in impurity, 100 estimators, depth 15) captured non-linear relationships and interactions. Mutual Information regression (5 neighbors) measured statistical dependencies including non-monotonic patterns. Pearson correlation identified linear associations. Scores normalized (0-1 range) and combined using weighted scheme: 0.60 $\times$ RF + 0.30 $\times$ MI + 0.10 $\times$ Correlation, emphasizing ensemble-based and information-theoretic criteria over simple linear correlation. Top 80 features by combined score advanced to subsequent stages.
 
-\textbf{Stage 2 - Top Candidate Selection:} Top 80 features by combined score advanced to subsequent stages, balancing comprehensiveness with computational efficiency while eliminating clearly irrelevant variables.
+\textbf{Stage 2 - Multicollinearity Removal:} Pairwise correlation matrix identified highly redundant features (correlation $\geq$ 0.95). From each correlated pair, feature with lower combined score removed, preserving predictive information while eliminating redundancy. This stage reduced 80 candidates to 47 features, removing 33 highly correlated variables.
 
-\textbf{Stage 3 - Multicollinearity Removal:} Pairwise correlation matrix identified highly redundant features (correlation $\geq$ 0.95). From each correlated pair, feature with lower combined score removed, preserving predictive information while eliminating redundancy. This stage reduced 80 candidates to approximately 58 features.
+\textbf{Stage 3 - SelectFromModel:} Random Forest-based SelectFromModel (300 estimators, median importance threshold) selected features exceeding ensemble's median importance, identifying 24 critical predictors.
 
-\textbf{Stage 4 - Dual Validation (RFE $\cap$ SelectFromModel):} Two independent wrapper methods provided robust final selection. SelectFromModel (Random Forest, 300 estimators, median importance threshold) selected features exceeding ensemble's median importance. Recursive Feature Elimination (Random Forest, 200 estimators) iteratively removed least important features targeting 15-35 optimal subset. Final feature set comprised intersection of both methods, ensuring only features validated by dual independent approaches entered models. Intersection methodology prioritizes stability and generalization over maximizing any single criterion.
+\textbf{Stage 4 - Recursive Feature Elimination:} RFE (Random Forest, 200 estimators) iteratively removed least important features, independently identifying 24 optimal features. Final feature set comprised intersection of both methods, ensuring only features validated by dual independent approaches entered models.
 
-\textbf{Final Feature Set:} 24-35 features (exact count varied slightly across experimental runs due to stochastic elements in Random Forest training) spanning six categories: price features (35\%), weather features (25\%), supply features (15\%), market features (15\%), fuel features (5\%), temporal features (5\%). This distribution indicates multivariate approach successfully captures diverse price drivers beyond pure autoregressive patterns.
+\textbf{Final Feature Set:} 24 features spanning six categories: weather features (50\%), supply features (21\%), fuel features (13\%), price features (8\%), market features (4\%), temporal features (4\%). This distribution indicates weather and supply factors dominate carrot price dynamics beyond pure autoregressive patterns.
+
+\subsubsection{LSTM Feature Selection Pipeline}
+
+LSTM models employed a streamlined two-stage selection process optimized for sequential neural network architectures:
+
+\textbf{Stage 1 - Combined Scoring with Priority System (60\% RF + 40\% Correlation):} Two complementary metrics quantified feature importance. Random Forest importance (100 estimators, depth 15) captured non-linear relationships. Pearson correlation identified linear associations. Scores normalized and combined: 0.60 $\times$ RF + 0.40 $\times$ Correlation. Mutual Information was excluded to maintain computational efficiency for iterative neural network training. Priority features (essential price lags, market indicators) were included regardless of score to ensure temporal continuity. Top 20 features by combined score plus priority features advanced to Stage 2.
+
+\textbf{Stage 2 - Multicollinearity Removal:} Pairwise correlation matrix identified redundant features using stricter threshold (correlation $>$ 0.92, slightly lower than Random Forest's 0.95 to account for LSTM's sensitivity to multicollinearity in gradient-based optimization). From each correlated pair, feature with lower combined score removed. This stage removed 11 features, yielding final set of 9 features.
+
+\textbf{Final Feature Set:} 9 features with balanced distribution: market features (44\%), price features (33\%), fuel features (22\%). This compact representation prioritizes direct market dynamics and recent price history, allowing LSTM's recurrent architecture to extract temporal patterns without excessive input dimensionality.
 
 \section{Forecasting Model Development}
 
@@ -120,7 +136,7 @@ Five distinct modeling approaches were implemented to capture different aspects 
 
 \subsection{Train-Test Split Strategy}
 
-Temporal split preserved chronological order: 70\% training (first 1,409 days), 15\% validation (212 days), 15\% testing (392 days). This approach prevents data leakage by ensuring models never train on future observations, critical for valid time series forecasting evaluation.
+Temporal split preserved chronological order ensuring no data leakage. The 2,017 observations were divided as follows: 70\% training (1,411 samples), 15\% validation (302 samples), 15\% testing (304 samples). For LSTM models, sequence creation with 14-day lookback window reduced the effective dataset size, yielding approximately 2,003 usable samples (1,402 training, 300 validation, 301 testing sequences). This approach prevents models from training on future observations, critical for valid time series forecasting evaluation.
 
 \subsection{ARIMA Models}
 
@@ -132,25 +148,27 @@ AutoRegressive Integrated Moving Average models provided traditional statistical
 
 \subsection{LSTM Models}
 
-Long Short-Term Memory networks captured non-linear temporal dependencies through recurrent architecture.
+Long Short-Term Memory networks captured non-linear temporal dependencies through recurrent architecture. Two primary LSTM variants were implemented to explore different approaches to sequence modeling.
 
-\textbf{Data Preparation:} Features scaled using RobustScaler (robust to outliers), target scaled separately. Sequences created with 14-day lookback window: each input comprises 14 consecutive days of features predicting next day's price. Sequence creation reduced effective dataset size by lookback period.
+\textbf{Data Preparation:} Features scaled using RobustScaler (robust to outliers), target scaled separately. Sequences created with 14-day lookback window: each input comprises 14 consecutive days of features predicting next day's price. Sequence creation reduced effective dataset size from 2,017 to approximately 2,003 usable samples.
 
 \textbf{Univariate LSTM:} Baseline LSTM trained only on historical price sequences. Architecture: Input layer (14 timesteps, 1 feature), LSTM layer (50 units, tanh activation, recurrent dropout 0.1), Batch Normalization, Dropout (0.3), Dense layer (25 units, relu), Dropout (0.2), Output (1 unit). Compiled with Adam optimizer (learning rate 0.001), Huber loss (robust to outliers), trained 100 epochs with batch size 32. Early stopping (patience 15) prevented overfitting.
 
-\textbf{Multivariate LSTM:} Extended architecture processing 24-30 features simultaneously. Architecture: Input (14 timesteps, 24-30 features), Bidirectional LSTM (48 units per direction, tanh activation, L2 regularization 0.005, recurrent dropout 0.1), Batch Normalization, Dropout (0.3), LSTM (24 units, L2 regularization 0.005, recurrent dropout 0.1), Batch Normalization, Dropout (0.3), Dense (12 units, relu, L2 regularization 0.005), Dropout (0.2), Output (1 unit). Optimized with Adam (learning rate 0.0005, clipnorm 1.0), Huber loss, trained 80 epochs, batch size 64. Callbacks: Early Stopping (patience 12), ReduceLROnPlateau (factor 0.3, patience 5), ModelCheckpoint (save best).
+\textbf{Multivariate LSTM (Simple Architecture):} Extended architecture processing 9 features simultaneously, selected through the two-stage LSTM feature selection pipeline. Architecture: Input (14 timesteps, 9 features), LSTM layer (50 units, tanh activation, L2 regularization 0.01, recurrent dropout 0.2), Batch Normalization, Dropout (0.4), Dense (10 units, relu, L2 regularization 0.01), Dropout (0.3), Output (1 unit). Optimized with Adam (learning rate 0.001, clipnorm 1.0), Huber loss, trained 100 epochs, batch size 32. Callbacks: Early Stopping (patience 15), ReduceLROnPlateau (factor 0.5, patience 7).
 
-\textbf{Bidirectional LSTM:} Enhanced multivariate model with bidirectional processing allowing network to learn from both past and future context within sequences. Architecture identical to multivariate LSTM but with bidirectional wrapper on first layer, effectively doubling first layer capacity (96 total units). This configuration achieved best performance among LSTM variants.
+\textbf{Bidirectional LSTM:} Enhanced multivariate model with bidirectional processing, allowing network to learn from both forward and backward temporal context within sequences. Architecture: Input (14 timesteps, 9 features), Bidirectional LSTM wrapper (40 units per direction, tanh activation, L2 regularization 0.008, recurrent dropout 0.15), Batch Normalization, Dropout (0.35), LSTM (20 units, L2 regularization 0.008, recurrent dropout 0.15), Batch Normalization, Dropout (0.35), Dense (10 units, relu, L2 regularization 0.008), Dropout (0.2), Output (1 unit). Optimized with Adam (learning rate 0.0008, clipnorm 1.0), Huber loss, trained 100 epochs, batch size 32. Callbacks: Early Stopping (patience 15), ReduceLROnPlateau (factor 0.5, patience 7), ModelCheckpoint (save best). The bidirectional architecture effectively doubles the first layer capacity to 80 total units (40 forward + 40 backward), enabling richer temporal representations.
 
 \subsection{Random Forest Regression}
 
-Ensemble method provided non-sequential baseline for comparison.
+Ensemble tree-based methods provided non-sequential baseline for comparison. Three Random Forest variants were implemented to explore the performance envelope of tree-based approaches.
 
-\textbf{Feature Representation:} Unlike LSTM's sequence input, Random Forest treats each day independently with lag features and rolling statistics providing temporal context. Same 24-30 features as LSTM multivariate, but structured as single-row observations rather than sequences.
+\textbf{Feature Representation:} Unlike LSTM's sequence input, Random Forest treats each day independently with lag features and rolling statistics providing temporal context. The 24 features selected through the four-stage pipeline were structured as single-row observations rather than sequences.
 
-\textbf{Baseline Configuration:} Initial model with 100 estimators, maximum depth 15, minimum samples split 10, minimum samples leaf 5. Achieved reasonable performance but identified as suboptimal through validation metrics.
+\textbf{Baseline Random Forest:} Initial configuration with default parameters provided starting point for optimization. Configuration: 100 estimators, maximum depth 15, minimum samples split 10, minimum samples leaf 5. This baseline established Random Forest's performance with standard hyperparameters before systematic tuning.
 
-\textbf{Hyperparameter Tuning:} RandomizedSearchCV explored parameter space: n\_estimators (100, 200, 300, 500), max\_depth (10, 15, 20, 25, 30, None), min\_samples\_split (2, 5, 10, 15), min\_samples\_leaf (1, 2, 4, 8), max\_features ('sqrt', 'log2', 0.5, 0.7), bootstrap (True, False). 50 iterations, 3-fold cross-validation, scoring on negative mean absolute error. Best parameters determined and applied to final model.
+\textbf{Hyperparameter-Tuned Random Forest:} RandomizedSearchCV explored parameter space to identify optimal configuration. Search space: n\_estimators (100, 200, 300, 500), max\_depth (10, 15, 20, 25, 30, None), min\_samples\_split (2, 5, 10, 15), min\_samples\_leaf (1, 2, 4, 8), max\_features ('sqrt', 'log2', 0.5, 0.7), bootstrap (True, False). Search conducted with 50 iterations, 3-fold time series cross-validation, scoring on negative mean absolute error. Best parameters identified: n\_estimators=100, max\_depth=10, min\_samples\_split=2, min\_samples\_leaf=8, max\_features=0.7, bootstrap=True. These parameters were applied to final tuned model.
+
+\textbf{Gradient Boosting Regressor:} Alternative ensemble method providing boosting-based comparison to Random Forest's bagging approach. Configuration: 200 iterations, learning rate optimized through validation, maximum depth controlled to prevent overfitting. Gradient Boosting builds trees sequentially, each correcting errors of previous trees, offering different bias-variance tradeoff than Random Forest's parallel tree construction.
 
 \section{Model Evaluation Framework}
 
@@ -230,6 +248,6 @@ The agent handles diverse query categories:
 
 \section{Summary}
 
-This comprehensive methodology integrates traditional statistical methods (ARIMA), state-of-the-art deep learning (LSTM with bidirectional processing), and ensemble techniques (Random Forest) within a rigorous experimental framework. The systematic approach encompasses data collection from authoritative sources, comprehensive preprocessing ensuring quality, extensive feature engineering creating meaningful predictors, rigorous selection identifying optimal subsets, systematic model comparison across diverse approaches, and practical deployment through intelligent AI agent.
+This comprehensive methodology integrates traditional statistical methods (ARIMA), state-of-the-art deep learning (LSTM with simple and bidirectional architectures), and ensemble techniques (Random Forest with three variants including Gradient Boosting) within a rigorous experimental framework. The systematic approach encompasses data collection from authoritative sources, comprehensive preprocessing ensuring quality, model-appropriate feature engineering (273 features for Random Forest, 163 features for LSTM), rigorous selection through distinct pipelines (four-stage for Random Forest yielding 24 features, two-stage for LSTM yielding 9 features), systematic model comparison across diverse approaches, and practical deployment through intelligent AI agent.
 
-The methodology's strength lies in its thoroughness: multiple models provide robustness against approach-specific limitations, comprehensive evaluation using complementary metrics ensures reliable performance assessment, statistical validation techniques confirm significance of findings, ablation studies reveal causal feature contributions, and practical deployment demonstrates real-world applicability. This end-to-end framework delivers not merely academic results but actionable forecasting capabilities for Sri Lankan agricultural stakeholders, while establishing replicable methodology applicable to other vegetables and markets.
+The methodology's strength lies in its thoroughness and adaptability: model-specific feature engineering reflects understanding that tree-based and recurrent architectures have fundamentally different data requirements, separate selection pipelines ensure each model receives optimally configured inputs, multiple architecture variants within each model family provide robustness against configuration-specific limitations, comprehensive evaluation framework using complementary metrics enables reliable performance assessment, and practical deployment through AI agent demonstrates real-world applicability. This end-to-end framework delivers not merely academic analysis but actionable forecasting capabilities for Sri Lankan agricultural stakeholders, while establishing replicable methodology applicable to other vegetables and markets.
