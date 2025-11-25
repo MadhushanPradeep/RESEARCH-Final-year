@@ -1,0 +1,53 @@
+\begin{thebibliography}{}
+
+\bibitem[Avinash et~al., 2024]{avinash2024}
+Avinash, G., Ramasubramanian, V., Paul, R.~K., Ray, M., Dahiya, S., Iquebal, M.~A., and Manjunatha, B. (2024).
+\newblock Price forecasting of top (tomato, onion and potato) commodities using hidden markov-based deep learning approach.
+\newblock {\em Statistics and Applications}, 22(2):1--28.
+
+\bibitem[Bayona-Oré et~al., 2021]{bayona2021}
+Bayona-Oré, S., Cerna, R., and Tirado~Hinojoza, E. (2021).
+\newblock Machine learning for price prediction for agricultural products.
+\newblock {\em Journal of Agricultural Technology}.
+
+\bibitem[Chen et~al., 2021]{chen2021}
+Chen, Z., Goh, H.~S., Sin, K.~L., Lim, K., Chung, N. K.~H., and Liew, X.~Y. (2021).
+\newblock Automated agriculture commodity price prediction system with machine learning techniques.
+\newblock {\em arXiv preprint arXiv:2106.12747}.
+
+\bibitem[Choong et~al., 2023]{choong2024}
+Choong, K.~Y., Sudin, S., Raof, R. A.~A., and Ong, R.~J. (2023).
+\newblock Genetic algorithm-based neural network for vegetable price forecasting on e-commerce platform: A case study in malaysia.
+\newblock In {\em International Conference on Intelligence Science}, pages 565--576, Singapore. Springer Nature Singapore.
+
+\bibitem[Guo et~al., 2022]{guo2022}
+Guo, Y., Tang, D., Tang, W., Yang, S., Tang, Q., Feng, Y., and Zhang, F. (2022).
+\newblock Agricultural price prediction based on combined forecasting model under spatial-temporal influencing factors.
+\newblock {\em Sustainability}, 14(17):10483.
+
+\bibitem[Ranaweera et~al., 2023]{ranaweera2023}
+Ranaweera, H. M. B.~P., Rathnayake, R. M. G. H.~N., and Ananda, A. S. G. J.~K. (2023).
+\newblock Crop price prediction using machine learning approaches: Reference to the sri lankan vegetable market.
+\newblock {\em Journal of Agricultural Economics and Development}.
+
+\bibitem[Ruhunuge et~al., 2024]{ruhunuge2024}
+Ruhunuge, I. J.~A., Wijeratne, A.~W., Esham, M., Fernando, S.~P., and Kuruppu, I.~V. (2024).
+\newblock Exploring climate-driven price variations in carrots: A var model.
+\newblock {\em Journal of Climate and Agriculture}.
+
+\bibitem[Vijayalaxmi et~al., 2022]{kakulapati2022}
+Vijayalaxmi, K., Shaik, S., Pramod, B., Ramulu, B., and Sankeerth, P. (2022).
+\newblock Vegetable price prediction against temperature changes using machine learning techniques.
+\newblock {\em Dickensian Journal}, 22(6).
+
+\bibitem[Yin et~al., 2020]{yin2020}
+Yin, H., Jin, D., Gu, Y.~H., Park, C.~J., Han, S.~K., and Yoo, S.~J. (2020).
+\newblock Stl-attlstm: vegetable price forecasting using stl and attention mechanism-based lstm.
+\newblock {\em Agriculture}, 10(12):612.
+
+\bibitem[Zhang et~al., 2024]{zhang2024}
+Zhang, Q., Yang, W., Zhao, A., Wang, X., Wang, Z., and Zhang, L. (2024).
+\newblock Short-term forecasting of vegetable prices based on lstm model—evidence from beijing's vegetable data.
+\newblock {\em PLOS ONE}, 19(7):e0304881.
+
+\end{thebibliography}

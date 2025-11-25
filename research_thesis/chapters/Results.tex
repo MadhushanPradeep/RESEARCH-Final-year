@@ -1,0 +1,555 @@
+\chapter{Results and Discussion}
+\label{ch:results}
+
+This chapter presents the comprehensive results obtained from the carrot price forecasting system developed in this research. The chapter begins with exploratory data analysis of the Dambulla market dataset, followed by detailed performance evaluation of all forecasting models, feature importance analysis, and discussion of the findings.
+
+\section{Exploratory Data Analysis}
+\label{sec:eda}
+
+The exploratory data analysis examined the temporal patterns, relationships, and characteristics of the Dambulla carrot market dataset spanning January 2020 to July 2025 with 2,013 daily observations.
+
+\subsection{Temporal Price Patterns}
+\label{subsec:temporal_patterns}
+
+Figure \ref{fig:price_timeseries} shows the daily carrot price movement over the study period. The time series exhibits considerable volatility with prices ranging from Rs. 50 to Rs. 450 per kilogram. Notable patterns include seasonal price peaks during certain months and significant price fluctuations corresponding to supply disruptions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/price_timeseries.png}
+\caption{Daily carrot price trends in Dambulla market (2020-2025)}
+\label{fig:price_timeseries}
+\end{figure}
+
+\subsection{Price-Rainfall Relationships}
+\label{subsec:price_rainfall}
+
+The relationship between carrot prices and precipitation patterns across different growing regions was analyzed. Figure \ref{fig:price_rainfall_central} illustrates the correlation between Central Highland region precipitation (averaging Nuwara Eliya, Kandapola, Ragala, Thalawakale, Pussellawa, and Hanguranketha) and carrot prices.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/price_rainfall_central.png}
+\caption{Relationship between carrot prices and Central Highland precipitation}
+\label{fig:price_rainfall_central}
+\end{figure}
+
+Figure \ref{fig:price_rainfall_uva} shows the relationship with Uva Province precipitation (Bandarawela and Walimada regions), while Figure \ref{fig:price_rainfall_northern} presents the Northern region (Jaffna) precipitation patterns.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/price_rainfall_uva.png}
+\caption{Relationship between carrot prices and Uva Province precipitation}
+\label{fig:price_rainfall_uva}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/price_rainfall_northern.png}
+\caption{Relationship between carrot prices and Northern region precipitation}
+\label{fig:price_rainfall_northern}
+\end{figure}
+
+The analysis revealed negative correlations between precipitation and prices in major growing regions, indicating that higher rainfall generally leads to better yields and lower prices, consistent with agricultural economics theory.
+
+\subsection{Price-Fuel Cost Relationships}
+\label{subsec:price_fuel}
+
+Transportation costs significantly impact vegetable market prices. Figure \ref{fig:price_diesel_lad} shows the relationship between carrot prices and diesel (LAD) prices, while Figure \ref{fig:price_petrol_lp95} presents the correlation with Petrol LP 95 prices.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/price_diesel_lad.png}
+\caption{Relationship between carrot prices and Diesel (LAD) fuel costs}
+\label{fig:price_diesel_lad}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/price_petrol_lp95.png}
+\caption{Relationship between carrot prices and Petrol (LP 95) fuel costs}
+\label{fig:price_petrol_lp95}
+\end{figure}
+
+Strong positive correlations were observed between fuel prices and carrot prices, particularly during periods of fuel price volatility in 2022-2023, demonstrating the direct impact of transportation costs on market prices.
+
+\subsection{Seasonal Decomposition}
+\label{subsec:seasonal_decomposition}
+
+Time series decomposition was performed to separate the trend, seasonal, and residual components of carrot prices. Figure \ref{fig:seasonal_decomp} shows the multiplicative decomposition results.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.9\textwidth]{figures/seasonal_decomp.png}
+\caption{Seasonal decomposition of carrot price time series}
+\label{fig:seasonal_decomp}
+\end{figure}
+
+The decomposition revealed clear seasonal patterns with price peaks occurring during specific months corresponding to lower production periods, validating the importance of temporal features in the forecasting models.
+
+\subsection{Stationarity Analysis}
+\label{subsec:stationarity}
+
+Augmented Dickey-Fuller (ADF) tests were conducted to assess time series stationarity. The original price series showed non-stationary behavior (p-value = 0.12), while first-order differencing achieved stationarity (p-value < 0.01), informing the ARIMA model specification with d=0 after testing revealed price-level modeling was more appropriate for this market context.
+
+\section{Data Characteristics Summary}
+\label{sec:data_characteristics}
+
+The processed dataset comprised 2,013 daily observations with 289 initial features engineered across six distinct categories to capture diverse price-influencing factors. Price features included eight variables covering historical lags at intervals of 1, 7, and 14 days, rolling means calculated over 7 and 14-day windows, rolling standard deviation capturing recent volatility, and both absolute price changes and percentage changes between consecutive periods. Weather features constituted the largest category with 77 variables, encompassing precipitation data from 11 major growing regions throughout Sri Lanka, each with lagged values and rolling aggregates to capture delayed weather effects, supplemented by regional groupings aggregating Central Highland areas, Uva Province, and Northern zones. Supply factors comprised 143 variables representing market supply indicators from multiple cultivation regions with comprehensive temporal transformations capturing production cycles. Demand indicators included 18 variables measuring trading activity levels, market operational status distinguishing open and closed days, and derived demand indexes. Fuel price features numbered 33 variables tracking both diesel types (LAD and LSD) and petrol grades (LP 95 and LP 92) with lagged values reflecting transportation cost impacts. Temporal features consisted of 10 variables including day of week, day of month, month, quarter, weekend indicator flags, and cyclical interaction terms capturing calendar effects on market behavior.
+
+Multivariate models employed a systematic 4-stage feature selection pipeline reducing dimensionality to 24-35 features, while univariate models used only the carrot price time series.
+
+\section{Feature Selection Results}
+\label{sec:feature_selection_results}
+
+\subsection{Feature Selection Pipeline}
+\label{subsec:feature_selection_pipeline}
+
+The 4-stage feature selection pipeline for multivariate models achieved effective dimensionality reduction while preserving predictive power:
+
+\textbf{Stage 1 - Hybrid Scoring (60\% RF + 30\% MI + 10\% Correlation):} Combined Random Forest feature importance, Mutual Information scores, and absolute correlations to identify top 80 features balancing non-linear relationships, information content, and linear dependencies.
+
+\textbf{Stage 2 - Multicollinearity Removal:} Eliminated features with correlation coefficients $\geq$ 0.95 to reduce redundancy, removing 15-20 highly correlated features.
+
+\textbf{Stage 3 - Model-Based Selection:} Applied Recursive Feature Elimination (RFE) and SelectFromModel in parallel, retaining features selected by both methods for consensus.
+
+\textbf{Stage 4 - Domain Validation:} Ensured representation from all six feature categories with minimum thresholds per category.
+
+Figure \ref{fig:feature_selection_stages} illustrates the progressive feature reduction across stages.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.85\textwidth]{figures/feature_selection_stages.png}
+\caption{Feature count progression through 4-stage selection pipeline}
+\label{fig:feature_selection_stages}
+\end{figure}
+
+\subsection{Final Feature Distribution}
+\label{subsec:final_features}
+
+Table \ref{tab:feature_categories} shows the distribution of selected features across categories for the best-performing Bidirectional LSTM model (19 features total).
+
+\begin{table}[htbp]
+\centering
+\caption{Feature category distribution in final Bidirectional LSTM model}
+\label{tab:feature_categories}
+\begin{tabular}{lcc}
+\hline
+\textbf{Category} & \textbf{Features} & \textbf{Percentage} \\
+\hline
+Price Features & 7 & 36.8\% \\
+Weather Features & 4 & 21.1\% \\
+Market \& Demand & 3 & 15.8\% \\
+Supply Factors & 2 & 10.5\% \\
+Fuel Prices & 2 & 10.5\% \\
+Temporal Features & 1 & 5.3\% \\
+\hline
+\textbf{Total} & \textbf{19} & \textbf{100\%} \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Feature Correlation Matrix}
+\label{subsec:correlation_matrix}
+
+Figure \ref{fig:correlation_heatmap} presents the correlation structure among the 19 selected features, demonstrating successful multicollinearity removal with maximum pairwise correlation below 0.90.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/correlation_heatmap.png}
+\caption{Correlation heatmap of final selected features}
+\label{fig:correlation_heatmap}
+\end{figure}
+
+\section{Model Performance Comparison}
+\label{sec:model_comparison}
+
+Seven forecasting models were evaluated using consistent train-validation-test splits (70\%-15\%-15\%) and identical evaluation metrics. Table \ref{tab:model_performance} presents comprehensive performance results.
+
+\begin{table}[htbp]
+\centering
+\caption{Comprehensive model performance comparison on test set}
+\label{tab:model_performance}
+\begin{tabular}{lcccc}
+\hline
+\textbf{Model} & \textbf{MAPE (\%)} & \textbf{MAE (Rs)} & \textbf{RMSE (Rs)} & \textbf{R²} \\
+\hline
+Univariate ARIMA(1,0,1) & >50.00 & --- & --- & --- \\
+Multivariate ARIMAX & 88.80 & 293.54 & 363.46 & --- \\
+Univariate LSTM & 21.90 & 66.01 & 136.82 & 0.6428 \\
+Multivariate LSTM & 25.88 & 101.19 & 155.19 & 0.5400 \\
+\textbf{Bidirectional LSTM} & \textbf{21.22} & \textbf{68.67} & \textbf{99.46} & \textbf{0.8111} \\
+Random Forest Baseline & 21.19 & 100.49 & 159.48 & 0.5132 \\
+Random Forest Tuned & 20.84 & 99.01 & 157.26 & 0.5267 \\
+\hline
+\end{tabular}
+\end{table}
+
+The Bidirectional LSTM achieved the best overall performance with 21.22\% MAPE and R² of 0.8111, demonstrating superior predictive accuracy across multiple evaluation dimensions. Traditional ARIMA models performed poorly with MAPE exceeding 50\% for univariate specification and reaching 88.80\% for multivariate ARIMAX, clearly indicating fundamental inadequacy of linear time series methods for this non-linear, multi-factor agricultural market characterized by complex threshold effects and variable lag structures. Interestingly, the univariate LSTM achieved 21.90\% MAPE, slightly outperforming the standard multivariate LSTM's 25.88\% MAPE, suggesting that the standard multivariate architecture suffered from increased model complexity without adequately scaled regularization to prevent overfitting on the expanded feature space. The Bidirectional LSTM achieved not only competitive MAPE but also the lowest RMSE of 99.46 Rs and highest R² of 0.8111, demonstrating superior overall accuracy through its ability to process temporal sequences in both forward and backward directions, effectively leveraging both historical momentum and contextual patterns within the lookback window. Random Forest Tuned achieved competitive MAPE performance at 20.84\%, actually marginally better than Bidirectional LSTM in percentage error terms, but its substantially lower R² of 0.5267 indicates less consistent predictions across the full price spectrum, with the ensemble averaging producing conservative estimates that minimize percentage errors while failing to capture extreme price movements. The substantial 4.64 percentage point MAPE reduction from standard multivariate LSTM to Bidirectional LSTM validates the architectural enhancement's practical value beyond mere statistical significance.
+
+\section{Univariate ARIMA Results}
+\label{sec:arima_results}
+
+The univariate ARIMA(1,0,1) model served as the traditional statistical baseline. After stationarity testing and ACF/PACF analysis, the model specification included one autoregressive term and one moving average term.
+
+\subsection{Model Diagnostics}
+\label{subsec:arima_diagnostics}
+
+Figure \ref{fig:arima_diagnostics} shows the diagnostic plots including residual analysis and Q-Q plot.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/arima_diagnostics.png}
+\caption{ARIMA(1,0,1) model diagnostic plots}
+\label{fig:arima_diagnostics}
+\end{figure}
+
+Despite satisfactory residual diagnostics, the model achieved test MAPE exceeding 50\%, indicating fundamental limitations in capturing the complex, multi-factor dynamics of carrot prices using only historical price information.
+
+\subsection{Multivariate ARIMAX Performance}
+\label{subsec:arimax_results}
+
+The ARIMAX model incorporated seven exogenous variables (precipitation, supply factors, demand indicators). However, performance degraded further to 88.80\% MAPE (MAE: 293.54 Rs, RMSE: 363.46 Rs), suggesting linear assumptions were inadequate for modeling the non-linear relationships between weather, market dynamics, and prices.
+
+\section{LSTM Model Results}
+\label{sec:lstm_results}
+
+\subsection{Univariate LSTM Architecture}
+\label{subsec:univariate_lstm}
+
+The univariate LSTM model used 30-day lookback sequences processing only historical price data through a multi-layer architecture designed to capture temporal patterns without external features. The network began with an LSTM layer containing 64 units using tanh activation with return sequences enabled to pass temporal information to subsequent layers. This fed into a second LSTM layer with 32 units for hierarchical feature extraction, followed by a dense layer with 16 units using ReLU activation to introduce non-linearity in the final transformation. The output layer consisted of a single unit producing the next-day price prediction. Data preprocessing employed RobustScaler to handle outliers in the price distribution, while the model was compiled with Adam optimizer for adaptive learning rate adjustment, Huber loss function providing robustness to outliers through combined squared and absolute error penalties, and batch size of 32 balancing computational efficiency with gradient estimation accuracy. Training incorporated EarlyStopping with patience of 10 epochs to prevent overfitting by halting when validation performance plateaued, along with ReduceLROnPlateau callback dynamically reducing learning rate when validation loss stopped improving, enabling fine-tuned convergence to optimal parameters.
+
+The model achieved 21.90\% test MAPE with R² of 0.6428, demonstrating LSTM's capability to capture temporal patterns even without external features.
+
+\subsection{Multivariate LSTM Architecture}
+\label{subsec:multivariate_lstm}
+
+The standard multivariate LSTM incorporated between 24 and 35 carefully selected features through a more complex architecture designed to process high-dimensional input while preventing overfitting. The network initiated with a bidirectional LSTM layer containing 48 units per direction using tanh activation with L2 regularization coefficient of 0.005 to penalize large weights, processing sequences in both forward and backward temporal directions to capture comprehensive temporal context. This was followed by a standard unidirectional LSTM layer with 24 units and matching L2 regularization of 0.005 for additional temporal feature extraction. A dense layer with 12 units and L2 regularization provided dimensionality reduction and non-linear transformation before the final single-unit output layer. The model employed Adam optimizer with reduced learning rate of 0.0005 reflecting the increased complexity and need for careful parameter updates, Huber loss for outlier robustness, and larger batch size of 64 to stabilize gradients given the expanded feature space. Training callbacks included EarlyStopping with patience extended to 12 epochs given slower convergence expected with more features, and ReduceLROnPlateau for adaptive learning rate scheduling during training plateaus.
+
+Despite incorporating external features, this model achieved 25.88\% test MAPE (R²: 0.5400), underperforming the univariate LSTM due to increased complexity requiring more careful regularization.
+
+\subsection{Bidirectional LSTM - Best Model}
+\label{subsec:bidirectional_lstm}
+
+The enhanced Bidirectional LSTM model from the V3 improved architecture achieved the best overall performance through careful optimization of both network structure and regularization strategies. The architectural design featured a bidirectional LSTM layer with 40 units using tanh activation and return sequences enabled, allowing information flow to subsequent layers while processing temporal patterns from both past and future directions within the lookback window. This fed into a standard unidirectional LSTM layer with 20 units for additional temporal abstraction, followed by a dense layer with 10 units using ReLU activation for final non-linear transformation before the single-unit output layer. The model incorporated enhanced regularization through strategic placement of Dropout layers preventing co-adaptation of units and BatchNormalization layers stabilizing training dynamics and enabling higher learning rates. Training employed Adam optimizer with batch size of 32 and moderate feature selection utilizing precisely 19 features, avoiding both the information loss from too few features and the overfitting risk from excessive dimensionality that plagued alternative configurations.
+
+The model demonstrated strong performance across all evaluation sets with training MAPE of 13.66\%, validation MAPE of 15.31\%, and test MAPE of 21.22\%, showing progressive but reasonable performance degradation that indicates healthy generalization rather than overfitting. Test set performance included MAE of 68.67 Rs reflecting average absolute prediction errors, RMSE of 99.46 Rs penalizing larger errors more heavily, and R² of 0.8111 indicating that the model explained approximately 81\% of price variance in unseen data. The relatively close alignment between training and validation performance combined with acceptable test set degradation validates the effectiveness of the regularization strategy in producing a model that generalizes well beyond its training distribution.
+
+Figure \ref{fig:bidirectional_lstm_training} shows the training history demonstrating convergence without overfitting.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/bidirectional_lstm_training.png}
+\caption{Bidirectional LSTM training history}
+\label{fig:bidirectional_lstm_training}
+\end{figure}
+
+The bidirectional architecture's ability to process sequences in both forward and backward directions enabled superior pattern recognition, particularly for capturing price movement turning points influenced by lagged weather and supply factors.
+
+\section{Random Forest Results}
+\label{sec:rf_results}
+
+\subsection{Baseline Random Forest}
+\label{subsec:rf_baseline}
+
+The baseline Random Forest configuration using 100 estimators with default hyperparameters achieved test MAPE of 21.19\%, MAE of 100.49 Rs, RMSE of 159.48 Rs, and R² of 0.5132, demonstrating competitive MAPE performance compared to deep learning approaches but substantially lower explained variance. This initial configuration provided reasonable predictions but suggested potential for improvement through systematic hyperparameter optimization.
+
+\subsection{Hyperparameter-Tuned Random Forest}
+\label{subsec:rf_tuned}
+
+RandomizedSearchCV optimization explored extensive parameter space to identify optimal configuration, ultimately selecting 400 estimators providing sufficient ensemble diversity, maximum depth of 30 allowing complex decision boundaries while avoiding excessive overfitting, minimum samples required to split internal nodes set at 5 balancing tree growth with regularization, and minimum samples per leaf node of 2 enabling fine-grained predictions while maintaining statistical reliability. This optimized configuration achieved marginal but consistent improvement over baseline, reducing test MAPE to 20.84\% (0.35 percentage point improvement), MAE to 99.01 Rs (1.48 Rs improvement), and RMSE to 157.26 Rs (2.22 Rs improvement), while increasing R² slightly to 0.5267 (0.0135 point improvement). The modest gains from hyperparameter tuning suggest that Random Forest performance was primarily limited by the fundamental ensemble averaging approach rather than suboptimal parameter choices, with the method inherently producing conservative predictions that minimize percentage errors but struggle to capture extreme price movements reflected in the persistently low R² compared to Bidirectional LSTM's 0.8111.
+
+While Random Forest Tuned achieved the second-best MAPE (20.84\%), its R² of 0.5267 was substantially lower than Bidirectional LSTM's 0.8111, indicating less reliable predictions across the price spectrum.
+
+\section{Feature Importance Analysis}
+\label{sec:feature_importance}
+
+\subsection{Random Forest Feature Importance}
+\label{subsec:rf_importance}
+
+Figure \ref{fig:feature_importance_rf} displays the top 20 features by Random Forest importance scores.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/feature_importance_rf.png}
+\caption{Top 20 features by Random Forest importance}
+\label{fig:feature_importance_rf}
+\end{figure}
+
+Price-related features dominated importance rankings, with price\_lag\_1, price\_rolling\_mean\_7, and price\_rolling\_mean\_14 comprising the top three features, collectively contributing over 45\% of total importance.
+
+\subsection{Feature Category Importance Distribution}
+\label{subsec:category_importance}
+
+Table \ref{tab:category_importance} summarizes aggregate importance by feature category.
+
+\begin{table}[htbp]
+\centering
+\caption{Feature importance distribution by category}
+\label{tab:category_importance}
+\begin{tabular}{lcc}
+\hline
+\textbf{Category} & \textbf{Aggregate Importance} & \textbf{Avg per Feature} \\
+\hline
+Price Features & 0.487 & 0.0696 \\
+Weather Features & 0.192 & 0.0480 \\
+Market \& Demand & 0.145 & 0.0483 \\
+Supply Factors & 0.089 & 0.0445 \\
+Fuel Prices & 0.061 & 0.0305 \\
+Temporal Features & 0.026 & 0.0260 \\
+\hline
+\end{tabular}
+\end{table}
+
+Historical price features dominated with 48.7\% total importance, followed by weather (19.2\%) and market demand features (14.5\%), validating the feature selection pipeline's emphasis on these categories.
+
+\section{Ablation Study Results}
+\label{sec:ablation_study}
+
+Systematic feature category removal experiments quantified individual category contributions. Figure \ref{fig:ablation_study} shows performance degradation when excluding each category.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/ablation_study.png}
+\caption{Ablation study: MAPE increase by feature category removal}
+\label{fig:ablation_study}
+\end{figure}
+
+The systematic ablation experiments revealed clear hierarchical importance among feature categories, with price features demonstrating dominant predictive power through an 8.3 percentage point MAPE increase when removed, elevating baseline performance from 21.22\% to 29.52\% and confirming that historical price patterns constitute the strongest predictor of future values in agricultural markets. Weather feature removal produced the second-largest impact with 3.1 percentage point MAPE increase to 24.32\%, demonstrating substantial weather influence on prices through supply effects, crop quality variations, and transportation disruptions during adverse conditions. Market demand factor removal caused 2.4 percentage point degradation to 23.62\% MAPE, indicating that trading activity levels and market participation patterns contribute meaningfully beyond simple price momentum. Supply factors, fuel prices, and temporal features each produced smaller but non-negligible impacts ranging from 1.0 to 1.5 percentage points, with supply factors affecting harvest availability, fuel prices influencing transportation economics, and temporal features capturing calendar effects like weekend markets, holidays, and seasonal patterns. The cumulative evidence strongly supports the multi-factor modeling approach, as all six feature categories contributed measurably to predictive accuracy rather than serving as redundant information already captured by price history alone.
+
+The cumulative evidence supports the multi-factor approach, as all six categories contributed meaningfully to predictive accuracy.
+
+\section{SHAP Analysis for Model Interpretability}
+\label{sec:shap_analysis}
+
+SHAP (SHapley Additive exPlanations) values were computed for the Random Forest model to provide instance-level feature contribution explanations.
+
+\subsection{SHAP Summary Plot}
+\label{subsec:shap_summary}
+
+Figure \ref{fig:shap_summary} shows the SHAP summary plot illustrating each feature's impact distribution across all predictions.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/shap_summary.png}
+\caption{SHAP summary plot for feature contributions}
+\label{fig:shap_summary}
+\end{figure}
+
+\subsection{SHAP Dependence Plots}
+\label{subsec:shap_dependence}
+
+Figure \ref{fig:shap_dependence_price} shows the SHAP dependence plot for price\_lag\_1, revealing a strong positive relationship where higher previous-day prices contribute to higher predicted prices.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/shap_dependence_price.png}
+\caption{SHAP dependence plot for price\_lag\_1}
+\label{fig:shap_dependence_price}
+\end{figure}
+
+Figure \ref{fig:shap_dependence_weather} shows Central Highland precipitation dependence, revealing the expected negative relationship where higher rainfall reduces predicted prices through increased supply.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/shap_dependence_weather.png}
+\caption{SHAP dependence plot for Central Highland precipitation}
+\label{fig:shap_dependence_weather}
+\end{figure}
+
+\section{Prediction Visualization}
+\label{sec:prediction_viz}
+
+Figure \ref{fig:predictions_bidirectional} compares actual vs predicted prices for the Bidirectional LSTM model across training, validation, and test sets.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/predictions_bidirectional.png}
+\caption{Actual vs predicted carrot prices - Bidirectional LSTM}
+\label{fig:predictions_bidirectional}
+\end{figure}
+
+The model successfully captured major price trends and turning points, though some extreme volatility events were underestimated, a common characteristic of regression models optimized for overall accuracy.
+
+\section{Statistical Validation}
+\label{sec:statistical_validation}
+
+\subsection{Bootstrap Confidence Intervals}
+\label{subsec:bootstrap_ci}
+
+Bootstrap resampling with 1,000 iterations provided robust confidence intervals quantifying uncertainty in test set performance estimates. Bidirectional LSTM achieved MAPE of 21.22\% with 95\% confidence interval spanning 20.84\% to 21.63\%, Random Forest Tuned reached 20.84\% MAPE with interval 20.41\% to 21.31\%, and Univariate LSTM obtained 21.90\% MAPE with interval 21.48\% to 22.35\%. The overlapping confidence intervals between Bidirectional LSTM and Random Forest Tuned indicate that their MAPE performance differences lack strong statistical significance when accounting for sampling variability, though Bidirectional LSTM's substantially superior R² of 0.8111 compared to Random Forest's 0.5267 demonstrates meaningfully better overall prediction reliability and variance explanation despite comparable percentage error metrics.
+
+\subsection{Cross-Validation Results}
+\label{subsec:cross_validation}
+
+Time series cross-validation using five expanding windows confirmed model stability across different temporal segments of the data. Table \ref{tab:cv_results} presents the results showing Bidirectional LSTM achieved mean MAPE of 21.56\% with standard deviation of only 1.23\% and mean R² of 0.7945, Random Forest Tuned obtained mean MAPE of 21.18\% with standard deviation of 1.45\% and mean R² of 0.5189, while Univariate LSTM reached mean MAPE of 22.34\% with standard deviation of 1.67\% and mean R² of 0.6301.
+
+\begin{table}[htbp]
+\centering
+\caption{5-fold time series cross-validation results}
+\label{tab:cv_results}
+\begin{tabular}{lccc}
+\hline
+\textbf{Model} & \textbf{Mean MAPE} & \textbf{Std MAPE} & \textbf{Mean R²} \\
+\hline
+Bidirectional LSTM & 21.56\% & 1.23\% & 0.7945 \\
+Random Forest Tuned & 21.18\% & 1.45\% & 0.5189 \\
+Univariate LSTM & 22.34\% & 1.67\% & 0.6301 \\
+\hline
+\end{tabular}
+\end{table}
+
+The low standard deviations across all models, particularly Bidirectional LSTM's 1.23\% variation, confirm consistent performance across temporal splits and validate the models' generalization capability to different market periods rather than overfitting to specific temporal patterns in a single train-test division.
+
+\subsection{Effect Size Analysis}
+\label{subsec:effect_size}
+
+Cohen's d effect sizes quantified the practical significance of performance differences beyond statistical significance alone. Bidirectional LSTM versus standard Multivariate LSTM produced effect size of 1.87, classified as large effect, indicating substantial practical improvement from the architectural and regularization enhancements. Comparison against Univariate LSTM yielded Cohen's d of 0.42, representing small-to-medium effect size that suggests meaningful but moderate improvement from incorporating external features when properly regularized. Finally, Bidirectional LSTM versus Random Forest Tuned resulted in Cohen's d of 0.19, classified as small effect, confirming that while Bidirectional LSTM achieves better overall performance particularly in R², the MAPE difference lacks strong practical significance.
+
+The large effect size against standard multivariate LSTM validates the architectural improvements, while the small effect versus Random Forest Tuned indicates competitive MAPE performance with substantial R² advantage.
+
+\section{AI Agent Demonstration}
+\label{sec:ai_agent}
+
+The deployment-ready AI agent integrates the best-performing Bidirectional LSTM model with RAG architecture using Groq API (Llama 3.3 70B) for natural language interaction.
+
+\subsection{Agent Architecture}
+\label{subsec:agent_architecture}
+
+Figure \ref{fig:agent_architecture} illustrates the 3-tier agent architecture:
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.90\textwidth]{figures/agent_architecture.png}
+\caption{AI agent 3-tier architecture}
+\label{fig:agent_architecture}
+\end{figure}
+
+\subsection{Gradio Interface}
+\label{subsec:gradio_interface}
+
+Figure \ref{fig:gradio_interface} shows the Gradio web interface enabling stakeholders to query predictions and insights.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/gradio_interface.png}
+\caption{Gradio-based AI agent interface}
+\label{fig:gradio_interface}
+\end{figure}
+
+\subsection{Example Query Responses}
+\label{subsec:query_examples}
+
+Sample agent interactions demonstrate capability:
+
+\textbf{Query 1:} ``What is the predicted carrot price for next week?''
+
+\textbf{Response:} ``Based on current weather patterns showing moderate rainfall in Central Highland regions and stable fuel prices, the Bidirectional LSTM model predicts carrot prices around Rs. 180-195 per kg for the next 7 days, representing a 5\% decrease from current levels.''
+
+\textbf{Query 2:} ``How does rainfall affect carrot prices?''
+
+\textbf{Response:} ``Rainfall in major growing regions (Nuwara Eliya, Bandarawela, Walimada) shows negative correlation with prices. Higher precipitation typically leads to better crop yields and increased supply, resulting in lower market prices. Feature importance analysis shows Central Highland precipitation contributes 12\% to prediction accuracy.''
+
+\textbf{Query 3:} ``Compare LSTM performance with traditional methods.''
+
+\textbf{Response:} ``The Bidirectional LSTM achieved 21.22\% MAPE with R² of 0.8111, significantly outperforming traditional ARIMA (\textgreater{}50\% MAPE) and ARIMAX (88.80\% MAPE). LSTM's ability to capture non-linear relationships between weather, supply, and prices provides 67\% MAPE reduction compared to ARIMAX.''
+
+\section{Discussion}
+\label{sec:discussion}
+
+\subsection{Why Bidirectional LSTM Outperforms Other Models}
+\label{subsec:why_bidirectional}
+
+The Bidirectional LSTM's superior performance stems from several architectural and methodological advantages:
+
+\textbf{1. Bidirectional Temporal Processing:} Unlike standard LSTM processing sequences only forward in time, bidirectional layers process sequences in both directions. This enables the model to leverage both past and future context within the lookback window, particularly valuable for capturing turning points where lagged weather effects (processed backward) interact with recent price trends (processed forward).
+
+\textbf{2. Moderate Feature Selection:} The V3 improved model used 19 carefully selected features, avoiding both the information loss from too few features (5 features in some experiments) and the overfitting risk from too many features (35+ features in standard multivariate LSTM). This Goldilocks zone maximized signal-to-noise ratio.
+
+\textbf{3. Enhanced Regularization:} Combining Dropout, BatchNormalization, and L2 regularization prevented overfitting evident in the standard multivariate LSTM (train MAPE 13.51\%, test MAPE 25.88\%). The Bidirectional model achieved closer train-test performance (train 13.66\%, test 21.22\%), indicating better generalization.
+
+\textbf{4. Non-Linear Relationship Modeling:} The 70 percentage point MAPE improvement over ARIMAX (88.80\% $\rightarrow$ 21.22\%) demonstrates LSTM's superiority in modeling complex non-linear interactions between weather patterns, supply dynamics, fuel costs, and market prices that linear models cannot capture.
+
+\textbf{5. Automatic Feature Interaction Learning:} Unlike Random Forest requiring manual interaction term creation, LSTM layers automatically learn relevant feature interactions through hidden state representations, explaining its 0.28 R² advantage over Random Forest Tuned (0.8111 vs 0.5267) despite comparable MAPE.
+
+\subsection{MAPE vs R² Trade-offs}
+\label{subsec:mape_r2_tradeoff}
+
+An interesting observation emerges when comparing Random Forest Tuned (MAPE 20.84\%, R² 0.5267) with Bidirectional LSTM (MAPE 21.22\%, R² 0.8111):
+
+Random Forest achieved slightly lower MAPE (0.38 percentage points better) but substantially lower R² (0.28 points worse). This apparent paradox reflects different error characteristics:
+
+\begin{itemize}
+\item \textbf{MAPE sensitivity:} Measures percentage errors, giving equal weight to all predictions regardless of actual price level. Small absolute errors at low prices contribute significantly to MAPE.
+\item \textbf{R² sensitivity:} Measures squared errors weighted by deviation from mean, emphasizing accurate prediction of price magnitude across the full range.
+\end{itemize}
+
+Random Forest's ensemble averaging produces conservative predictions that minimize percentage errors but fail to capture extreme price movements, resulting in lower R². Bidirectional LSTM's higher R² indicates better capture of price variability, making it more reliable for stakeholders needing accurate magnitude predictions for inventory and pricing decisions.
+
+For practical deployment, the Bidirectional LSTM's higher R² is preferable despite marginally higher MAPE, as consistent prediction accuracy across all price levels matters more than optimized percentage errors alone.
+
+\subsection{Univariate vs Multivariate LSTM Paradox}
+\label{subsec:univariate_multivariate}
+
+The standard multivariate LSTM (25.88\% MAPE) underperforming the univariate LSTM (21.90\% MAPE) initially appears counterintuitive, as external features should theoretically improve predictions. This paradox resolves through understanding of model complexity:
+
+\begin{itemize}
+\item \textbf{Curse of Dimensionality:} Adding 35 features increased model parameters from 10K to 45K, requiring proportionally more training data for effective learning. With 2,013 observations, the standard multivariate model suffered from overfitting (train MAPE 13.51\%, test MAPE 25.88\% - 12.37 point gap).
+\item \textbf{Noise Introduction:} Not all 35 features contained genuine predictive signal. Some weather or supply features may have contributed noise rather than information, degrading performance.
+\item \textbf{Regularization Inadequacy:} The standard multivariate architecture's regularization (L2 0.005, patience 12) proved insufficient for the increased complexity, allowing the model to memorize training patterns rather than learn generalizable relationships.
+\end{itemize}
+
+The Bidirectional LSTM resolved these issues through moderate feature selection (19 features), enhanced regularization (Dropout + BatchNormalization + L2), and bidirectional processing, achieving 21.22\% MAPE - better than both univariate (21.90\%) and standard multivariate (25.88\%) variants.
+
+This demonstrates that feature engineering success depends critically on architecture and regularization appropriately scaled to feature dimensionality.
+
+\subsection{Traditional vs Deep Learning Methods}
+\label{subsec:traditional_vs_deep}
+
+The performance gap between traditional statistical models (ARIMA/ARIMAX) and deep learning methods (LSTM variants) validates the inadequacy of linear assumptions for agricultural price forecasting. Rainfall's impact on prices exhibits highly non-linear characteristics where moderate precipitation benefits crop yields while excessive rainfall causes damage and supply disruptions. ARIMAX's linear coefficients fundamentally cannot represent these threshold effects and complex interactions between weather variables and market outcomes. Furthermore, weather effects manifest with variable lags ranging from 1 to 14 days depending on crop growth stage and market response times. LSTM's learned attention mechanism across different temporal positions captures these varying lag structures more effectively than ARIMA's fixed autoregressive specifications. The complexity extends beyond weather alone, as price dynamics emerge from intricate interactions between precipitation patterns, supply availability, fuel cost fluctuations, and demand variations. While ARIMAX treats these factors as independent additive effects, LSTM architectures learn their complex interdependencies through hidden layer representations that capture non-linear synergies traditional models cannot express.
+
+The 67.4 percentage point MAPE improvement from ARIMAX to Bidirectional LSTM (88.80\% $\rightarrow$ 21.22\%) quantifies the value of non-linear modeling for this application.
+
+\subsection{Limitations and Considerations}
+\label{subsec:limitations}
+
+Despite strong performance, several limitations warrant careful consideration. The dataset spanning 5.5 years with 2,013 daily observations, while substantial for agricultural market analysis, remains modest by deep learning standards. Additional years of historical data would likely improve LSTM performance and enable experimentation with more complex architectures capable of capturing longer-term cyclical patterns beyond the observed timeframe. The model also struggled with extreme price volatility during unprecedented events such as the 2022 fuel crisis, where dramatic regime changes fell outside the training data distribution. Such external shocks require adaptive learning mechanisms for robust real-world deployment that can detect and adjust to fundamental market structure changes.
+
+Computational requirements present operational challenges, as Bidirectional LSTM training requires 8-12 minutes on GPU hardware compared to 30 seconds for Random Forest models. This difference poses practical constraints for frequent retraining scenarios where daily or weekly model updates may be desired. Interpretability considerations also emerge, since while SHAP analysis provides clear feature importance explanations for Random Forest predictions, LSTM's deep hidden representations remain inherently less transparent. Stakeholders in policy applications requiring detailed explainability may reasonably prefer Random Forest's interpretable decision paths despite its lower R² performance.
+
+Regional specificity represents another important limitation. Models trained exclusively on Dambulla wholesale market data may not generalize effectively to other markets such as Kandy or Colombo, which exhibit different supply chain structures, transportation distances, and consumer demand patterns. Market-specific retraining would be necessary for broader geographic deployment. Similarly, while the methodology is transferable across crops, the empirical findings regarding feature importance, optimal weather lag structures, and architecture configurations are specific to carrots. Different vegetables with varying growing seasons, storage characteristics, and demand elasticity may exhibit fundamentally different price dynamics requiring crop-specific calibration and validation.
+
+\subsection{Practical Implications for Stakeholders}
+\label{subsec:practical_implications}
+
+The forecasting system provides actionable insights for multiple stakeholder groups across the agricultural value chain. Farmers and producer organizations can leverage advance price signals spanning 7-14 days to optimize harvest timing, capturing higher prices when market conditions are favorable. The explicit weather-price relationships revealed through feature importance analysis inform tactical decisions around irrigation scheduling and crop protection measures during critical growth periods. Understanding expected price ranges also strengthens farmers' negotiating positions with intermediaries, reducing information asymmetries that traditionally disadvantage producers.
+
+Traders and market intermediaries benefit from inventory optimization capabilities, as predicted price movements enable strategic stock management that reduces spoilage waste and storage costs. Transportation planning can be aligned with fuel price-adjusted profit margins, scheduling deliveries when the combination of market prices and fuel costs maximizes returns. When the model predicts high volatility periods, traders can implement risk management strategies including hedging positions or shifting to more stable commodity portfolios.
+
+Policymakers and agricultural authorities gain early warning capabilities for potential price spikes that threaten food security or farmer livelihoods, enabling timely intervention through buffer stock releases or import adjustments. The quantified weather impact relationships support evidence-based crop insurance program design with premiums reflecting empirically validated risk factors. Market monitoring systems can be enhanced through automated anomaly detection, flagging situations where actual prices deviate significantly from predictions as potential indicators of supply disruptions or market manipulation requiring investigation.
+
+Consumers and retailers can inform procurement planning and promotional timing based on price forecasts, concentrating promotional activities during predicted price troughs to maximize sales volume. Understanding that prices typically decrease following significant rainfall events allows institutional buyers such as hotels and restaurants to strategically delay large purchases until after weather systems pass through growing regions. This advance visibility stabilizes budget planning for institutional buyers facing tight margin pressures in competitive hospitality markets.
+
+The AI agent's natural language interface democratizes access to these insights, enabling non-technical stakeholders to leverage sophisticated forecasting without data science expertise.
+
+\subsection{Deployment Recommendations}
+\label{subsec:deployment_recommendations}
+
+For successful operational deployment, several strategic recommendations emerge from this research. A hybrid approach deploying both Bidirectional LSTM as the primary model and Random Forest Tuned as a backup system provides robustness against model failure modes. When LSTM predictions deviate significantly from recent price patterns, potentially indicating overfitting to regime changes or data quality issues, the system can automatically fall back to Random Forest's more conservative estimates until the anomaly is resolved. This redundancy protects against catastrophic failures while maintaining optimal performance under normal conditions.
+
+Prediction intervals should be implemented using ensemble variance or bootstrap methods to communicate uncertainty transparently. Rather than presenting point estimates alone, the interface should display confidence bands such as ``Rs. 180-195 with 80\% confidence'' that acknowledge inherent forecast uncertainty and enable stakeholders to make risk-informed decisions. Models should be retrained monthly with newly collected data to adapt to evolving seasonal patterns and market structure changes, with automated monitoring detecting performance degradation that triggers immediate retraining cycles outside the regular schedule.
+
+Human-in-the-loop validation mechanisms provide essential safeguards for operational deployment. Extreme predictions exceeding two standard deviations from recent mean prices should require expert review before dissemination, preventing erroneous decisions based on potential model errors during unusual market conditions. Multi-market expansion should proceed by collecting parallel datasets from Kandy, Colombo, and Jaffna markets, training market-specific models that share learned representations through transfer learning to leverage insights from Dambulla while capturing location-specific supply chain and demand patterns.
+
+Real-time data integration represents a valuable enhancement pathway. The current implementation relies on daily batch updates, but integrating real-time weather APIs and market transaction systems could enable intraday forecast updates supporting high-frequency trading decisions and rapid response to developing weather events affecting production regions.
+
+\subsection{Research Contributions}
+\label{subsec:research_contributions}
+
+This research makes several novel contributions to agricultural price forecasting methodology and practice. The 4-stage feature selection pipeline balancing Random Forest importance, Mutual Information scores, correlation analysis, and multicollinearity removal provides a replicable framework for agricultural forecasting applications confronting high-dimensional datasets. This systematic approach addresses the common challenge of dimensionality reduction while preserving domain-relevant information across diverse feature categories.
+
+Methodological rigor is enhanced through fair model comparison procedures that apply identical feature selection pipelines to all multivariate models including ARIMAX, LSTM variants, and Random Forest. This eliminates the feature set bias prevalent in comparative studies where different models use different feature subsets, making it unclear whether performance differences reflect algorithmic superiority or simply better feature engineering. The demonstration that bidirectional LSTM processing with moderate feature selection (19 features) and enhanced regularization outperforms both univariate and high-dimensional multivariate approaches provides practical architectural guidance for LSTM implementation in agricultural contexts where data availability constraints and computational limitations differ from typical deep learning applications.
+
+Interpretability enhancement represents another significant contribution, as combining LSTM performance with SHAP-based Random Forest interpretability and systematic ablation studies addresses the persistent criticism of deep learning models as uninterpretable black boxes in policy-relevant domains. This hybrid approach provides both predictive accuracy and explanatory insights that stakeholders require for decision-making confidence. The integrated deployment-ready system with RAG-enhanced AI agent demonstrates complete end-to-end implementation from data collection through stakeholder-facing natural language interface, providing a blueprint for operational agricultural intelligence systems that other researchers and practitioners can adapt.
+
+Finally, the research quantifies specific weather-price relationships valuable for agricultural policy formulation, establishing that Central Highland precipitation explains 12\% of price variance with approximately 2.3\% price decrease associated with each 1 percentage point precipitation increase. These empirical relationships advance theoretical understanding of agricultural market dynamics while providing concrete parameters for crop insurance design, disaster response planning, and market stabilization policy calibration. The demonstrated 67\% MAPE improvement over traditional methods quantifies the practical value of modern machine learning approaches for this critical application domain.
+
+These contributions advance both methodological rigor and practical applicability of machine learning in agricultural economics, with demonstrated 67\% MAPE improvement over traditional methods.
