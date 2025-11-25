@@ -16,7 +16,7 @@ This directory contains all screenshots and figures for the thesis, particularly
 
 ### 4.3 Feature Selection Results
 
-- `feature_selection_stages.png` - Bar chart: 289 → 80 → 65 → 40 → 24-35 features
+- `feature_selection_stages.png` - Bar chart: RF (273 → 80 → 58 → 14), LSTM (163 → 19 features)
 - `correlation_heatmap.png` - 19×19 correlation heatmap
 
 ### 4.5 ARIMA Results

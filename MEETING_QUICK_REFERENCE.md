@@ -2,16 +2,16 @@
 
 ## 📊 Your Numbers (Memorize These)
 
-| Metric | Value | Meaning |
-|--------|-------|---------|
-| **LSTM MAPE** | **19.00%** | Your main result |
-| **RF MAPE** | 34.00% | Baseline to beat |
-| **Improvement** | **14.7 pp** | Absolute difference |
-| **Relative Gain** | **44%** | Percentage improvement |
-| **p-value** | **< 0.001** | Highly significant |
-| **Cohen's d** | **> 2.0** | LARGE effect size |
-| **Weather Importance** | **~50%** | Confirmed by 3 methods |
-| **Train-Test Gap** | **6%** | Controlled overfitting |
+| Metric                 | Value       | Meaning                |
+| ---------------------- | ----------- | ---------------------- |
+| **LSTM MAPE**          | **19.00%**  | Your main result       |
+| **RF MAPE**            | 34.00%      | Baseline to beat       |
+| **Improvement**        | **14.7 pp** | Absolute difference    |
+| **Relative Gain**      | **44%**     | Percentage improvement |
+| **p-value**            | **< 0.001** | Highly significant     |
+| **Cohen's d**          | **> 2.0**   | LARGE effect size      |
+| **Weather Importance** | **~50%**    | Confirmed by 3 methods |
+| **Train-Test Gap**     | **6%**      | Controlled overfitting |
 
 ---
 
@@ -49,7 +49,7 @@
 
 ### 5. "How much work did you put in?"
 
-**Answer:** Year-round effort: 272 → 24 features (4-stage selection), tested 5 architectures, ablation study (4 tests), statistical tests (bootstrap + SHAP), 9 generated artifacts, 2 comprehensive guides.
+**Answer:** Year-round effort: RF (273 → 14 features), LSTM (163 → 19 features) with 4-stage selection, tested 5 architectures, ablation study (4 tests), statistical tests (bootstrap + SHAP), 9 generated artifacts, 2 comprehensive guides.
 
 ---
 
@@ -77,13 +77,13 @@
 
 ## 🚫 Don't Say These
 
-| ❌ Weak Phrase | ✅ Strong Replacement |
-|---------------|----------------------|
-| "I think weather might be important" | "Weather drives 50% of performance (p < 0.001)" |
-| "LSTM seems better" | "LSTM outperforms RF by 44% (Cohen's d > 2.0)" |
-| "Random Forest didn't work well" | "RF's architectural mismatch proves valuable methodological insight" |
-| "I used some feature selection" | "4-stage feature selection with dual validation (RFE + SelectFromModel)" |
-| "The model is accurate" | "19% MAPE with 95% CI [18.5%, 19.5%], statistically significant" |
+| ❌ Weak Phrase                       | ✅ Strong Replacement                                                    |
+| ------------------------------------ | ------------------------------------------------------------------------ |
+| "I think weather might be important" | "Weather drives 50% of performance (p < 0.001)"                          |
+| "LSTM seems better"                  | "LSTM outperforms RF by 44% (Cohen's d > 2.0)"                           |
+| "Random Forest didn't work well"     | "RF's architectural mismatch proves valuable methodological insight"     |
+| "I used some feature selection"      | "4-stage feature selection with dual validation (RFE + SelectFromModel)" |
+| "The model is accurate"              | "19% MAPE with 95% CI [18.5%, 19.5%], statistically significant"         |
 
 ---
 
