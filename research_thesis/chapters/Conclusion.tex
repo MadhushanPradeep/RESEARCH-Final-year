@@ -10,7 +10,7 @@ This research developed and evaluated a comprehensive carrot price forecasting s
 
 The research systematically integrated 289 initial features across six categories—historical prices, weather patterns from 11 growing regions, supply factors, demand indicators, fuel costs, and temporal variables—applying a rigorous 4-stage feature selection pipeline to identify the most predictive subset while avoiding overfitting. Model evaluation employed consistent train-validation-test splits and comprehensive metrics including MAPE, MAE, RMSE, and R² to ensure robust performance assessment.
 
-The Bidirectional LSTM model emerged as the best performer with 21.22\% test MAPE and R² of 0.8111, substantially outperforming traditional ARIMA/ARIMAX approaches (MAPE \textgreater{} 50\% and 88.80\% respectively) and achieving competitive accuracy with interpretable Random Forest models while providing superior prediction reliability. The deployment-ready system integrates this forecasting capability with a Retrieval-Augmented Generation (RAG) AI agent powered by Groq API, enabling natural language interaction for non-technical stakeholders.
+The Simple LSTM model emerged as the best performer with 19.93\% test MAPE and R² of 0.8651, substantially outperforming traditional ARIMA/ARIMAX approaches (MAPE $>$50\% and 88.80\% respectively), Bidirectional LSTM (21.46\% MAPE), and Random Forest models (34.10\% MAPE). The deployment-ready system integrates this forecasting capability with a Retrieval-Augmented Generation (RAG) AI agent powered by Groq API, enabling natural language interaction for non-technical stakeholders.
 
 \section{Key Findings}
 \label{sec:key_findings}
@@ -20,17 +20,17 @@ The research yielded several significant findings with both theoretical and prac
 \subsection{Superior Performance of Deep Learning Approaches}
 \label{subsec:dl_superiority}
 
-The Bidirectional LSTM achieved 67.4\% MAPE reduction compared to multivariate ARIMAX (21.22\% vs 88.80\%), demonstrating deep learning's superiority for modeling complex non-linear relationships in agricultural markets. This validates the inadequacy of linear assumptions inherent in traditional time series methods for multi-factor price dynamics involving weather-supply-demand interactions with variable time lags.
+The Simple LSTM achieved 77.6\% MAPE reduction compared to multivariate ARIMAX (19.93\% vs 88.80\%), demonstrating deep learning's superiority for modeling complex non-linear relationships in agricultural markets. This validates the inadequacy of linear assumptions inherent in traditional time series methods for multi-factor price dynamics involving weather-supply-demand interactions with variable time lags.
 
 \subsection{Architecture and Regularization Matter More Than Feature Quantity}
 \label{subsec:architecture_matters}
 
-The standard multivariate LSTM with 35 features underperformed (25.88\% MAPE) compared to both univariate LSTM with only price history (21.90\% MAPE) and the optimized Bidirectional LSTM with 19 features (21.22\% MAPE). This paradox demonstrates that model architecture, regularization strength, and feature quality matter more than simply maximizing feature quantity. The Goldilocks principle applies—too few features lose information, too many introduce noise and overfitting.
+The standard multivariate LSTM with 35 features underperformed (25.88\% MAPE) compared to univariate LSTM (21.90\% MAPE), Bidirectional LSTM with 19 features (21.46\% MAPE), and the optimized Simple LSTM with 9 features (19.93\% MAPE). This demonstrates that model architecture, regularization strength, and feature quality matter more than simply maximizing feature quantity. The Goldilocks principle applies—too few features lose information, too many introduce noise and overfitting.
 
-\subsection{Bidirectional Processing Enhances Temporal Pattern Recognition}
-\label{subsec:bidirectional_advantage}
+\subsection{Architectural Simplicity with Aggressive Feature Selection Wins}
+\label{subsec:simple_lstm_advantage}
 
-The bidirectional architecture's ability to process sequences in both temporal directions provided measurable advantage, particularly for identifying price turning points where lagged weather effects interact with recent market trends. The 4.66 percentage point improvement over standard multivariate LSTM (21.22\% vs 25.88\% MAPE) quantifies this architectural enhancement's value.
+The Simple LSTM's success demonstrates that architectural simplicity combined with aggressive feature selection (9 features from 163) produces superior generalization compared to complex architectures. The 5.95 percentage point improvement over standard multivariate LSTM (19.93\% vs 25.88\% MAPE) and 1.53 point advantage over Bidirectional LSTM (19.93\% vs 21.46\%) validates the principle of parsimony in machine learning.
 
 \subsection{Feature Importance Hierarchy: Price \textgreater\ Weather \textgreater\ Market Dynamics}
 \label{subsec:feature_hierarchy}
@@ -40,7 +40,7 @@ Systematic feature importance analysis and ablation studies revealed a clear pre
 \subsection{Multi-Factor Approach Justified Despite Univariate Competitiveness}
 \label{subsec:multifactor_justified}
 
-Although Random Forest Tuned achieved slightly lower MAPE than Bidirectional LSTM (20.84\% vs 21.22\%), the latter's substantially higher R² (0.8111 vs 0.5267) demonstrates superior prediction reliability across the full price spectrum. The multivariate approach with proper architecture captures price variability mechanisms, enabling not just point predictions but understanding of causal drivers—essential for policy applications and stakeholder decision-making.
+The Simple LSTM's substantially lower MAPE (19.93\% vs 34.10\%) and higher R² (0.8651 vs 0.3931) compared to Random Forest demonstrates superior predictive performance and reliability. The LSTM approach captures temporal dependencies and price variability mechanisms that tree-based methods cannot, enabling not just point predictions but understanding of dynamic causal drivers—essential for policy applications and stakeholder decision-making.
 
 \subsection{Weather-Price Relationships Quantified}
 \label{subsec:weather_quantified}
@@ -50,7 +50,7 @@ The research established specific quantitative relationships: Central Highland p
 \subsection{Deployment Feasibility Demonstrated}
 \label{subsec:deployment_feasible}
 
-The integrated system combining Bidirectional LSTM forecasting with RAG-enhanced natural language interface demonstrates practical deployment feasibility. The Gradio web interface enables non-technical stakeholders to access sophisticated predictions through conversational queries, democratizing access to data science capabilities for farmers, traders, and policymakers.
+The integrated system combining Simple LSTM forecasting with RAG-enhanced natural language interface demonstrates practical deployment feasibility. The Gradio web interface enables non-technical stakeholders to access sophisticated predictions through conversational queries, democratizing access to data science capabilities for farmers, traders, and policymakers.
 
 \section{Research Contributions}
 \label{sec:contributions}
@@ -69,7 +69,7 @@ This research makes several distinct contributions to agricultural price forecas
 \subsection{Technical Contributions}
 \label{subsec:technical_contributions}
 
-\textbf{1. Optimized Bidirectional LSTM Architecture:} The research demonstrates that bidirectional processing with moderate feature selection (19 features), enhanced regularization (Dropout + BatchNormalization + L2), and careful hyperparameter tuning outperforms both univariate and high-dimensional multivariate approaches for agricultural price forecasting. This architectural blueprint provides practical guidance for similar applications.
+\textbf{1. Optimized Simple LSTM Architecture:} The research demonstrates that architectural simplicity with aggressive feature selection (9 features), optimal regularization (Dropout + L2), and careful hyperparameter tuning outperforms complex bidirectional and high-dimensional multivariate approaches for agricultural price forecasting. This validates the principle of parsimony in machine learning.
 
 \textbf{2. RAG-Enhanced Agricultural AI Agent:} The integration of forecasting models with Retrieval-Augmented Generation using large language models (Groq API, Llama 3.3 70B) represents a novel deployment paradigm for agricultural intelligence systems. The 3-tier architecture (Query Router $\rightarrow$ Intent Classification $\rightarrow$ Model/RAG Response) enables flexible stakeholder interaction beyond traditional dashboard interfaces.
 
@@ -80,7 +80,7 @@ This research makes several distinct contributions to agricultural price forecas
 
 \textbf{1. Quantified Weather-Price Relationships for Sri Lankan Carrots:} The research establishes specific empirical relationships between growing region precipitation patterns and Dambulla market prices, including lagged effects and regional heterogeneity (Central Highland vs Uva Province vs Northern regions). These findings inform crop insurance design and market intervention timing.
 
-\textbf{2. Benchmark Performance Metrics:} The comprehensive evaluation across seven models with consistent metrics provides benchmark performance standards for Sri Lankan vegetable price forecasting: 21\% MAPE represents achievable accuracy for daily carrot price predictions, substantially better than traditional methods (\textgreater{}50\% MAPE) while acknowledging inherent market volatility limits.
+\textbf{2. Benchmark Performance Metrics:} The comprehensive evaluation across seven models with consistent metrics provides benchmark performance standards for Sri Lankan vegetable price forecasting: 19.93\% MAPE represents achievable accuracy for daily carrot price predictions, substantially better than traditional methods ($>$50\% MAPE) while acknowledging inherent market volatility limits.
 
 \textbf{3. Feature Engineering Best Practices:} The research identifies optimal lag structures (1, 7, 14 days), rolling window sizes (7, 14 days), and regional precipitation groupings for vegetable price forecasting, providing evidence-based guidance for practitioners building similar systems for other crops or markets.
 
