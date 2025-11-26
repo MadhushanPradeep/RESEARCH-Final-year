@@ -25,12 +25,12 @@ The Simple LSTM achieved 77.6\% MAPE reduction compared to multivariate ARIMAX (
 \subsection{Architecture and Regularization Matter More Than Feature Quantity}
 \label{subsec:architecture_matters}
 
-The standard multivariate LSTM with 35 features underperformed (25.88\% MAPE) compared to univariate LSTM (21.90\% MAPE), Bidirectional LSTM with 19 features (21.46\% MAPE), and the optimized Simple LSTM with 9 features (19.93\% MAPE). This demonstrates that model architecture, regularization strength, and feature quality matter more than simply maximizing feature quantity. The Goldilocks principle applies—too few features lose information, too many introduce noise and overfitting.
+The standard multivariate LSTM with 35 features underperformed (25.88\% MAPE) compared to univariate LSTM (21.90\% MAPE), Bidirectional LSTM with 19 features (21.46\% MAPE), and the optimized Simple LSTM with 8 features (19.93\% MAPE). This demonstrates that model architecture, regularization strength, and feature quality matter more than simply maximizing feature quantity. The Goldilocks principle applies—too few features lose information, too many introduce noise and overfitting.
 
 \subsection{Architectural Simplicity with Aggressive Feature Selection Wins}
 \label{subsec:simple_lstm_advantage}
 
-The Simple LSTM's success demonstrates that architectural simplicity combined with aggressive feature selection (9 features from 163) produces superior generalization compared to complex architectures. The 5.95 percentage point improvement over standard multivariate LSTM (19.93\% vs 25.88\% MAPE) and 1.53 point advantage over Bidirectional LSTM (19.93\% vs 21.46\%) validates the principle of parsimony in machine learning.
+The Simple LSTM's success demonstrates that architectural simplicity combined with aggressive feature selection (8 features from 163) produces superior generalization compared to complex architectures. The 5.95 percentage point improvement over standard multivariate LSTM (19.93\% vs 25.88\% MAPE) and 1.53 point advantage over Bidirectional LSTM (19.93\% vs 21.46\%) validates the principle of parsimony in machine learning.
 
 \subsection{Feature Importance Hierarchy: Price \textgreater\ Weather \textgreater\ Market Dynamics}
 \label{subsec:feature_hierarchy}
@@ -69,7 +69,7 @@ This research makes several distinct contributions to agricultural price forecas
 \subsection{Technical Contributions}
 \label{subsec:technical_contributions}
 
-\textbf{1. Optimized Simple LSTM Architecture:} The research demonstrates that architectural simplicity with aggressive feature selection (9 features), optimal regularization (Dropout + L2), and careful hyperparameter tuning outperforms complex bidirectional and high-dimensional multivariate approaches for agricultural price forecasting. This validates the principle of parsimony in machine learning.
+	extbf{1. Optimized Simple LSTM Architecture:} The research demonstrates that architectural simplicity with aggressive feature selection (8 features), optimal regularization (Dropout + L2), and careful hyperparameter tuning outperforms complex bidirectional and high-dimensional multivariate approaches for agricultural price forecasting. This validates the principle of parsimony in machine learning.
 
 \textbf{2. RAG-Enhanced Agricultural AI Agent:} The integration of forecasting models with Retrieval-Augmented Generation using large language models (Groq API, Llama 3.3 70B) represents a novel deployment paradigm for agricultural intelligence systems. The 3-tier architecture (Query Router $\rightarrow$ Intent Classification $\rightarrow$ Model/RAG Response) enables flexible stakeholder interaction beyond traditional dashboard interfaces.
 

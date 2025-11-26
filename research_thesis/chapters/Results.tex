@@ -95,7 +95,7 @@ Augmented Dickey-Fuller (ADF) tests were conducted to assess time series station
 
 The processed dataset comprised 2,017 daily observations with 289 initial features engineered across six distinct categories to capture diverse price-influencing factors. Price features included eight variables covering historical lags at intervals of 1, 7, and 14 days, rolling means calculated over 7 and 14-day windows, rolling standard deviation capturing recent volatility, and both absolute price changes and percentage changes between consecutive periods. Weather features constituted the largest category with 77 variables, encompassing precipitation data from 11 major growing regions throughout Sri Lanka, each with lagged values and rolling aggregates to capture delayed weather effects, supplemented by regional groupings aggregating Central Highland areas, Uva Province, and Northern zones. Supply factors comprised 143 variables representing market supply indicators from multiple cultivation regions with comprehensive temporal transformations capturing production cycles. Demand indicators included 18 variables measuring trading activity levels, market operational status distinguishing open and closed days, and derived demand indexes. Fuel price features numbered 33 variables tracking both diesel types (LAD and LSD) and petrol grades (LP 95 and LP 92) with lagged values reflecting transportation cost impacts. Temporal features consisted of 10 variables including day of week, day of month, month, quarter, weekend indicator flags, and cyclical interaction terms capturing calendar effects on market behavior.
 
-Multivariate models employed a systematic 4-stage feature selection pipeline reducing dimensionality to 24-35 features, while univariate models used only the carrot price time series.
+Multivariate models employed a systematic 4-stage feature selection pipeline reducing dimensionality to 22-35 features, while univariate models used only the carrot price time series.
 
 \section{Feature Selection Results}
 \label{sec:feature_selection_results}
@@ -103,12 +103,12 @@ Multivariate models employed a systematic 4-stage feature selection pipeline red
 \subsection{Feature Selection Results}
 \label{subsec:feature_selection_results_summary}
 
-The feature selection pipeline (detailed in Chapter 3) reduced the 163 engineered features to 9 optimal features for the Simple LSTM model, achieving 94.5\% dimensionality reduction while maintaining high predictive accuracy.
+The feature selection pipeline (detailed in Chapter 3) reduced the 163 engineered features to 8 optimal features for the Simple LSTM model, achieving 95.1\% dimensionality reduction while maintaining high predictive accuracy.
 
 \subsection{Final Feature Distribution}
 \label{subsec:final_features}
 
-Table \ref{tab:feature_categories} shows the distribution of selected features across categories for the best-performing Simple LSTM model (9 features total).
+Table \ref{tab:feature_categories} shows the distribution of selected features across categories for the best-performing Simple LSTM model (8 features total).
 
 \begin{table}[htbp]
 \centering
@@ -116,16 +116,16 @@ Table \ref{tab:feature_categories} shows the distribution of selected features a
 \label{tab:feature_categories}
 \begin{tabular}{lcc}
 \hline
-\textbf{Category} & \textbf{Features} & \textbf{Percentage} \\
+	extbf{Category} & \textbf{Features} & \textbf{Percentage} \\
 \hline
-Market \& Demand & 4 & 44.4\% \\
-Price Features & 3 & 33.3\% \\
-Fuel Prices & 2 & 22.2\% \\
+Market \& Demand & 4 & 50.0\% \\
+Price Features & 3 & 37.5\% \\
+Fuel Prices & 1 & 12.5\% \\
 Weather Features & 0 & 0.0\% \\
 Supply Factors & 0 & 0.0\% \\
 Temporal Features & 0 & 0.0\% \\
 \hline
-\textbf{Total} & \textbf{9} & \textbf{100\%} \\
+	extbf{Total} & \textbf{8} & \textbf{100\%} \\
 \hline
 \end{tabular}
 \end{table}
@@ -241,12 +241,12 @@ Figure \ref{fig:simple_lstm_predictions} displays the actual versus predicted pr
 \label{fig:simple_lstm_predictions}
 \end{figure}
 
-The Simple LSTM's success demonstrates that for agricultural price forecasting with moderate-sized datasets, architectural simplicity combined with aggressive feature selection produces superior results compared to complex multilayer bidirectional architectures. The model's ability to achieve 19.93\% test MAPE with only 9 features validates the principle of parsimony in machine learning, where simpler models with well-chosen inputs often generalize better than complex architectures processing high-dimensional feature spaces.
+The Simple LSTM's success demonstrates that for agricultural price forecasting with moderate-sized datasets, architectural simplicity combined with aggressive feature selection produces superior results compared to complex multilayer bidirectional architectures. The model's ability to achieve 19.93\% test MAPE with only 8 features validates the principle of parsimony in machine learning, where simpler models with well-chosen inputs often generalize better than complex architectures processing high-dimensional feature spaces.
 
 \subsection{Bidirectional LSTM Architecture}
 \label{subsec:bidirectional_lstm}
 
-The Bidirectional LSTM model employed a more sophisticated architecture designed to capture temporal patterns from both past and future directions within the lookback window. The model processed the same 9 selected features used by the Simple LSTM baseline, utilizing identical data preprocessing and train-validation-test splits to ensure fair comparison.
+The Bidirectional LSTM model employed a more sophisticated architecture designed to capture temporal patterns from both past and future directions within the lookback window. The model processed the same 8 selected features used by the Simple LSTM baseline, utilizing identical data preprocessing and train-validation-test splits to ensure fair comparison.
 
 The network architecture featured a bidirectional LSTM layer with 40 units per direction using tanh activation, return sequences enabled to pass temporal information to subsequent layers, L2 regularization coefficient of 0.008 applied to kernel weights, and recurrent dropout rate of 0.15 for temporal regularization. This bidirectional processing created 80 effective units (40 forward + 40 backward) capturing comprehensive temporal context. BatchNormalization followed to stabilize training dynamics, succeeded by Dropout with 0.35 rate for strong regularization.
 
@@ -473,9 +473,6 @@ Sample agent interactions demonstrate capability:
 \section{Discussion}
 \label{sec:discussion}
 
-\subsection{Why Bidirectional LSTM Outperforms Other Models}
-\label{subsec:why_bidirectional}
-
 \subsection{Why Simple LSTM Outperforms Other Models}
 \label{subsec:simple_lstm_advantages}
 
@@ -516,7 +513,7 @@ The standard multivariate LSTM (25.88\% MAPE) underperforming the univariate LST
 \item \textbf{Regularization Inadequacy:} The standard multivariate architecture's regularization (L2 0.005, patience 12) proved insufficient for the increased complexity, allowing the model to memorize training patterns rather than learn generalizable relationships.
 \end{itemize}
 
-The Simple LSTM resolved these issues through aggressive feature selection (9 features), optimal regularization (Dropout + L2), and streamlined single-layer architecture, achieving 19.93\% MAPE - substantially better than univariate (21.90\%) and vastly superior to standard multivariate (25.88\%) variants. The Bidirectional LSTM with 19 features achieved intermediate performance at 21.46\% MAPE.
+The Simple LSTM resolved these issues through aggressive feature selection (8 features), optimal regularization (Dropout + L2), and streamlined single-layer architecture, achieving 19.93\% MAPE - substantially better than univariate (21.90\%) and vastly superior to standard multivariate (25.88\%) variants. The Bidirectional LSTM with 19 features achieved intermediate performance at 21.46\% MAPE.
 
 This demonstrates that feature engineering success depends critically on finding the optimal balance between information content and model complexity, with the Simple LSTM's 9-feature configuration striking this balance most effectively for the 2,017-observation dataset.
 

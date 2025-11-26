@@ -44,26 +44,27 @@ This document prepares you for potentially uncomfortable questions about your Ra
 
 ## 🔥🔥 UNCOMFORTABLE QUESTION #2
 
-### "You only selected 14 features - isn't that too few? Did you lose important information?"
+### "You only selected 22 features - isn't that too few? Did you lose important information?"
 
 **Why it's uncomfortable:**
 
-- Started with 273 features (after engineering), reduced to 14 (95% reduction!)
-- Model is overfitting despite having few features
+- Started with 273 features (after engineering), reduced to 22 (92% reduction!)
+- Model is overfitting despite having relatively few features
 - Maybe critical features were discarded
 
 **STRONG ANSWER:**
 
-> "Yes sir/madam, this is a valid concern and part of my learning. I used a **conservative intersection approach** (RFE ∩ SelectFromModel) which ensured only the most stable features were selected, but this may have been too aggressive.
+> "Yes sir/madam, this is a valid concern and part of my learning. I used a **conservative intersection approach** (RFE ∩ SelectFromModel) which ensured only the most stable features were selected. The initial selection identified 24 features, which were then refined by removing non-transport fuel features (kerosene and furnace oil) to focus on diesel and petrol relevant for agricultural transport costs, yielding 22 final features.
 >
-> The 14 features represent the **most robust predictors** agreed upon by two independent methods, which reduces noise but may have sacrificed some predictive power. In hindsight, a **union approach or selecting top 40-50 features by combined score** might have provided better model performance while still maintaining interpretability.
+> The 22 features represent the **most robust predictors** agreed upon by two independent methods, which reduces noise but may have sacrificed some predictive power. In hindsight, a **union approach or selecting top 40-50 features by combined score** might have provided better model performance while still maintaining interpretability.
 >
-> However, the feature selection did successfully identify **weather as the dominant factor (50% of features)**, which is scientifically meaningful for agricultural pricing."
+> However, the feature selection did successfully identify **weather as the dominant factor (54.5% of features)**, which is scientifically meaningful for agricultural pricing."
 
 **Key Points to Remember:**
 
 - Intersection = conservative but maybe too aggressive
-- Still found meaningful insight: weather dominates (50%)
+- Still found meaningful insight: weather dominates (54.5%)
+- Fuel features refined to transport-relevant only (diesel)
 - Could try union or top-N selection in future work
 - Feature selection methodology was sound, execution could be optimized
 

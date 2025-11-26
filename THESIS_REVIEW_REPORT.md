@@ -13,7 +13,7 @@
 
 ✅ **All MAPE values now consistent throughout thesis**  
 ✅ **All R² values now consistent throughout thesis**  
-✅ **All feature counts now accurate (163→9)**  
+✅ **All feature counts now accurate (163→8)**  
 ✅ **Special character formatting fixed (\textgreater{} → $>$)**  
 ✅ **Introduction chapter condensed (23% reduction)**
 
@@ -193,8 +193,8 @@
 
 ✅ Feature selection process accurately described:
 
-- Random Forest: 273→24 features (4-stage pipeline) ✓
-- LSTM: 163→9 features (2-stage pipeline) ✓
+- Random Forest: 273→22 features (4-stage pipeline + fuel refinement) ✓
+- LSTM: 163→8 features (2-stage pipeline) ✓
 
 ✅ Train-Validation-Test split correctly described: 70-15-15 ✓  
 ✅ No best model claims (appropriate - results belong in Results chapter) ✓  
@@ -235,7 +235,7 @@
 | **Bidirectional MAPE** | 21.46% ✓      | 21.46% ✓      | 21.46% ✓      | No value ✓  | ✅ CONSISTENT |
 | **Univariate MAPE**    | Not mentioned | 21.90% ✓      | 21.90% ✓      | No value ✓  | ✅ CONSISTENT |
 | **RF Tuned MAPE**      | Not mentioned | 34.10% ✓      | 34.10% ✓      | No value ✓  | ✅ CONSISTENT |
-| **Feature Count**      | 163→9 ✓       | 163→9 ✓       | 163→9 ✓       | 163→9 ✓     | ✅ CONSISTENT |
+| **Feature Count**      | 163→8 ✓       | 163→8 ✓       | 163→8 ✓       | 163→8 ✓     | ✅ CONSISTENT |
 | **Train-Val-Test**     | Not mentioned | 70-15-15 ✓    | Not mentioned | 70-15-15 ✓  | ✅ CONSISTENT |
 
 ---
@@ -396,7 +396,7 @@ Several instances used `\textgreater{}` which doesn't render properly in all LaT
 
 - [x] All MAPE values consistent (19.93% for Simple LSTM)
 - [x] All R² values consistent (0.8651 for Simple LSTM)
-- [x] All feature counts accurate (163→9 for LSTM)
+- [x] All feature counts accurate (163→8 for LSTM)
 - [x] Best model correctly identified throughout (Simple LSTM)
 - [x] Model hierarchy correct in all chapters
 - [x] Special characters properly formatted ($>$ not \textgreater{})

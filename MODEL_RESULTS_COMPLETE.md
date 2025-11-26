@@ -50,9 +50,9 @@
 **Selection Pipeline:**
 
 - **Initial:** 163 engineered features
-- **After multicollinearity removal:** 9 final features (removed 11)
+- **After multicollinearity removal:** 8 final features (removed 11)
 
-### Final Selected Features (9 features)
+### Final Selected Features (8 features)
 
 1. **price_lag_1** (corr: 0.961)
 2. **price_rolling_std_7** (corr: 0.720)
@@ -62,13 +62,12 @@
 6. **is_dambulla_increase** (corr: 0.072)
 7. **price_lag_14** (corr: 0.773)
 8. **lsd** (corr: 0.324)
-9. **lk** (corr: 0.257)
 
 **Feature Distribution:**
 
-- Price features: 3 (33%)
-- Market features: 4 (44%)
-- Fuel features: 2 (22%)
+- Price features: 3 (37.5%)
+- Market features: 4 (50.0%)
+- Fuel features: 1 (12.5%)
 
 ### Data Preparation
 
@@ -78,7 +77,7 @@
 - Validation: 300 samples (15%)
 - Test: 301 samples (15%)
 - **Sequence Length:** 14 timesteps
-- **Input Shape:** (14, 9)
+- **Input Shape:** (14, 8)
 
 **Scaling:**
 
@@ -211,7 +210,7 @@
 **Improvement over Original:**
 
 - Original (5 features): 25.88% MAPE
-- Best Model (9 features): 19.93% MAPE
+- Best Model (8 features): 19.93% MAPE
 - **Improvement:** 5.95% points (23.0% relative improvement)
 
 ---
@@ -295,9 +294,10 @@
 
 **Final: Intersection Method**
 
-- Both methods agreed on: **24 features**
+- Both methods agreed on: 24 features
+- **After removing non-transport fuel features:** 22 features (removed lk_lag_1, fur_1500_high_rolling_mean_7)
 
-### Final Selected Features (24 features)
+### Final Selected Features (22 features)
 
 **Ranked by Combined Score:**
 
@@ -321,19 +321,19 @@
 18. **precip_central_highland_mean** (0.0970)
 19. **lad_lag_1** (0.0608)
 20. **price_rolling_mean_30** (0.0487)
-21. **fur_1500_high_rolling_mean_7** (0.0468)
-22. **lk_lag_1** (0.0460)
-23. **price_lag_14** (0.0455)
-24. **precip_uva_province_sum** (0.0446)
+21. **price_lag_14** (0.0455)
+22. **precip_uva_province_sum** (0.0446)
 
 **Feature Category Breakdown:**
 
-- **Weather Features:** 12 (50%)
-- **Supply Features:** 5 (21%)
-- **Fuel Features:** 3 (13%)
-- **Price Features:** 2 (8%)
-- **Market Features:** 1 (4%)
-- **Temporal Features:** 1 (4%)
+- **Weather Features:** 12 (54.5%)
+- **Supply Features:** 5 (22.7%)
+- **Price Features:** 2 (9.1%)
+- **Fuel Features:** 1 (4.5%) - diesel only (lad_lag_1)
+- **Market Features:** 1 (4.5%)
+- **Temporal Features:** 1 (4.5%)
+
+**Note:** Kerosene (lk_lag_1) and non-diesel fuel (fur_1500_high_rolling_mean_7) were removed as they are not relevant for agricultural transport costs, which primarily depend on diesel and petrol prices.
 
 ### Data Preparation
 
@@ -495,7 +495,7 @@
 | Aspect               | Random Forest                                                 | LSTM                                  |
 | -------------------- | ------------------------------------------------------------- | ------------------------------------- |
 | **Initial Features** | 273                                                           | 163                                   |
-| **Final Features**   | 24                                                            | 9                                     |
+| **Final Features**   | 24                                                            | 8                                     |
 | **Reduction**        | 91.2%                                                         | 94.5%                                 |
 | **Selection Method** | 4-stage (Scoring → Multicollinearity → SelectFromModel ∩ RFE) | 2-stage (Scoring → Multicollinearity) |
 
