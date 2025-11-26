@@ -100,27 +100,10 @@ Multivariate models employed a systematic 4-stage feature selection pipeline red
 \section{Feature Selection Results}
 \label{sec:feature_selection_results}
 
-\subsection{Feature Selection Pipeline}
-\label{subsec:feature_selection_pipeline}
+\subsection{Feature Selection Results}
+\label{subsec:feature_selection_results_summary}
 
-The 4-stage feature selection pipeline for multivariate models achieved effective dimensionality reduction while preserving predictive power:
-
-\textbf{Stage 1 - Hybrid Scoring (60\% RF + 30\% MI + 10\% Correlation):} Combined Random Forest feature importance, Mutual Information scores, and absolute correlations to identify top 80 features balancing non-linear relationships, information content, and linear dependencies.
-
-\textbf{Stage 2 - Multicollinearity Removal:} Eliminated features with correlation coefficients $\geq$ 0.95 to reduce redundancy, removing 15-20 highly correlated features.
-
-\textbf{Stage 3 - Model-Based Selection:} Applied Recursive Feature Elimination (RFE) and SelectFromModel in parallel, retaining features selected by both methods for consensus.
-
-\textbf{Stage 4 - Domain Validation:} Ensured representation from all six feature categories with minimum thresholds per category.
-
-Figure \ref{fig:feature_selection_stages} illustrates the progressive feature reduction across stages.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.85\textwidth]{figures/feature_selection_stages.png}
-\caption{Feature count progression through 4-stage selection pipeline}
-\label{fig:feature_selection_stages}
-\end{figure}
+The feature selection pipeline (detailed in Chapter 3) reduced the 163 engineered features to 9 optimal features for the Simple LSTM model, achieving 94.5\% dimensionality reduction while maintaining high predictive accuracy.
 
 \subsection{Final Feature Distribution}
 \label{subsec:final_features}
@@ -146,18 +129,6 @@ Temporal Features & 0 & 0.0\% \\
 \hline
 \end{tabular}
 \end{table}
-
-\subsection{Feature Correlation Matrix}
-\label{subsec:correlation_matrix}
-
-Figure \ref{fig:correlation_heatmap} presents the correlation structure among the 9 selected features for the Simple LSTM model, demonstrating successful multicollinearity removal with maximum pairwise correlation below 0.90.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/correlation_heatmap.png}
-\caption{Correlation heatmap of final selected features}
-\label{fig:correlation_heatmap}
-\end{figure}
 
 \section{Model Performance Comparison}
 \label{sec:model_comparison}
@@ -215,18 +186,35 @@ The ARIMAX model incorporated seven exogenous variables (precipitation, supply f
 \subsection{Univariate LSTM Architecture}
 \label{subsec:univariate_lstm}
 
-The univariate LSTM model used 30-day lookback sequences processing only historical price data through a multi-layer architecture designed to capture temporal patterns without external features. The network began with an LSTM layer containing 64 units using tanh activation with return sequences enabled to pass temporal information to subsequent layers. This fed into a second LSTM layer with 32 units for hierarchical feature extraction, followed by a dense layer with 16 units using ReLU activation to introduce non-linearity in the final transformation. The output layer consisted of a single unit producing the next-day price prediction. Data preprocessing employed RobustScaler to handle outliers in the price distribution, while the model was compiled with Adam optimizer for adaptive learning rate adjustment, Huber loss function providing robustness to outliers through combined squared and absolute error penalties, and batch size of 32 balancing computational efficiency with gradient estimation accuracy. Training incorporated EarlyStopping with patience of 10 epochs to prevent overfitting by halting when validation performance plateaued, along with ReduceLROnPlateau callback dynamically reducing learning rate when validation loss stopped improving, enabling fine-tuned convergence to optimal parameters.
+The univariate LSTM model processed only historical price data through a streamlined two-layer architecture designed to capture temporal patterns without external features. Data preprocessing employed MinMaxScaler fitted exclusively on the training set to prevent data leakage, with the scaler then applied to transform the test set. The dataset was split 80-20 for training and testing, with sequence creation using a sliding window approach to generate input-output pairs from the scaled price series.
+
+The network architecture consisted of a first LSTM layer with 48 units using tanh activation and return sequences enabled to pass temporal information to subsequent layers, followed by Dropout regularization with 0.15 rate to prevent co-adaptation of neurons. This fed into a second LSTM layer with 24 units for hierarchical temporal feature extraction, followed by a single-unit dense output layer producing next-day price predictions. The model was compiled with Adam optimizer using learning rate of 0.001, mean squared error (MSE) loss function for regression optimization, and batch size of 32 balancing computational efficiency with gradient stability.
+
+Training employed 80 epochs with 15\% validation split carved from the training data, incorporating EarlyStopping callback with patience of 8 epochs monitoring validation loss to halt training when performance plateaued, with automatic restoration of best weights to prevent overfitting. The model successfully captured temporal dependencies in the price series, achieving competitive performance using only historical price information without external features.
 
 The model achieved 21.90\% test MAPE with R² of 0.6428, demonstrating LSTM's capability to capture temporal patterns even without external features.
 
-\subsection{Multivariate LSTM Architecture}
-\label{subsec:multivariate_lstm}
+Figure \ref{fig:univariate_lstm_predictions} displays the actual versus predicted prices on the test set, illustrating the model's ability to track price movements using only historical price data.
 
-The standard multivariate LSTM incorporated between 24 and 35 carefully selected features through a more complex architecture designed to process high-dimensional input while preventing overfitting. The network initiated with a bidirectional LSTM layer containing 48 units per direction using tanh activation with L2 regularization coefficient of 0.005 to penalize large weights, processing sequences in both forward and backward temporal directions to capture comprehensive temporal context. This was followed by a standard unidirectional LSTM layer with 24 units and matching L2 regularization of 0.005 for additional temporal feature extraction. A dense layer with 12 units and L2 regularization provided dimensionality reduction and non-linear transformation before the final single-unit output layer. The model employed Adam optimizer with reduced learning rate of 0.0005 reflecting the increased complexity and need for careful parameter updates, Huber loss for outlier robustness, and larger batch size of 64 to stabilize gradients given the expanded feature space. Training callbacks included EarlyStopping with patience extended to 12 epochs given slower convergence expected with more features, and ReduceLROnPlateau for adaptive learning rate scheduling during training plateaus.
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/univariate_lstm_predictions.png}
+\caption{Actual vs predicted carrot prices - Univariate LSTM model}
+\label{fig:univariate_lstm_predictions}
+\end{figure}
 
-Despite incorporating external features, this model achieved 25.88\% test MAPE (R²: 0.5400), underperforming the univariate LSTM due to increased complexity requiring more careful regularization.
+\subsection{Simple LSTM - Multivariate (Baseline)}
+\label{subsec:simple_lstm_multivariate}
 
-\subsection{Simple LSTM - Best Model}
+The Simple LSTM baseline model incorporated 9 selected features through a streamlined single-layer architecture designed to balance predictive capability with regularization constraints. Data preprocessing employed RobustScaler fitted on the training set to handle outliers, with 70-15-15 train-validation-test splits maintaining temporal ordering to prevent data leakage.
+
+The network architecture featured a single LSTM layer with 32 units using tanh activation and L2 regularization coefficient of 0.01 to penalize large weights, combined with recurrent dropout rate of 0.2 applied to recurrent connections between time steps to prevent overfitting in the temporal dimension. This was followed by BatchNormalization layer to stabilize training dynamics and enable higher learning rates. The architecture then incorporated Dropout regularization with 0.4 rate for strong regularization given the moderate dataset size, followed by a dense layer with 16 units using ReLU activation and matching L2 regularization coefficient of 0.01 for final non-linear transformation. Additional Dropout with 0.3 rate preceded the single-unit output layer producing next-day price predictions.
+
+The model was compiled with Adam optimizer using learning rate of 0.001 with gradient clipping (clipnorm=1.0) to prevent exploding gradients, Huber loss function providing robustness to outliers through combined squared and absolute error penalties, and batch size of 32 balancing computational efficiency with gradient stability. Training employed 100 maximum epochs with two callback mechanisms: EarlyStopping monitoring validation loss with patience of 15 epochs and automatic restoration of best weights, and ReduceLROnPlateau dynamically reducing learning rate by factor of 0.5 when validation loss plateaued for 7 epochs, with minimum learning rate floor of 0.00001 to enable fine-tuned convergence.
+
+This baseline model established the foundation architecture that was refined through feature selection and architectural optimization to produce the best-performing Simple LSTM model described in the following subsection.
+
+\subsection{Simple LSTM - Best Model (Optimized)}
 \label{subsec:simple_lstm}
 
 The Simple LSTM model achieved the best overall performance through an optimal balance of architectural simplicity and strategic feature selection. The architectural design featured a streamlined approach with a single LSTM layer containing 50 units using tanh activation and return sequences disabled, avoiding the complexity of multilayer architectures while maintaining sufficient capacity for temporal pattern recognition. This was followed by a dense layer with 25 units using ReLU activation for final non-linear transformation before the single-unit output layer producing next-day price predictions. The model incorporated carefully calibrated regularization through Dropout layers with 0.2 dropout rate preventing co-adaptation of neurons and L2 regularization with coefficient of 0.001 applied to LSTM weights to penalize excessive parameter magnitudes without overly constraining learning.
@@ -258,9 +246,15 @@ The Simple LSTM's success demonstrates that for agricultural price forecasting w
 \subsection{Bidirectional LSTM Architecture}
 \label{subsec:bidirectional_lstm}
 
-The Bidirectional LSTM model from the V3 architecture achieved strong performance through careful optimization of bidirectional processing and regularization strategies. The architectural design featured a bidirectional LSTM layer with 40 units using tanh activation and return sequences enabled, allowing information flow to subsequent layers while processing temporal patterns from both past and future directions within the lookback window. This fed into a standard unidirectional LSTM layer with 20 units for additional temporal abstraction, followed by a dense layer with 10 units using ReLU activation for final non-linear transformation before the single-unit output layer. The model incorporated enhanced regularization through strategic placement of Dropout layers preventing co-adaptation of units and BatchNormalization layers stabilizing training dynamics and enabling higher learning rates. Training employed Adam optimizer with batch size of 32 and utilized 19 selected features.
+The Bidirectional LSTM model employed a more sophisticated architecture designed to capture temporal patterns from both past and future directions within the lookback window. The model processed the same 9 selected features used by the Simple LSTM baseline, utilizing identical data preprocessing and train-validation-test splits to ensure fair comparison.
 
-The model demonstrated good performance across evaluation sets with training MAPE of 14.53\%, validation MAPE of 15.49\%, and test MAPE of 21.46\%, showing reasonable generalization characteristics. Test set performance included MAE of 69.89 Rs, RMSE of 102.04 Rs, and R² of 0.8011 indicating that the model explained approximately 80\% of price variance in unseen data. However, the model's test MAPE of 21.46\% placed it 1.53 percentage points behind the simpler LSTM architecture, suggesting that the added complexity of bidirectional processing provided limited practical benefit for this forecasting task.
+The network architecture featured a bidirectional LSTM layer with 40 units per direction using tanh activation, return sequences enabled to pass temporal information to subsequent layers, L2 regularization coefficient of 0.008 applied to kernel weights, and recurrent dropout rate of 0.15 for temporal regularization. This bidirectional processing created 80 effective units (40 forward + 40 backward) capturing comprehensive temporal context. BatchNormalization followed to stabilize training dynamics, succeeded by Dropout with 0.35 rate for strong regularization.
+
+The architecture continued with a standard unidirectional LSTM layer containing 20 units using tanh activation, matching L2 regularization of 0.008, and recurrent dropout of 0.15 for additional temporal feature extraction. Another BatchNormalization layer provided training stability, followed by Dropout with 0.35 rate. A dense layer with 10 units using ReLU activation and L2 regularization of 0.008 performed final non-linear transformation, followed by Dropout with 0.2 rate before the single-unit output layer producing next-day price predictions.
+
+The model was compiled with Adam optimizer using reduced learning rate of 0.0008 reflecting the increased architectural complexity, gradient clipping with clipnorm=1.0 to prevent exploding gradients, Huber loss function for outlier robustness, and batch size of 32. Training employed 100 maximum epochs with EarlyStopping monitoring validation loss with patience of 15 epochs and automatic best weight restoration, alongside ReduceLROnPlateau reducing learning rate by factor 0.5 after 7 epochs of validation loss plateau, with minimum learning rate floor of 0.00001.
+
+The model demonstrated good performance across evaluation sets with training MAPE of 14.53\%, validation MAPE of 15.49\%, and test MAPE of 21.46\%, showing reasonable generalization characteristics. Test set performance included MAE of 69.89 Rs, RMSE of 102.04 Rs, and R² of 0.8011 indicating that the model explained approximately 80\% of price variance in unseen data. However, the model's test MAPE of 21.46\% placed it 1.53 percentage points behind the optimized Simple LSTM architecture, suggesting that the added complexity of bidirectional processing provided limited practical benefit for this forecasting task.
 
 Figure \ref{fig:bidirectional_lstm_training} shows the training history demonstrating convergence without overfitting.
 
@@ -271,7 +265,16 @@ Figure \ref{fig:bidirectional_lstm_training} shows the training history demonstr
 \label{fig:bidirectional_lstm_training}
 \end{figure}
 
-The bidirectional architecture's ability to process sequences in both forward and backward directions enabled strong pattern recognition, though it ultimately achieved slightly lower performance than the simpler unidirectional architecture with optimized feature selection.
+Figure \ref{fig:bidirectional_lstm_predictions} displays the actual versus predicted prices on the test set.
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.95\textwidth]{figures/bidirectional_lstm_predictions.png}
+\caption{Actual vs predicted carrot prices - Bidirectional LSTM model}
+\label{fig:bidirectional_lstm_predictions}
+\end{figure}
+
+The bidirectional architecture's ability to process sequences in both forward and backward directions enabled strong pattern recognition, though it ultimately achieved slightly lower performance than the simpler unidirectional architecture with optimized feature selection and regularization.
 
 \section{Random Forest Results}
 \label{sec:rf_results}
@@ -384,20 +387,6 @@ Figure \ref{fig:shap_dependence_weather} shows Central Highland precipitation de
 \label{fig:shap_dependence_weather}
 \end{figure}
 
-\section{Prediction Visualization}
-\label{sec:prediction_viz}
-
-Figure \ref{fig:predictions_bidirectional} compares actual vs predicted prices for the Bidirectional LSTM model across training, validation, and test sets.
-
-\begin{figure}[htbp]
-\centering
-\includegraphics[width=0.95\textwidth]{figures/predictions_bidirectional.png}
-\caption{Actual vs predicted carrot prices - Bidirectional LSTM}
-\label{fig:predictions_bidirectional}
-\end{figure}
-
-The model successfully captured major price trends and turning points, though some extreme volatility events were underestimated, a common characteristic of regression models optimized for overall accuracy.
-
 \section{Statistical Validation}
 \label{sec:statistical_validation}
 
@@ -459,7 +448,7 @@ Figure \ref{fig:gradio_interface} shows the Gradio web interface enabling stakeh
 
 \begin{figure}[htbp]
 \centering
-\includegraphics[width=0.95\textwidth]{figures/gradio_interface.png}
+\includegraphics[width=0.95\textwidth]{figures/ai_agent_interface.png}
 \caption{Gradio-based AI agent interface}
 \label{fig:gradio_interface}
 \end{figure}
