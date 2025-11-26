@@ -75,7 +75,7 @@ Systematic exploratory analysis revealed patterns, relationships, and characteri
 
 \section{Feature Engineering and Selection}
 
-Feature engineering created meaningful predictors from raw variables, while systematic selection identified optimal subsets for different modeling approaches. Critically, feature selection methodology differs between univariate and multivariate models, ensuring each approach receives appropriate input configuration.
+Feature engineering created meaningful predictors from raw variables, while systematic selection identified optimal subsets for different modeling approaches. Importantly, feature selection methodology differs between univariate and multivariate models, ensuring each approach receives appropriate input configuration.
 
 \subsection{Feature Engineering}
 
@@ -121,7 +121,7 @@ Random Forest employed a comprehensive four-stage selection process optimized fo
 
 \textbf{Stage 2 - Multicollinearity Removal:} Pairwise correlation matrix identified highly redundant features (correlation $\geq$ 0.95). From each correlated pair, feature with lower combined score removed, preserving predictive information while eliminating redundancy. This stage reduced 80 candidates to 47 features, removing 33 highly correlated variables.
 
-\textbf{Stage 3 - SelectFromModel:} Random Forest-based SelectFromModel (300 estimators, median importance threshold) selected features exceeding ensemble's median importance, identifying 24 critical predictors.
+\textbf{Stage 3 - SelectFromModel:} Random Forest-based SelectFromModel (300 estimators, median importance threshold) selected features exceeding ensemble's median importance, identifying 24 essential predictors.
 
 \textbf{Stage 4 - Recursive Feature Elimination:} RFE (Random Forest, 200 estimators) iteratively removed least important features, independently identifying 24 optimal features. Final feature set comprised intersection of both methods (24 features), then refined by removing non-transport fuel features (kerosene lk\_lag\_1 and furnace oil fur\_1500\_high\_rolling\_mean\_7), yielding 22 transport-relevant features.
 
@@ -195,7 +195,7 @@ All metrics calculated on test set for unbiased performance estimation.
 
 \subsection{Statistical Validation}
 
-\textbf{Ablation Study:} Systematic removal of feature categories (weather, supply, fuel, price-only) quantified individual contributions. For each category removal, model retrained and performance degradation measured, revealing which factors most critically influence predictions.
+\textbf{Ablation Study:} Systematic removal of feature categories (weather, supply, fuel, price-only) quantified individual contributions. For each category removal, model retrained and performance degradation measured, revealing which factors most strongly influence predictions.
 
 \textbf{Bootstrap Confidence Intervals:} 1000 bootstrap resamples from test set generated distribution of MAPE values, enabling 95\% confidence interval construction and statistical significance testing.
 
@@ -239,4 +239,4 @@ The implementation utilizes Python 3.8+ with the Groq Python SDK for API access,
 
 This comprehensive methodology integrates traditional statistical methods (ARIMA), state-of-the-art deep learning (LSTM with simple and bidirectional architectures), and ensemble techniques (Random Forest with baseline and hyperparameter-tuned variants) within a rigorous experimental framework. The systematic approach encompasses data collection from authoritative sources, comprehensive preprocessing ensuring quality, model-appropriate feature engineering (273 features for Random Forest, 163 features for LSTM), rigorous selection through distinct pipelines (four-stage for Random Forest yielding 22 features, two-stage for LSTM yielding 8 features), systematic model comparison across diverse approaches, and practical deployment through intelligent AI agent.
 
-The methodology's strength lies in its thoroughness and adaptability: model-specific feature engineering reflects understanding that tree-based and recurrent architectures have fundamentally different data requirements, separate selection pipelines ensure each model receives optimally configured inputs, multiple architecture variants within each model family provide robustness against configuration-specific limitations, comprehensive evaluation framework using complementary metrics enables reliable performance assessment, and practical deployment through AI agent demonstrates real-world applicability. This end-to-end framework delivers not merely academic analysis but actionable forecasting capabilities for Sri Lankan agricultural stakeholders, while establishing replicable methodology applicable to other vegetables and markets.
+The methodology's strength lies in its thoroughness and adaptability: model-specific feature engineering reflects understanding that tree-based and recurrent architectures have structurally different data requirements, separate selection pipelines ensure each model receives optimally configured inputs, multiple architecture variants within each model family provide robustness against configuration-specific limitations, comprehensive evaluation framework using complementary metrics enables reliable performance assessment, and practical deployment through AI agent demonstrates real-world applicability. This end-to-end framework delivers not merely academic analysis but actionable forecasting capabilities for Sri Lankan agricultural stakeholders, while establishing replicable methodology applicable to other vegetables and markets.

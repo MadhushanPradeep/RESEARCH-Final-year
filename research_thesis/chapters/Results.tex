@@ -53,7 +53,7 @@ The analysis revealed complex relationships between precipitation and prices acr
 \subsection{Price-Fuel Cost Relationships}
 \label{subsec:price_fuel}
 
-Transportation costs significantly impact vegetable market prices. Figure \ref{fig:price_diesel_lad} shows the relationship between carrot prices and diesel (LAD) prices, while Figure \ref{fig:price_petrol_lp95} presents the correlation with Petrol LP 95 prices.
+Transportation costs impact vegetable market prices. Figure \ref{fig:price_diesel_lad} shows the relationship between carrot prices and diesel (LAD) prices, while Figure \ref{fig:price_petrol_lp95} presents the correlation with Petrol LP 95 prices.
 
 \begin{figure}[htbp]
 \centering
@@ -88,12 +88,12 @@ The decomposition revealed clear seasonal patterns with price peaks occurring du
 \subsection{Stationarity Analysis}
 \label{subsec:stationarity}
 
-Augmented Dickey-Fuller (ADF) tests were conducted to assess time series stationarity. The original price series showed non-stationary behavior (p-value = 0.12), while first-order differencing achieved stationarity (p-value < 0.01), informing the ARIMA model specification with d=0 after testing revealed price-level modeling was more appropriate for this market context.
+Augmented Dickey-Fuller (ADF) tests were conducted to assess time series stationarity. The original price series showed non-stationary behavior (p-value = 0.12), while first-order differencing achieved stationarity (p-value < 0.01), informing the ARIMA model specification with d=1 as required for proper statistical modeling.
 
 \section{Data Characteristics Summary}
 \label{sec:data_characteristics}
 
-The processed dataset comprised 2,017 daily observations with 289 initial features engineered across six distinct categories to capture diverse price-influencing factors. Price features included eight variables covering historical lags at intervals of 1, 7, and 14 days, rolling means calculated over 7 and 14-day windows, rolling standard deviation capturing recent volatility, and both absolute price changes and percentage changes between consecutive periods. Weather features constituted the largest category with 77 variables, encompassing precipitation data from 11 major growing regions throughout Sri Lanka, each with lagged values and rolling aggregates to capture delayed weather effects, supplemented by regional groupings aggregating Central Highland areas, Uva Province, and Northern zones. Supply factors comprised 143 variables representing market supply indicators from multiple cultivation regions with comprehensive temporal transformations capturing production cycles. Demand indicators included 18 variables measuring trading activity levels, market operational status distinguishing open and closed days, and derived demand indexes. Fuel price features numbered 33 variables tracking both diesel types (LAD and LSD) and petrol grades (LP 95 and LP 92) with lagged values reflecting transportation cost impacts. Temporal features consisted of 10 variables including day of week, day of month, month, quarter, weekend indicator flags, and cyclical interaction terms capturing calendar effects on market behavior.
+The processed dataset comprised 2,017 daily observations starting from 46 initial variables that were systematically expanded through feature engineering into 273 derived features for Random Forest modeling and 163 features for LSTM modeling across six distinct categories to capture diverse price-influencing factors. Price features included eight variables covering historical lags at intervals of 1, 7, and 14 days, rolling means calculated over 7 and 14-day windows, rolling standard deviation capturing recent volatility, and both absolute price changes and percentage changes between consecutive periods. Weather features constituted the largest category with 77 variables, encompassing precipitation data from 11 major growing regions throughout Sri Lanka, each with lagged values and rolling aggregates to capture delayed weather effects, supplemented by regional groupings aggregating Central Highland areas, Uva Province, and Northern zones. Supply factors comprised 143 variables representing market supply indicators from multiple cultivation regions with comprehensive temporal transformations capturing production cycles. Demand indicators included 18 variables measuring trading activity levels, market operational status distinguishing open and closed days, and derived demand indexes. Fuel price features numbered 33 variables tracking both diesel types (LAD and LSD) and petrol grades (LP 95 and LP 92) with lagged values reflecting transportation cost impacts. Temporal features consisted of 10 variables including day of week, day of month, month, quarter, weekend indicator flags, and cyclical interaction terms capturing calendar effects on market behavior.
 
 Multivariate models employed a systematic 4-stage feature selection pipeline reducing dimensionality to 22-35 features, while univariate models used only the carrot price time series.
 
@@ -143,7 +143,7 @@ Seven forecasting models were evaluated using consistent train-validation-test s
 \hline
 \textbf{Model} & \textbf{MAPE (\%)} & \textbf{MAE (Rs)} & \textbf{RMSE (Rs)} & \textbf{R²} \\
 \hline
-Univariate ARIMA(1,0,1) & >50.00 & --- & --- & --- \\
+Univariate ARIMA(1,1,1) & $>$50.00 & --- & --- & --- \\
 Multivariate ARIMAX & 88.80 & 293.54 & 363.46 & --- \\
 Univariate LSTM & 21.90 & 66.01 & 136.82 & 0.6428 \\
 \textbf{Simple LSTM} & \textbf{19.93} & \textbf{58.87} & \textbf{84.05} & \textbf{0.8651} \\
@@ -154,12 +154,12 @@ Random Forest Tuned & 34.10 & 123.43 & 178.08 & 0.3931 \\
 \end{tabular}
 \end{table}
 
-The Simple LSTM achieved the best overall performance with 19.93\% MAPE and R² of 0.8651, demonstrating superior predictive accuracy across all evaluation dimensions. Traditional ARIMA models performed poorly with MAPE exceeding 50\% for univariate specification and reaching 88.80\% for multivariate ARIMAX, clearly indicating fundamental inadequacy of linear time series methods for this non-linear, multi-factor agricultural market characterized by complex threshold effects and variable lag structures. The Simple LSTM's architecture, optimized with only 8 carefully selected features, achieved the lowest MAPE of 19.93\%, lowest RMSE of 84.05 Rs, lowest MAE of 58.87 Rs, and highest R² of 0.8651, demonstrating that architectural simplicity combined with strategic feature selection produces superior generalization compared to more complex architectures. The Bidirectional LSTM achieved 21.46\% MAPE with R² of 0.8011, performing well but showing a 1.53 percentage point disadvantage compared to the Simple LSTM despite its more complex bidirectional processing. This suggests that the added architectural complexity of bidirectional processing did not provide sufficient benefit to offset the increased parameter count and training difficulty. Interestingly, the univariate LSTM achieved 21.90\% MAPE, demonstrating LSTM's capability to capture temporal patterns even without external features. Random Forest models showed substantially weaker performance, with the tuned variant achieving 34.10\% MAPE and R² of only 0.3931, indicating the ensemble averaging approach produces conservative predictions that fail to capture the full price dynamics reflected in the significantly lower variance explanation compared to the Simple LSTM's 0.8651 R².
+The Simple LSTM achieved the best overall performance with 19.93\% MAPE and R² of 0.8651, demonstrating superior predictive accuracy across all evaluation dimensions. Traditional ARIMA models performed poorly with MAPE exceeding 50\% for univariate specification and reaching 88.80\% for multivariate ARIMAX, revealing the inadequacy of linear time series methods for this non-linear, multi-factor agricultural market characterized by complex threshold effects and variable lag structures. The Simple LSTM's architecture, optimized with only 8 carefully selected features, achieved the lowest MAPE of 19.93\%, lowest RMSE of 84.05 Rs, lowest MAE of 58.87 Rs, and highest R² of 0.8651, demonstrating that architectural simplicity combined with strategic feature selection produces superior generalization compared to more complex architectures. The Bidirectional LSTM achieved 21.46\% MAPE with R² of 0.8011, performing well but showing a 1.53 percentage point disadvantage compared to the Simple LSTM despite its more complex bidirectional processing. This suggests that the added architectural complexity of bidirectional processing did not provide sufficient benefit to offset the increased parameter count and training difficulty. Interestingly, the univariate LSTM achieved 21.90\% MAPE, demonstrating LSTM's capability to capture temporal patterns even without external features. Random Forest models showed weaker performance, with the tuned variant achieving 34.10\% MAPE and R² of only 0.3931, indicating the ensemble averaging approach produces conservative predictions that fail to capture the full price dynamics reflected in the lower variance explanation compared to the Simple LSTM's 0.8651 R².
 
 \section{Univariate ARIMA Results}
 \label{sec:arima_results}
 
-The univariate ARIMA(1,0,1) model served as the traditional statistical baseline. After stationarity testing and ACF/PACF analysis, the model specification included one autoregressive term and one moving average term.
+The univariate ARIMA(1,1,1) model served as the traditional statistical baseline. After stationarity testing confirming the need for first-order differencing (d=1), ACF/PACF analysis determined one autoregressive term and one moving average term.
 
 \subsection{Model Diagnostics}
 \label{subsec:arima_diagnostics}
@@ -169,11 +169,11 @@ Figure \ref{fig:arima_diagnostics} shows the diagnostic plots including residual
 \begin{figure}[htbp]
 \centering
 \includegraphics[width=0.95\textwidth]{figures/arima_diagnostics.png}
-\caption{ARIMA(1,0,1) model diagnostic plots}
+\caption{ARIMA(1,1,1) model diagnostic plots}
 \label{fig:arima_diagnostics}
 \end{figure}
 
-Despite satisfactory residual diagnostics, the model achieved test MAPE exceeding 50\%, indicating fundamental limitations in capturing the complex, multi-factor dynamics of carrot prices using only historical price information.
+Despite satisfactory residual diagnostics, the model achieved test MAPE exceeding 50\%, indicating limitations in capturing the complex, multi-factor dynamics of carrot prices using only historical price information.
 
 \subsection{Multivariate ARIMAX Performance}
 \label{subsec:arimax_results}
@@ -261,12 +261,12 @@ Random Forest models utilized 22 features selected through the 4-stage feature s
 \subsection{Baseline Random Forest}
 \label{subsec:rf_baseline}
 
-The baseline Random Forest configuration using 100 estimators with default hyperparameters achieved test MAPE of 34.13\%, MAE of 124.40 Rs, RMSE of 179.98 Rs, and R² of 0.3800, demonstrating substantially weaker performance compared to LSTM approaches with significantly lower explained variance. This initial configuration provided acceptable predictions but showed clear limitations of ensemble tree-based methods for this forecasting task.
+The baseline Random Forest configuration using 100 estimators with default hyperparameters achieved test MAPE of 34.13\%, MAE of 124.40 Rs, RMSE of 179.98 Rs, and R² of 0.3800, demonstrating weaker performance compared to LSTM approaches with lower explained variance. This initial configuration provided acceptable predictions but showed clear limitations of ensemble tree-based methods for this forecasting task.
 
 \subsection{Hyperparameter-Tuned Random Forest}
 \label{subsec:rf_tuned}
 
-RandomizedSearchCV optimization selected 400 estimators, maximum depth of 30, and optimized split parameters. The tuned model achieved test MAPE of 34.10\%, MAE 123.43 Rs, RMSE 178.08 Rs, and R² 0.3931—only marginal improvement over baseline (0.03 percentage points). The minimal gains indicate Random Forest performance was fundamentally limited by its ensemble averaging approach rather than hyperparameters.
+RandomizedSearchCV optimization selected 400 estimators, maximum depth of 30, and optimized split parameters. The tuned model achieved test MAPE of 34.10\%, MAE 123.43 Rs, RMSE 178.08 Rs, and R² 0.3931—only marginal improvement over baseline (0.03 percentage points). The minimal gains indicate Random Forest performance was inherently limited by its ensemble averaging approach rather than hyperparameters.
 
 Random Forest performed 14.17 percentage points worse than Simple LSTM (34.10\% vs 19.93\% MAPE) with R² less than half (0.3931 vs 0.8651), highlighting LSTM's superiority for temporal sequence modeling.
 
@@ -432,23 +432,6 @@ Figure \ref{fig:gradio_interface} shows the Gradio web interface enabling stakeh
 \label{fig:gradio_interface}
 \end{figure}
 
-\subsection{Example Query Responses}
-\label{subsec:query_examples}
-
-Sample agent interactions demonstrate capability:
-
-\textbf{Query 1:} ``What is the predicted carrot price for next week?''
-
-\textbf{Response:} ``Based on current weather patterns showing moderate rainfall in Central Highland regions and stable fuel prices, the Simple LSTM model predicts carrot prices around Rs. 180-195 per kg for the next 7 days, representing a 5\% decrease from current levels.''
-
-\textbf{Query 2:} ``How does rainfall affect carrot prices?''
-
-\textbf{Response:} ``Rainfall in major growing regions (Nuwara Eliya, Bandarawela, Walimada) shows negative correlation with prices. Higher precipitation typically leads to better crop yields and increased supply, resulting in lower market prices. Feature importance analysis shows Central Highland precipitation contributes 12\% to prediction accuracy.''
-
-\textbf{Query 3:} ``Compare LSTM performance with traditional methods.''
-
-\textbf{Response:} ``The Simple LSTM achieved 19.93\% MAPE with R² of 0.8651, significantly outperforming traditional ARIMA ($>$50\% MAPE) and ARIMAX (88.80\% MAPE). LSTM's ability to capture non-linear relationships between weather, supply, and prices provides 78\% MAPE reduction compared to ARIMAX.''
-
 \section{Discussion}
 \label{sec:discussion}
 
@@ -465,21 +448,21 @@ The Simple LSTM's superior performance stems from several architectural and meth
 
 \textbf{4. Non-Linear Relationship Modeling:} The 68.4 percentage point MAPE improvement over ARIMAX (88.80\% $\rightarrow$ 19.93\%) demonstrates LSTM's superiority in modeling complex non-linear interactions between weather patterns, supply dynamics, fuel costs, and market prices that linear models cannot capture. This advantage extends even over the Bidirectional LSTM, showing 1.53 percentage points better performance (21.46\% $\rightarrow$ 19.93\%).
 
-\textbf{5. Automatic Feature Interaction Learning:} Unlike Random Forest requiring manual interaction term creation, LSTM layers automatically learn relevant feature interactions through hidden state representations, explaining its massive 0.47 R² advantage over Random Forest Tuned (0.8651 vs 0.3931) and 14.17 percentage point MAPE superiority (19.93\% vs 34.10\%).
+\textbf{5. Automatic Feature Interaction Learning:} Unlike Random Forest requiring manual interaction term creation, LSTM layers automatically learn relevant feature interactions through hidden state representations, explaining its 0.47 R² advantage over Random Forest Tuned (0.8651 vs 0.3931) and 14.17 percentage point MAPE superiority (19.93\% vs 34.10\%).
 
 \subsection{MAPE vs R² Trade-offs}
 \label{subsec:mape_r2_tradeoff}
 
 An interesting observation emerges when comparing Random Forest Tuned (MAPE 34.10\%, R² 0.3931) with Simple LSTM (MAPE 19.93\%, R² 0.8651):
 
-Random Forest achieved substantially worse performance across all metrics, with 14.17 percentage points higher MAPE and 0.47 points lower R². This demonstrates LSTM's clear superiority for temporal sequence forecasting:
+Random Forest achieved worse performance across all metrics, with 14.17 percentage points higher MAPE and 0.47 points lower R². This demonstrates LSTM's superiority for temporal sequence forecasting:
 
 \begin{itemize}
 \item \textbf{Temporal modeling advantage:} LSTM's recurrent architecture explicitly models temporal dependencies and sequential patterns, while Random Forest treats each time window as independent observation, losing crucial sequential context.
 \item \textbf{Feature representation:} LSTM learns hierarchical feature representations through hidden states that capture complex temporal interactions, whereas Random Forest relies on simpler decision tree splits that cannot represent sequential dependencies effectively.
 \end{itemize}
 
-Random Forest's ensemble averaging produces conservative predictions that fail to capture both the magnitude and variability of price movements, resulting in both higher MAPE and substantially lower R². Simple LSTM's superior performance across all metrics makes it the clear choice for deployment, providing better accuracy for stakeholders needing reliable predictions for inventory and pricing decisions.
+Random Forest's ensemble averaging produces conservative predictions that fail to capture both the magnitude and variability of price movements, resulting in both higher MAPE and lower R². Simple LSTM's superior performance across all metrics makes it the clear choice for deployment, providing better accuracy for stakeholders needing reliable predictions for inventory and pricing decisions.
 
 \subsection{Why Multivariate Models Require Careful Feature Selection}
 \label{subsec:feature_selection_importance}
@@ -490,12 +473,12 @@ The key insight is that feature quality matters more than quantity. The 2-stage 
 
 The Simple LSTM achieved superior performance through optimal regularization (Dropout 0.2 + L2 0.001) and streamlined single-layer architecture (50 units), demonstrating that architectural simplicity combined with strategic feature selection produces better generalization than complex bidirectional processing. The Bidirectional LSTM's additional architectural complexity (80 effective units from bidirectional wrapping) provided limited practical benefit, highlighting that simpler models with well-chosen inputs often outperform complex architectures.
 
-This validates that successful multivariate forecasting depends critically on finding the optimal balance between information content and model complexity, with the Simple LSTM's 8-feature configuration striking this balance most effectively for the 2,017-observation dataset.
+This validates that successful multivariate forecasting depends directly on finding the optimal balance between information content and model complexity, with the Simple LSTM's 8-feature configuration striking this balance most effectively for the 2,017-observation dataset.
 
 \subsection{Traditional vs Deep Learning Methods}
 \label{subsec:traditional_vs_deep}
 
-The performance gap between traditional statistical models (ARIMA/ARIMAX) and deep learning methods (LSTM variants) validates the inadequacy of linear assumptions for agricultural price forecasting. Rainfall's impact on prices exhibits highly non-linear characteristics where moderate precipitation benefits crop yields while excessive rainfall causes damage and supply disruptions. ARIMAX's linear coefficients fundamentally cannot represent these threshold effects and complex interactions between weather variables and market outcomes. Furthermore, weather effects manifest with variable lags ranging from 1 to 14 days depending on crop growth stage and market response times. LSTM's learned attention mechanism across different temporal positions captures these varying lag structures more effectively than ARIMA's fixed autoregressive specifications. The complexity extends beyond weather alone, as price dynamics emerge from intricate interactions between precipitation patterns, supply availability, fuel cost fluctuations, and demand variations. While ARIMAX treats these factors as independent additive effects, LSTM architectures learn their complex interdependencies through hidden layer representations that capture non-linear synergies traditional models cannot express.
+The performance gap between traditional statistical models (ARIMA/ARIMAX) and deep learning methods (LSTM variants) validates the inadequacy of linear assumptions for agricultural price forecasting. Rainfall's impact on prices exhibits highly non-linear characteristics where moderate precipitation benefits crop yields while excessive rainfall causes damage and supply disruptions. ARIMAX's linear coefficients cannot represent these threshold effects and complex interactions between weather variables and market outcomes. Furthermore, weather effects manifest with variable lags ranging from 1 to 14 days depending on crop growth stage and market response times. LSTM's learned attention mechanism across different temporal positions captures these varying lag structures more effectively than ARIMA's fixed autoregressive specifications. The complexity extends beyond weather alone, as price dynamics emerge from intricate interactions between precipitation patterns, supply availability, fuel cost fluctuations, and demand variations. While ARIMAX treats these factors as independent additive effects, LSTM architectures learn their complex interdependencies through hidden layer representations that capture non-linear synergies traditional models cannot express.
 
 The 68.87 percentage point MAPE improvement from ARIMAX to Simple LSTM (88.80\% $\rightarrow$ 19.93\%) quantifies the value of non-linear modeling for this application, representing a 77.6\% error reduction.
 
@@ -511,7 +494,7 @@ The forecasting system provides actionable insights for multiple stakeholder gro
 
 Traders and market intermediaries benefit from inventory optimization capabilities, as predicted price movements enable strategic stock management that reduces spoilage waste and storage costs. Transportation planning can be aligned with fuel price-adjusted profit margins, scheduling deliveries when the combination of market prices and fuel costs maximizes returns. When the model predicts high volatility periods, traders can implement risk management strategies including hedging positions or shifting to more stable commodity portfolios.
 
-Policymakers and agricultural authorities gain early warning capabilities for potential price spikes that threaten food security or farmer livelihoods, enabling timely intervention through buffer stock releases or import adjustments. The quantified weather impact relationships support evidence-based crop insurance program design with premiums reflecting empirically validated risk factors. Market monitoring systems can be enhanced through automated anomaly detection, flagging situations where actual prices deviate significantly from predictions as potential indicators of supply disruptions or market manipulation requiring investigation.
+Agricultural authorities gain early warning capabilities for potential price spikes that threaten food security or farmer livelihoods, enabling timely intervention through buffer stock releases or import adjustments. The quantified weather impact relationships support evidence-based crop insurance program design with premiums reflecting empirically validated risk factors. Market monitoring systems can be enhanced through automated anomaly detection, flagging situations where actual prices deviate substantially from predictions as potential indicators of supply disruptions or market manipulation requiring investigation.
 
 Consumers and retailers can inform procurement planning and promotional timing based on price forecasts, concentrating promotional activities during predicted price troughs to maximize sales volume. Understanding that prices typically decrease following significant rainfall events allows institutional buyers such as hotels and restaurants to strategically delay large purchases until after weather systems pass through growing regions. This advance visibility stabilizes budget planning for institutional buyers facing tight margin pressures in competitive hospitality markets.
 
@@ -520,7 +503,7 @@ The AI agent's natural language interface democratizes access to these insights,
 \subsection{Deployment Recommendations}
 \label{subsec:deployment_recommendations}
 
-For successful operational deployment, several strategic recommendations emerge from this research. A hybrid approach deploying Simple LSTM as the primary model with Random Forest Tuned as a monitoring baseline provides operational robustness. When Simple LSTM predictions deviate significantly from Random Forest baselines beyond expected variance, this may indicate regime changes or data quality issues requiring expert review. While Random Forest's substantially weaker performance (34.10\% MAPE vs 19.93\% MAPE) makes it unsuitable as primary predictor, its interpretability and faster training make it valuable for sanity checking and anomaly detection in operational systems.
+For successful operational deployment, several strategic recommendations emerge from this research. A hybrid approach deploying Simple LSTM as the primary model with Random Forest Tuned as a monitoring baseline provides operational robustness. When Simple LSTM predictions deviate markedly from Random Forest baselines beyond expected variance, this may indicate regime changes or data quality issues requiring expert review. While Random Forest's weaker performance (34.10\% MAPE vs 19.93\% MAPE) makes it unsuitable as primary predictor, its interpretability and faster training make it valuable for sanity checking and anomaly detection in operational systems.
 
 Prediction intervals should be implemented using ensemble variance or bootstrap methods to communicate uncertainty transparently. Rather than presenting point estimates alone, the interface should display confidence bands such as ``Rs. 180-195 with 80\% confidence'' that acknowledge inherent forecast uncertainty and enable stakeholders to make risk-informed decisions. Models should be retrained monthly with newly collected data to adapt to evolving seasonal patterns and market structure changes, with automated monitoring detecting performance degradation that triggers immediate retraining cycles outside the regular schedule.
 
@@ -537,6 +520,6 @@ Methodological rigor is enhanced through fair model comparison procedures that a
 
 Interpretability enhancement represents another significant contribution, as combining LSTM performance with SHAP-based Random Forest interpretability and systematic ablation studies addresses the persistent criticism of deep learning models as uninterpretable black boxes in policy-relevant domains. This hybrid approach provides both predictive accuracy and explanatory insights that stakeholders require for decision-making confidence. The integrated deployment-ready system with RAG-enhanced AI agent demonstrates complete end-to-end implementation from data collection through stakeholder-facing natural language interface, providing a blueprint for operational agricultural intelligence systems that other researchers and practitioners can adapt.
 
-Finally, the research quantifies specific weather-price relationships valuable for agricultural policy formulation, establishing that Central Highland precipitation explains 12\% of price variance with approximately 2.3\% price decrease associated with each 1 percentage point precipitation increase. These empirical relationships advance theoretical understanding of agricultural market dynamics while providing concrete parameters for crop insurance design, disaster response planning, and market stabilization policy calibration. The demonstrated 67\% MAPE improvement over traditional methods quantifies the practical value of modern machine learning approaches for this critical application domain.
+Finally, the research quantifies specific weather-price relationships valuable for agricultural policy formulation, establishing that Central Highland precipitation explains 12\% of price variance with approximately 2.3\% price decrease associated with each 1 percentage point precipitation increase. These empirical relationships advance theoretical understanding of agricultural market dynamics while providing concrete parameters for crop insurance design, disaster response planning, and market stabilization policy calibration. The demonstrated 67\% MAPE improvement over traditional methods quantifies the practical value of modern machine learning approaches for this application domain.
 
 These contributions advance both methodological rigor and practical applicability of machine learning in agricultural economics, with demonstrated 78\% MAPE improvement over traditional methods (ARIMAX 88.80\% to Simple LSTM 19.93\%).
