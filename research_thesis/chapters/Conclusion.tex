@@ -25,12 +25,12 @@ The Simple LSTM achieved 77.6\% MAPE reduction compared to multivariate ARIMAX (
 \subsection{Architecture and Regularization Matter More Than Feature Quantity}
 \label{subsec:architecture_matters}
 
-The standard multivariate LSTM with 35 features underperformed (25.88\% MAPE) compared to univariate LSTM (21.90\% MAPE), Bidirectional LSTM with 19 features (21.46\% MAPE), and the optimized Simple LSTM with 8 features (19.93\% MAPE). This demonstrates that model architecture, regularization strength, and feature quality matter more than simply maximizing feature quantity. The Goldilocks principle applies—too few features lose information, too many introduce noise and overfitting.
+Comparison across LSTM variants demonstrates that architectural design and regularization matter significantly. The univariate LSTM using only price history achieved 21.90\% MAPE, while the Bidirectional LSTM with 8 carefully selected features reached 21.46\% MAPE, and the optimized Simple LSTM with the same 8 features achieved best performance at 19.93\% MAPE. This demonstrates that model architecture, regularization strength, and strategic feature selection matter more than feature quantity alone. Well-chosen features with optimal architecture outperform both minimal-feature univariate approaches and complex architectures.
 
 \subsection{Architectural Simplicity with Aggressive Feature Selection Wins}
 \label{subsec:simple_lstm_advantage}
 
-The Simple LSTM's success demonstrates that architectural simplicity combined with aggressive feature selection (8 features from 163) produces superior generalization compared to complex architectures. The 5.95 percentage point improvement over standard multivariate LSTM (19.93\% vs 25.88\% MAPE) and 1.53 point advantage over Bidirectional LSTM (19.93\% vs 21.46\%) validates the principle of parsimony in machine learning.
+The Simple LSTM's success demonstrates that architectural simplicity combined with aggressive feature selection (8 features from 163) produces superior generalization compared to more complex architectures. The 1.97 percentage point improvement over univariate LSTM (19.93\% vs 21.90\% MAPE) validates the value of incorporating external factors, while the 1.53 point advantage over Bidirectional LSTM (19.93\% vs 21.46\%) confirms that simpler architectures can outperform complex bidirectional processing when properly optimized. This validates the principle of parsimony in machine learning.
 
 \subsection{Feature Importance Hierarchy: Price \textgreater\ Weather \textgreater\ Market Dynamics}
 \label{subsec:feature_hierarchy}
@@ -221,9 +221,9 @@ Building upon the foundation established by this research, several promising dir
 \section{Closing Remarks}
 \label{sec:closing_remarks}
 
-Agricultural price volatility remains one of the most significant challenges facing developing economies, directly impacting food security, farmer livelihoods, and economic stability. This research demonstrates that modern machine learning techniques, when carefully designed and rigorously evaluated, can substantially improve price forecasting accuracy compared to traditional approaches—achieving 21.22\% MAPE and explaining 81.11\% of price variance for Dambulla carrot markets.
+Agricultural price volatility remains one of the most significant challenges facing developing economies, directly impacting food security, farmer livelihoods, and economic stability. This research demonstrates that modern machine learning techniques, when carefully designed and rigorously evaluated, can substantially improve price forecasting accuracy compared to traditional approaches—achieving 19.93\% MAPE and explaining 86.51\% of price variance for Dambulla carrot markets.
 
-The success of the Bidirectional LSTM architecture validates deep learning's capability to model complex, non-linear agricultural market dynamics involving interactions between weather patterns, supply fluctuations, transportation costs, and demand variations. By achieving 67\% MAPE reduction compared to traditional ARIMAX methods, this research provides empirical evidence that investment in modern data science infrastructure for agriculture yields tangible returns.
+The success of the Simple LSTM architecture validates deep learning's capability to model complex, non-linear agricultural market dynamics involving interactions between market demand, price history, and transportation costs. By achieving 78\% MAPE reduction compared to traditional ARIMAX methods (88.80\% to 19.93\%), this research provides empirical evidence that investment in modern data science infrastructure for agriculture yields tangible returns.
 
 Beyond technical contributions, the deployment-ready system with natural language interface represents a paradigm shift in agricultural intelligence accessibility. Democratizing sophisticated forecasting through conversational AI enables non-technical stakeholders—smallholder farmers, rural traders, extension officers—to leverage data science insights previously confined to academic research or large agribusinesses.
 
