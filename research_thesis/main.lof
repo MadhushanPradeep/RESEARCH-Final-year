@@ -1,26 +1,26 @@
 \addvspace {10\p@ }
 \addvspace {10\p@ }
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {3.1}{\ignorespaces Comprehensive Methodology Flow Diagram showing the systematic progression from data collection through model training and AI agent deployment. The diagram illustrates parallel feature engineering pipelines (RF: 273→24 features via 4-stage selection; LSTM: 163→9 features via 2-stage selection), evaluation across multiple model architectures, and final integration of the best-performing Simple LSTM model into an intelligent conversational AI agent.}}{25}{}%
+\contentsline {figure}{\numberline {3.1}{\ignorespaces Comprehensive Methodology Flow Diagram showing the systematic progression from data collection through model training and AI agent deployment. The diagram illustrates parallel feature engineering pipelines (RF: 273→22 features via 4-stage selection; LSTM: 163→8 features via 2-stage selection), evaluation across multiple model architectures, and final integration of the best-performing Simple LSTM model into an intelligent conversational AI agent.}}{22}{}%
 \addvspace {10\p@ }
-\contentsline {figure}{\numberline {4.1}{\ignorespaces Daily carrot price trends in Dambulla market (2020-2025)}}{44}{}%
-\contentsline {figure}{\numberline {4.2}{\ignorespaces Relationship between carrot prices and Central Highland precipitation}}{44}{}%
-\contentsline {figure}{\numberline {4.3}{\ignorespaces Relationship between carrot prices and Uva Province precipitation}}{45}{}%
-\contentsline {figure}{\numberline {4.4}{\ignorespaces Relationship between carrot prices and Northern region precipitation}}{45}{}%
-\contentsline {figure}{\numberline {4.5}{\ignorespaces Relationship between carrot prices and Diesel (LAD) fuel costs}}{46}{}%
-\contentsline {figure}{\numberline {4.6}{\ignorespaces Relationship between carrot prices and Petrol (LP 95) fuel costs}}{46}{}%
-\contentsline {figure}{\numberline {4.7}{\ignorespaces Seasonal decomposition of carrot price time series}}{47}{}%
-\contentsline {figure}{\numberline {4.8}{\ignorespaces Feature count progression through 4-stage selection pipeline}}{49}{}%
-\contentsline {figure}{\numberline {4.9}{\ignorespaces Correlation heatmap of final selected features}}{51}{}%
-\contentsline {figure}{\numberline {4.10}{\ignorespaces ARIMA(1,0,1) model diagnostic plots}}{53}{}%
-\contentsline {figure}{\numberline {4.11}{\ignorespaces Bidirectional LSTM training history}}{56}{}%
-\contentsline {figure}{\numberline {4.12}{\ignorespaces Top 20 features by Random Forest importance}}{58}{}%
-\contentsline {figure}{\numberline {4.13}{\ignorespaces Ablation study: MAPE increase by feature category removal}}{59}{}%
-\contentsline {figure}{\numberline {4.14}{\ignorespaces SHAP summary plot for feature contributions}}{61}{}%
-\contentsline {figure}{\numberline {4.15}{\ignorespaces SHAP dependence plot for price\_lag\_1}}{62}{}%
-\contentsline {figure}{\numberline {4.16}{\ignorespaces SHAP dependence plot for Central Highland precipitation}}{63}{}%
-\contentsline {figure}{\numberline {4.17}{\ignorespaces Actual vs predicted carrot prices - Bidirectional LSTM}}{63}{}%
-\contentsline {figure}{\numberline {4.18}{\ignorespaces AI agent 3-tier architecture}}{66}{}%
-\contentsline {figure}{\numberline {4.19}{\ignorespaces Gradio-based AI agent interface}}{67}{}%
+\contentsline {figure}{\numberline {4.1}{\ignorespaces Daily carrot price trends in Dambulla market (2020-2025)}}{41}{}%
+\contentsline {figure}{\numberline {4.2}{\ignorespaces Relationship between carrot prices and Central Highland precipitation}}{41}{}%
+\contentsline {figure}{\numberline {4.3}{\ignorespaces Relationship between carrot prices and Uva Province precipitation}}{42}{}%
+\contentsline {figure}{\numberline {4.4}{\ignorespaces Relationship between carrot prices and Northern region precipitation}}{42}{}%
+\contentsline {figure}{\numberline {4.5}{\ignorespaces Relationship between carrot prices and Diesel (LAD) fuel costs}}{43}{}%
+\contentsline {figure}{\numberline {4.6}{\ignorespaces Relationship between carrot prices and Petrol (LP 95) fuel costs}}{43}{}%
+\contentsline {figure}{\numberline {4.7}{\ignorespaces Seasonal decomposition of carrot price time series}}{44}{}%
+\contentsline {figure}{\numberline {4.8}{\ignorespaces ARIMA(1,1,1) model diagnostic plots}}{48}{}%
+\contentsline {figure}{\numberline {4.9}{\ignorespaces Actual vs predicted carrot prices - Univariate LSTM model}}{49}{}%
+\contentsline {figure}{\numberline {4.10}{\ignorespaces Simple LSTM training history (best model)}}{50}{}%
+\contentsline {figure}{\numberline {4.11}{\ignorespaces Actual vs predicted carrot prices - Simple LSTM model}}{50}{}%
+\contentsline {figure}{\numberline {4.12}{\ignorespaces Bidirectional LSTM training history}}{51}{}%
+\contentsline {figure}{\numberline {4.13}{\ignorespaces Actual vs predicted carrot prices - Bidirectional LSTM model}}{52}{}%
+\contentsline {figure}{\numberline {4.14}{\ignorespaces Ablation study: MAPE increase by feature category removal}}{54}{}%
+\contentsline {figure}{\numberline {4.15}{\ignorespaces SHAP summary plot for feature contributions}}{55}{}%
+\contentsline {figure}{\numberline {4.16}{\ignorespaces SHAP dependence plot for price\_lag\_1}}{56}{}%
+\contentsline {figure}{\numberline {4.17}{\ignorespaces SHAP dependence plot for Central Highland precipitation}}{57}{}%
+\contentsline {figure}{\numberline {4.18}{\ignorespaces AI agent 3-tier architecture}}{59}{}%
+\contentsline {figure}{\numberline {4.19}{\ignorespaces Gradio-based AI agent interface}}{59}{}%
 \addvspace {10\p@ }
 \contentsfinish 
