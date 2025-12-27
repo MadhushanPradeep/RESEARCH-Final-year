@@ -1222,3 +1222,5 @@ I'm happy to discuss implementation details, collaborate on extensions, or share
 - Defending your methodological choices (even if imperfect) shows critical thinking
 
 **You've got this!** The research is solid, the presentation structure is clear, and you're well-prepared. Good luck! 🎓
+https://drive.google.com/file/d/1JI63S6l_iX_QiI3uIbbdh844DUCkEItx/view?usp=drive_linkhttps://drive.google.com/file/d/1JI63S6l_iX_QiI3uIbbdh844DUCkEItx/view?usp=drive_linkacceptable- Honest "I don't know, but here's how I'd find out" is acceptable
+
